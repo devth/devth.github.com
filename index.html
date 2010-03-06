@@ -4,17 +4,24 @@
 	<head>
 		<title>devth</title>
 		<style type="text/css" media="screen">
-			body { background: #000;}
-			div.content { font-size:200px; font-family:Helvetica, sans; text-align:center; height:200px; top:50%; margin-top:-150px; position:relative; }
+			body { background: #000; font-family:Helvetica, sans; }
+			
+			div.content { font-size:200px; text-align:center; height:200px; top:50%; margin-top:-150px; position:relative; }
 			div.content a { text-decoration:none; color:#333; padding:20px 100px; }
 			div.content a:hover { background:#ff0000; color: #fff;}
+			
+			div.stfu { padding:10px; background:white; color:black; width:100px; text-align:center; position:fixed; bottom:0; left:50%; margin-left:-50px; }
+			div.stfu:hover { background: red;  }
 		</style>
+		
 	</head>
 	<body>
 	
 		<div class="content"><a href="http://devth.com/">devth</a></div>
 		
 		<div><audio src="http://dl.dropbox.com/u/113427/Ancestors.mp3" autoplay autobuffer></audio>
+		
+		<div class="stfu" onclick="stfu()">STFU</div>
 		
 		<script type="text/javascript">
 		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
@@ -25,5 +32,16 @@
 		var pageTracker = _gat._getTracker("UA-9963595-6");
 		pageTracker._trackPageview();
 		} catch(err) {}</script>
+		
+		
+		<script>
+		
+			function stfu()
+			{
+				a = document.getElementsByTagName('audio')[0];
+				a.pause();
+			}
+			
+		</script>
 	</body>
 </html>
