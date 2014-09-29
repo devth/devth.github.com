@@ -1,7 +1,6 @@
 ---
 layout: article
 title: Overture
-categories: meta
 ---
 
 Programming, tools and process are stuck in the past, held in place by hoards
