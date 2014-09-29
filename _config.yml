@@ -1,0 +1,35 @@
+# Site wide configuration
+
+title: devth
+description: there must be a better way
+logo: logo_120.jpg
+teaser: teaser_450_250.jpg
+locale:
+url: //localhost:4000
+
+# Jekyll configuration
+
+sass:
+    sass_dir: _sass
+    style: compressed
+permalink: /:categories/:title/
+markdown: kramdown
+highlighter: pygments
+gems:
+  - jekyll-sitemap
+
+
+# Site owner
+owner:
+  name: Trevor Hartman
+  email: trevorhartman@gmail.com
+  twitter: devth
+  google:
+    ad-client: 
+    ad-slot: 
+  bio: Automate or die
+  avatar: bio-photo.jpg # 160x160 px image for author byline
+disqus-shortname:
+
+
+exclude: ["lib", "config.rb", ".sass-cache", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "*.sublime-project", "*.sublime-workspace", "Gemfile", "Gemfile.lock", "README.md", "LICENSE", "node_modules", "Gruntfile.js", "package.json"]

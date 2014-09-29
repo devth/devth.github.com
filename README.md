@@ -1,7 +1,4 @@
-devth is Trevor Hartman, alive in Seattle
------------------------------------------
+# devth
 
-[http://devth.com][1]
+devth.com
 
-
-  [1]: http://devth.com
