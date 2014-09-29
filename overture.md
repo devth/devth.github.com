@@ -2,7 +2,7 @@
 layout: article
 title: Overture
 image:
-  feature: overture_1024.jpg
+  feature: overture.jpg
   teaser: overture_300_200.jpg
 ---
 
