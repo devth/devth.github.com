@@ -7,6 +7,8 @@ image:
   teaser: open_source_teaser.jpg
 ---
 
+# Corporate process should mirror open source
+
 Within any big tech corporation you will find many disparate teams. Most of
 these teams know very little about the work, makeup or very existence of other
 teams, yet they depend on each other's output, directly or indirectly. This is a
