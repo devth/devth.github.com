@@ -1,6 +1,6 @@
 # Site navigation links
 
-- title:
-  url:
-  excerpt:
-  image:
+- title: Overture
+  url: /overture
+  excerpt: "Programming, tools and process are stuck in the past"
+  image: overture_300_200.jpg
