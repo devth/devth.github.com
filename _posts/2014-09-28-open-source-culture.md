@@ -2,6 +2,9 @@
 layout: default
 title: Corporate process should mirror open source
 categories: process
+image:
+  feature: open_source.jpg
+  teaser: open_source_teaser.jpg
 ---
 
 Within any big tech corporation you will find many disparate teams. Most of
