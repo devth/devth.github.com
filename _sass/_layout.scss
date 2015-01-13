@@ -168,12 +168,12 @@
         @include span-columns(7 of 9);
       }
       // larger font for intro paragraph
-      > p {
-        &:first-child {
-          @include font-size(24,yes,30);
-          color: #aaa;
-        }
-      }
+      // > p {
+      //   &:first-child {
+      //     @include font-size(24,yes,30);
+      //     color: #aaa;
+      //   }
+      // }
       // cleaner underlines for links
       a { text-decoration: none; }
       p > a,
