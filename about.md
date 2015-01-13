@@ -9,7 +9,7 @@ specialization.
 
 I'm obsessed with discovering better ways of expressing solutions to programming
 problems. I can't handle boilerplate or repetitive code. This obsession has lead
-me down a path of language discovery, from my early dark ages in PERL and VB, to
+me down a path of language discovery, from my early dark ages in Perl and VB, to
 C# and ActionScript 3, Ruby, Scala, Clojure and core.logic, Haskell and Elm, and
 a tiny bit of Idris.
 
