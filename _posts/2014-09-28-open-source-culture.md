@@ -10,8 +10,7 @@ image:
 
 Within any big tech corporation you will find many disparate teams. Most of
 these teams know very little about the work, makeup or very existence of other
-teams, yet they depend on each other's output, directly or indirectly. This is a
-weakness.
+teams, yet they depend on each other's output, directly or indirectly.
 
 When one team needs to use another's product / service / library, meetings are
 setup, use cases are discussed, and all kinds of bureaucratic nonsense takes
