@@ -13,7 +13,7 @@ me down a path of language discovery, from my early dark ages in Perl and VB, to
 C# and ActionScript 3, Ruby, Scala, Clojure and core.logic, Haskell and Elm, and
 a tiny bit of Idris. The past few years I've been on a quest to bring more rigor
 to my understanding and use of programming, and have become a bit of a
-Functional Programming zealot in the process.m
+Functional Programming zealot in the process.
 
 I use tech to do things like:
 
