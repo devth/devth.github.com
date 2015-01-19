@@ -6,6 +6,7 @@ comments: true
 image:
   feature: open_source.jpg
   teaser: open_source_teaser.jpg
+  caption: Boston Basin, WA. August, 2012
 ---
 
 Within any big tech corporation you will find many disparate teams. Most of

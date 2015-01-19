@@ -6,7 +6,7 @@ comments: true
 image:
   feature: on_learning_1024_256.jpg
   teaser: on_learning_410_228.jpg
-  caption: Highline Singletrack, Rimrocks, Billings, MT
+  caption: Highline Singletrack, Rimrocks, Billings, MT. October 2014
 ---
 
 It wasn't until I was well into my twenties that I learned how to really learn.
