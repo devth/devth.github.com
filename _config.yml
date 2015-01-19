@@ -13,7 +13,8 @@ sass:
     sass_dir: _sass
     style: compressed
 permalink: /:categories/:title/
-markdown: kramdown
+# markdown: kramdown
+markdown: redcarpet
 highlighter: pygments
 gems:
   - jekyll-sitemap
@@ -33,3 +34,6 @@ disqus-shortname: devth
 
 
 exclude: ["lib", "config.rb", ".sass-cache", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "*.sublime-project", "*.sublime-workspace", "Gemfile", "Gemfile.lock", "README.md", "LICENSE", "node_modules", "Gruntfile.js", "package.json"]
+
+defaults:
+  caption: 

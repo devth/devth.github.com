@@ -1,9 +1,8 @@
 ---
 layout: article
-title: Glossary
+title: Glossary of terms
 ---
 
-# Glossary of terms
 
 These are terms and concepts that I found unfamiliar the first time I
 encountered them. In most cases I'll provide a brief definition or example with
