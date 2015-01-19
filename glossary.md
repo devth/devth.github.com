@@ -95,6 +95,7 @@ tuple2Iso(tuple2Iso(nameAge)) == nameAge
 //=> true
 {% endhighlight %}
 
+Another resource on Isomorphisms in Scalaz:
 [learning Scalaz — Isomorphisms](http://eed3si9n.com/learning-scalaz/Isomorphisms.html)
 
 ## Domain
