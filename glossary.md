@@ -1,6 +1,7 @@
 ---
 layout: article
 title: Glossary of terms
+toc: true
 ---
 
 These are terms and concepts that I found unfamiliar the first time I
