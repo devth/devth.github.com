@@ -13,8 +13,8 @@ sass:
     sass_dir: _sass
     style: compressed
 permalink: /:categories/:title/
-# markdown: kramdown
-markdown: redcarpet
+markdown: kramdown
+# markdown: redcarpet
 highlighter: pygments
 gems:
   - jekyll-sitemap
