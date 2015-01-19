@@ -44,7 +44,7 @@ Another resource describing Haskell's support is
 
 > A natural transformation is a mapping between functors that preserves the
 > structure of the underlying categories.
-> — Bartosz Milewski from [Understanding Yoneda](https://www.fpcomplete.com/user/bartosz/understanding-yoneda)
+> — <cite>Bartosz Milewski from [Understanding Yoneda](https://www.fpcomplete.com/user/bartosz/understanding-yoneda)</cite>
 
 This is a case where definitions are confusing, but the actual thing is quite
 simple in practice. Let's try that out in Scala using the Functors `List` and
