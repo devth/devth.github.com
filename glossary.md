@@ -3,7 +3,6 @@ layout: article
 title: Glossary of terms
 ---
 
-
 These are terms and concepts that I found unfamiliar the first time I
 encountered them. In most cases I'll provide a brief definition or example with
 a link to a more complete definition.
@@ -57,7 +56,8 @@ val noneString: Option[String] = None
 
 // We can intuitively think of Option as being a List of 1 element, so the
 // natural transformation is trivial (avoiding the use of Scala's own .toList):
-def optionToList[A](a: Option[A]): List[A] = a.map(x => List(x)).getOrElse(List.empty[A])
+def optionToList[A](a: Option[A]): List[A] =
+  a.map(x => List(x)).getOrElse(List.empty[A])
 
 optionToList(someString)
 //=> res: List[String] = List(foo)
