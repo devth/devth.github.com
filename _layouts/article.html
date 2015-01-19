@@ -9,6 +9,9 @@ layout: default
 			<div class="page-image">
 				<img src="{{ site.url }}/images/{{ page.image.feature }}" class="page-feature-image" alt="{{ page.title }}" itemprop="image">
 				{% if page.image.credit %}{% include image-credit.html %}{% endif %}
+        {% if page.image.caption %}
+          <div class="caption">{{page.image.caption}}</div>
+        {% endif %}
 			</div><!-- /.page-image -->
 		</div><!-- /.page-feature -->
 		{% endif %}
