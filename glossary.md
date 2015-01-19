@@ -14,11 +14,11 @@ A rank-1 polymorhipc function is simply a function that takes a single type
 parameter and whose arguments operate over the given type. An example based on
 [Higher-Rank Polymorphism in Scala](https://apocalisp.wordpress.com/2010/07/02/higher-rank-polymorphism-in-scala/):
 
-```scala
+{% highlight scala %}
 def r1[A](f: A => A, a: A): A = f(a)
 r1({ i: Int => i * i }, 10)
 // res4: Int = 100
-```
+{% endhighlight %}
 
 ## Rank-2 Polymorphic Function
 
@@ -27,11 +27,11 @@ Again from
 
 Scala doesn't have rank-n types, so we need to rely on a workaround:
 
-```scala
+{% highlight scala %}
 trait ~>[F[_],G[_]] {
   def apply[A](a: F[A]): G[A]
 }
-```
+{% endhighlight %}
 
 Read the post to see how the `~>` trait can be used to achieve rank-n types.
 
@@ -50,7 +50,7 @@ This is a case where definitions are confusing, but the actual thing is quite
 simple in practice. Let's try that out in Scala using the Functors `List` and
 `Option`.
 
-```scala
+{% highlight scala %}
 val someString: Option[String] = Some("foo")
 val noneString: Option[String] = None
 
@@ -67,7 +67,7 @@ optionToList(noneString)
 
 optionToList(None)
 //=> res: List[Nothing] = List()
-```
+{% endhighlight %}
 
 Thus, `optionToList` is a natural transformation from `Option` to `List`. Note
 that a natural transformation does not exist from `List` to `Option`.
