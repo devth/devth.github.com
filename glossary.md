@@ -73,6 +73,29 @@ Thus, `optionToList` is a natural transformation from `Option` to `List`. Note
 that a natural transformation does not exist from `List` to `Option`.
 
 
+## Isomorphism
+
+> In mathematics, an isomorphism (from the Greek: isos "equal", and morphe
+> "shape") is a homomorphism (or more generally a morphism) **that admits an
+> inverse**. Two mathematical objects are isomorphic if an isomorphism exists
+> between them.
+> — <cite>[Isomorphism on Wikipedia](http://en.wikipedia.org/wiki/Isomorphism)
+
+Now the Scala:
+
+{% highlight scala %}
+// These two objects are isomorphic because a morphism (i.e. function) exists
+// that maps each to the other.
+val nameAge = ("foo", 42)
+val ageName = (42, "foo")
+
+def tuple2Iso[A, B](p: (A, B)): (B, A) = (p._2, p._1)
+
+tuple2Iso(tuple2Iso(nameAge)) == nameAge
+//=> true
+{% endhighlight %}
+
+[learning Scalaz — Isomorphisms](http://eed3si9n.com/learning-scalaz/Isomorphisms.html)
 
 ## Domain
 
