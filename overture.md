@@ -4,6 +4,7 @@ title: Overture
 image:
   feature: overture.jpg
   teaser: overture_300_200.jpg
+  caption: Mount St. Helens
 ---
 
 Programming, tools and process are stuck in the past, held in place by hoards
