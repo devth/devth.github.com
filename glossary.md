@@ -79,7 +79,7 @@ that a natural transformation does not exist from `List` to `Option`.
 > "shape") is a homomorphism (or more generally a morphism) **that admits an
 > inverse**. Two mathematical objects are isomorphic if an isomorphism exists
 > between them.
-> — <cite>[Isomorphism on Wikipedia](http://en.wikipedia.org/wiki/Isomorphism)
+> — <cite>[Wikipedia](http://en.wikipedia.org/wiki/Isomorphism)
 
 Now the Scala:
 
