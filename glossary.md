@@ -91,6 +91,14 @@ val ageName = (42, "foo")
 
 def tuple2Iso[A, B](p: (A, B)): (B, A) = (p._2, p._1)
 
+// A => B
+tuple2Iso(nameAge) == ageName
+//=> true
+
+// B => A
+tuple2Iso(ageName) == nameAge
+//=> true
+
 tuple2Iso(tuple2Iso(nameAge)) == nameAge
 //=> true
 {% endhighlight %}
