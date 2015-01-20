@@ -106,13 +106,22 @@ tuple2Iso(tuple2Iso(nameAge)) == nameAge
 Another resource on Isomorphisms in Scalaz:
 [learning Scalaz — Isomorphisms](http://eed3si9n.com/learning-scalaz/Isomorphisms.html)
 
-## Domain
+## Domain and Codomain
 
-Types represent domains. A domain is the set of all the possible values of a type.
-For an interesting expansion of this concept, see slides from the [Age is not an
-int](http://www.slideshare.net/oxbow_lakes/age-is-not-an-int) talk. And from
-that talk, here's some very brief reasoning on why you want your types to
-semantically restrict their domain:
+Domains come from set theory, and represent the set of input values for a
+function, while codomains represent the set of output values. Therefore, a
+function is the mapping between its domain and codomain.
+
+In programming, types and domains are related but not quite the same. Domains
+are strictly related to functions, while a type specifies a set of values.
+
+In the context of functions, we can say that types are used to represent a given
+function's domain and codomain.
+
+For an interesting expansion of this concept, see slides from
+the [Age is not an int](http://www.slideshare.net/oxbow_lakes/age-is-not-an-int)
+talk. From that talk, here's some very brief reasoning on why you want your
+types to semantically restrict domains:
 
 > In java.lang: not a good start
 > public interface Comparable<T> {
