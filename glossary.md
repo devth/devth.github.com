@@ -123,8 +123,8 @@ the [Age is not an int](http://www.slideshare.net/oxbow_lakes/age-is-not-an-int)
 talk. From that talk, here's some very brief reasoning on why you want your
 types to semantically restrict domains:
 
-> In java.lang: not a good start
-> public interface Comparable<T> {
->   public int compareTo(T o);
-> }
+> In java.lang: not a good start<br />
+> public interface Comparable<T> {<br />
+>   public int compareTo(T o);<br />
+> }<br />
 > Representing a 3-valued type with a 2³² valued one
