@@ -108,10 +108,14 @@ Another resource on Isomorphisms in Scalaz:
 
 ## Domain
 
-Types represent domains: they restrict the values in a particular domain. For an
-interesting expansion of this idea, see slides from the [Age is not an
+Types represent domains. A domain is the set of all the possible values of a type.
+For an interesting expansion of this concept, see slides from the [Age is not an
 int](http://www.slideshare.net/oxbow_lakes/age-is-not-an-int) talk. And from
 that talk, here's some very brief reasoning on why you want your types to
-semantically restrict their domain.
+semantically restrict their domain:
 
-![java.lang](http://image.slidesharecdn.com/ageisnotanint-150113065504-conversion-gate01/95/age-is-not-an-int-8-638.jpg)
+> In java.lang: not a good start
+> public interface Comparable<T> {
+>   public int compareTo(T o);
+> }
+> Representing a 3-valued type with a 2³² valued one
