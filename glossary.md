@@ -11,8 +11,7 @@ a link to a more complete definition.
 
 ## Rank-1 Polymorphic Function
 
-A rank-1 polymorhipc function is simply a function that takes a single type
-parameter and whose arguments operate over the given type. An example based on
+An example based on
 [Higher-Rank Polymorphism in Scala](https://apocalisp.wordpress.com/2010/07/02/higher-rank-polymorphism-in-scala/):
 
 {% highlight scala %}
