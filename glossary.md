@@ -141,7 +141,7 @@ talk so it must be true.
 My own incomplete understanding is that it's a way of baking the generics into a
 type instead of explicitly declaring them. Consider the ultra-contrived example
 where we have a type `Things` which contains a list of stuff whose type we don't
-care about and the only operation we want to perform on it is to count how many
+care about because the only operation we want to perform on it is to count how many
 there are.
 
 {% highlight scala %}
