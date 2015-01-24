@@ -128,3 +128,49 @@ types to semantically restrict domains:
 >   public int compareTo(T o);<br />
 > }<br />
 > Representing a 3-valued type with a 2³² valued one
+
+
+## Existential types
+
+Read [Existential type](https://www.haskell.org/haskellwiki/Existential_type) on
+the HaskellWiki. Scala does not have existential types them apart from Any (I
+don't understand this yet, but [Rúnar Bjarnason](https://www.youtube.com/watch?v=hzf3hTUKk8U)
+said it in his [FP is terrible](https://www.youtube.com/watch?v=hzf3hTUKk8U)
+talk so it must be true.
+
+My own incomplete understanding is that it's a way of baking the generics into a
+type instead of explicitly declaring them. Consider the ultra-contrived example
+where we have a type `Things` which contains a list of stuff whose type we don't
+care about and the only operation we want to perform on it is to count how many
+there are.
+
+{% highlight scala %}
+// Without existential types
+case class Things[A](list: List[A])
+val intThings: Things[Int] = Things(List(1, 2, 3))
+def count[A](ts: Things[A]) = ts.list.size
+count(intThings)
+//=> 3
+{% endhighlight %}
+
+Notice how we had to specify a type `A` on `count` even though we didn't
+actually care about it? Also, the type of `intThings` was `Things[Int]`, though
+we could have used `Things[_]` to indicate we don't care, or even better just
+let its type be inferred. But that's not the point.
+
+Now let's use existential types to bake `A` into `Things` since we don't care.
+
+{% highlight scala %}
+case class Things(list: List[A] forSome { type A })
+def count(ts: Things) = ts.list.size
+val someThings = Things(List("apathetic", "types"))
+count(someThings)
+//=> 2
+{% endhighlight %}
+
+Existential types let us drop the type annotation on `count`! Note, there's a
+shorthand way of expressing this:
+
+{% highlight scala %}
+case class Things(list: List[A] forSome { type A })
+{% endhighlight %}
