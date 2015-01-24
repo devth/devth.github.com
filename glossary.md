@@ -172,5 +172,5 @@ Existential types let us drop the type annotation on `count`! Note, there's a
 shorthand way of expressing this:
 
 {% highlight scala %}
-case class Things(list: List[A] forSome { type A })
+case class Things(list: List[_])
 {% endhighlight %}
