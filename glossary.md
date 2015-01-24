@@ -133,7 +133,7 @@ types to semantically restrict domains:
 ## Existential types
 
 Read [Existential type](https://www.haskell.org/haskellwiki/Existential_type) on
-the HaskellWiki. Scala does not have existential types apart from Any (I
+the HaskellWiki. Scala does not have existential types apart from `Any` (I
 don't understand this yet, but [Rúnar Bjarnason](https://www.youtube.com/watch?v=hzf3hTUKk8U)
 said it in his [FP is terrible](https://www.youtube.com/watch?v=hzf3hTUKk8U)
 talk so it must be true).
