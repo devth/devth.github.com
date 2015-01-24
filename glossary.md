@@ -81,7 +81,7 @@ that a natural transformation does not exist from `List` to `Option`.
 > between them.
 > — <cite>[Wikipedia](http://en.wikipedia.org/wiki/Isomorphism)
 
-Now the Scala:
+Now the Scala in which we'll describe the world's most trivial isomophism:
 
 {% highlight scala %}
 // These two objects are isomorphic because a morphism (i.e. function) exists
