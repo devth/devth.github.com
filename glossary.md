@@ -1,12 +1,16 @@
 ---
 layout: article
 title: Glossary of terms
+image:
+  teaser: granite_300_200.jpg
+  feature: granite_1200_300.jpg
 toc: true
 ---
 
 These are terms and concepts that I found unfamiliar the first time I
 encountered them. In most cases I'll provide a brief definition or example with
-a link to a more complete definition.
+a link to a more complete definition. Caution: wet paint! This is a work in
+progress.
 
 
 ## Rank-1 Polymorphic Function
