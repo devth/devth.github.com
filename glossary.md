@@ -4,7 +4,7 @@ title: Glossary of terms
 image:
   teaser: granite_300_200.jpg
   feature: granite_1200_300.jpg
-caption: View from 12,808 ft on the summit of Granite Peak, Montana's highest point
+  caption: View from 12,808 ft on the summit of Granite Peak, Montana's highest point
 toc: true
 ---
 
