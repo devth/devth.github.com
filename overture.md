@@ -15,6 +15,10 @@ Let's find a better way.
 ## Required reading
 
 - [Complexity and Learning (2011)](http://mth.io/posts/complexity-and-learning/)
+  — The view on learning and applying knowledge described here is one I've long
+  held and argued for. This post uses an intuitive anaology of runtime
+  complexity to describe learning a concept and the cost of applying it over
+  time.
 
 ## Recommended reading
 
