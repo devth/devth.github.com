@@ -19,11 +19,11 @@ Let's find a better way.
 ## Recommended reading
 
 - [Learn You a Haskell for Great Good!](http://learnyouahaskell.com/chapters)
-  Have you read a million monad tutorials and still don't get it? This was the
+  — Have you read a million monad tutorials and still don't get it? This was the
   case for me when I embarked on that journey. Learning Haskell is what made it
   finally click for me. As a bonus, this book is also hilarious and brilliantly
   written and illustrated.
 - [Learning Scalaz](http://eed3si9n.com/learning-scalaz/)
-  This series of blog posts loosely follows LYAH and introduces
+  — This series of blog posts loosely follows LYAH and introduces
   [Scalaz](https://github.com/scalaz/scalaz)' equivalents to many of Haskell's
   classes.
