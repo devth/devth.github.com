@@ -18,7 +18,7 @@ able to choose the right constraints ourselves; other times they are chosen for
 us. Either way, constraint is what guides and sometimes dictates, removes
 decisions and forces creative thinking. Constraint is a framework.
 
-Let's look at some constraints I've embraced over my years as a developer.
+These are some constraints I've embraced over my years as a developer.
 
 ## Terminal
 
