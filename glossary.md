@@ -152,7 +152,6 @@ Existential types can also rely on upper or lower bounds.
 ``` scala
 // Let's make Things only take Seqs while using Existential types in our
 // upper bound
-
 case class SeqThings(list: List[A] forSome { type A <: Seq[_] })
 
 // Strings are Seqs
@@ -163,7 +162,6 @@ val listThings = SeqThings(List(List(1, 2), List(3)))
 
 // Nope!
 val intThings = SeqThings(List(1, 2, 3))
-
 // <console>:9: error: type mismatch;
 //  found   : Int(3)
 //  required: Seq[_]
