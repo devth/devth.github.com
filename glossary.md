@@ -171,7 +171,7 @@ val intThings = SeqThings(List(1, 2, 3))
 
 Note: Scala does not have existential types apart from `Any` (according to
 [Rúnar Bjarnason](https://www.youtube.com/watch?v=hzf3hTUKk8U) who mentions this
-in his [FP is terrible](https://www.youtube.com/watch?v=hzf3hTUKk8U)).
+in his [FP is terrible](https://www.youtube.com/watch?v=hzf3hTUKk8U) talk).
 
 ## Rank-1 Polymorphic Function
 
