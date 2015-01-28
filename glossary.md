@@ -204,4 +204,9 @@ Read the post to see how the `~>` trait can be used to achieve rank-n types.
 Another resource describing Haskell's support is
 [Higher rank types](http://en.wikibooks.org/wiki/Haskell/Polymorphism#Higher_rank_types).
 
+## Test
+
+```json
+{"foo": "bar", "baz": [1, 2, 3]}
+```
 
