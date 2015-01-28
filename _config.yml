@@ -21,7 +21,8 @@ permalink: /:categories/:title/
 markdown: Pypedown
 pypedown:
   input: GFM
-highlighter: pygments
+
+# highlighter: pygments
 
 gems:
   - jekyll-pypedown
