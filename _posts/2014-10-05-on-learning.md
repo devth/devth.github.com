@@ -3,6 +3,7 @@ layout: article
 title: On Learning
 categories: learning
 comments: true
+excerpt: "It wasn't until I was well into my twenties that I learned how to really learn."
 image:
   feature: on_learning_1024_256.jpg
   teaser: on_learning_410_228.jpg
