@@ -62,7 +62,7 @@ originally built by yesterday's technologists and finely tuned over the decades.
 ## Functional Programming
 
 FP is a huge topic that I won't even attempt to cover here, but we can briefly
-take a look at some of its tenants and the benefits that come with.
+take a look at some of its tenets and the benefits that come with.
 
 ### Composition
 
