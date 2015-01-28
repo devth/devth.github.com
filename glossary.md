@@ -150,7 +150,6 @@ case class Things(list: List[_])
 Existential types can also rely on upper or lower bounds.
 
 ``` scala
-
 // Let's make Things only take Seqs while using Existential types in our 
 // upper bound
 
