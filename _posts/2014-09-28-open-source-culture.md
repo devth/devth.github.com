@@ -55,3 +55,7 @@ disciplined about maintaining them. Write tests as necessary. Give examples.
 Make it so good that when people start using your code, you don't even know it
 because they didn't have any questions. But when they do have questions, **don't
 schedule a meeting**.
+
+``` scala
+List(1)
+```
