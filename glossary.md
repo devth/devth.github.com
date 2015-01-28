@@ -24,7 +24,7 @@ This is a case where definitions are confusing, but the actual thing is quite
 simple in practice. Let's try that out in Scala using the Functors `List` and
 `Option`.
 
-{% highlight scala %}
+``` scala
 val someString: Option[String] = Some("foo")
 val noneString: Option[String] = None
 
@@ -42,7 +42,7 @@ optionToList(noneString)
 
 optionToList(None)
 //=> res: List[Nothing] = List()
-{% endhighlight %}
+```
 
 Thus, `optionToList` is a natural transformation from `Option` to `List`. Note
 that a natural transformation does not exist from `List` to `Option`.
@@ -58,7 +58,7 @@ that a natural transformation does not exist from `List` to `Option`.
 
 Now the Scala in which we'll describe the world's most trivial isomophism:
 
-{% highlight scala %}
+```scala
 // These two objects are isomorphic because a morphism (i.e. function) exists
 // that maps each to the other.
 val nameAge = ("foo", 42)
@@ -76,7 +76,7 @@ tuple2Iso(ageName) == nameAge
 
 tuple2Iso(tuple2Iso(nameAge)) == nameAge
 //=> true
-{% endhighlight %}
+```
 
 Another resource on Isomorphisms in Scalaz:
 [learning Scalaz — Isomorphisms](http://eed3si9n.com/learning-scalaz/Isomorphisms.html)
@@ -116,14 +116,14 @@ type `Things` which contains a list of stuff whose type we don't care about
 because the only operation we want to perform on it is to count how many there
 are.
 
-{% highlight scala %}
+```scala
 // Without existential types
 case class Things[A](list: List[A])
 val intThings: Things[Int] = Things(List(1, 2, 3))
 def count[A](ts: Things[A]) = ts.list.size
 count(intThings)
 //=> 3
-{% endhighlight %}
+```
 
 Notice how we had to specify a type `A` on `count` even though we didn't
 actually care about it? Also, the type of `intThings` was `Things[Int]`, though
@@ -132,13 +132,13 @@ let its type be inferred. But that's not the point.
 
 Now let's use existential types to bake `A` into `Things` since we don't care.
 
-{% highlight scala %}
+```scala
 case class Things(list: List[A] forSome { type A })
 def count(ts: Things) = ts.list.size
 val someThings = Things(List("apathetic", "types"))
 count(someThings)
 //=> 2
-{% endhighlight %}
+```
 
 Existential types let us drop the type annotation on `count`! Note, there's a
 shorthand way of expressing this:
@@ -180,11 +180,11 @@ in his [FP is terrible](https://www.youtube.com/watch?v=hzf3hTUKk8U)).
 An example based on
 [Higher-Rank Polymorphism in Scala](https://apocalisp.wordpress.com/2010/07/02/higher-rank-polymorphism-in-scala/):
 
-{% highlight scala %}
+```scala
 def r1[A](f: A => A, a: A): A = f(a)
 r1({ i: Int => i * i }, 10)
 // res4: Int = 100
-{% endhighlight %}
+```
 
 ## Rank-2 Polymorphic Function
 
@@ -193,11 +193,11 @@ Again from
 
 Scala doesn't have rank-n types, so we need to rely on a workaround:
 
-{% highlight scala %}
+```scala
 trait ~>[F[_],G[_]] {
   def apply[A](a: F[A]): G[A]
 }
-{% endhighlight %}
+```
 
 Read the post to see how the `~>` trait can be used to achieve rank-n types.
 
