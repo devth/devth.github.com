@@ -108,7 +108,7 @@ types to semantically restrict domains:
 ## Existential types
 
 Read [Existential type](https://www.haskell.org/haskellwiki/Existential_type) on
-the HaskellWiki. 
+the HaskellWiki.
 
 Exitential types provide a way of baking the generics into a type instead of
 explicitly declaring them. Consider the ultra-contrived example where we have a
@@ -150,7 +150,7 @@ case class Things(list: List[_])
 Existential types can also rely on upper or lower bounds.
 
 ``` scala
-// Let's make Things only take Seqs while using Existential types in our 
+// Let's make Things only take Seqs while using Existential types in our
 // upper bound
 
 case class SeqThings(list: List[A] forSome { type A <: Seq[_] })
@@ -204,9 +204,4 @@ Read the post to see how the `~>` trait can be used to achieve rank-n types.
 Another resource describing Haskell's support is
 [Higher rank types](http://en.wikibooks.org/wiki/Haskell/Polymorphism#Higher_rank_types).
 
-## Test
-
-```json
-{"foo": "bar", "baz": [1, 2, 3]}
-```
 

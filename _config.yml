@@ -14,24 +14,22 @@ sass:
     style: compressed
 permalink: /:categories/:title/
 
-markdown: kramdown
-
-kramdown:
-  input: GFM
-  enable_coderay: true
-  use_coderay: true
-  coderay:
-    coderay_line_numbers: nil
-    coderay_css: style
+# markdown: kramdown
+# kramdown:
+#   input: GFM
 
 # markdown: KramdownPygments
 # markdown: redcarpet
-# markdown: Pypedown
-# pypedown:
-#   input: GFM
-# highlighter: pygments
+
+markdown: Pypedown
+pypedown:
+  input: GFM
+  hard_wrap: false
+
+highlighter: pygments
 
 gems:
+  - jekyll-pypedown
   - jekyll-sitemap
 
 
