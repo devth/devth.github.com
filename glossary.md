@@ -20,8 +20,8 @@ a link to a more complete definition. This is a work in progress.
 > — <cite>Bartosz Milewski from [Understanding Yoneda](https://www.fpcomplete.com/user/bartosz/understanding-yoneda)</cite>
 
 This is a case where definitions are confusing, but the actual thing is quite
-simple in practice. Let's try that out in Scala using the Functors `List` and
-`Option`.
+simple in practice. Let's try that out in Scala using the Functors `List`{:.language-scala} and
+`Option`{:.language-scala}.
 
 ``` scala
 val someString: Option[String] = Some("foo")
@@ -43,8 +43,8 @@ optionToList(None)
 //=> res: List[Nothing] = List()
 ```
 
-Thus, `optionToList` is a natural transformation from `Option` to `List`. Note
-that a natural transformation does not exist from `List` to `Option`.
+Thus, `optionToList`{:.language-scala} is a natural transformation from `Option`{:.language-scala} to `List`{:.language-scala}. Note
+that a natural transformation does not exist from `List`{:.language-scala} to `Option`{:.language-scala}.
 
 
 ## Isomorphism
@@ -111,7 +111,7 @@ the HaskellWiki.
 
 Existential types provide a way of baking the generics into a type instead of
 explicitly declaring them. Consider the ultra-contrived example where we have a
-type `Things` which contains a list of stuff whose type we don't care about
+type `Things`{:.language-scala} which contains a list of stuff whose type we don't care about
 because the only operation we want to perform on it is to count how many there
 are.
 
@@ -124,12 +124,14 @@ count(intThings)
 //=> 3
 ```
 
-Notice how we had to specify a type `A` on `count` even though we didn't
-actually care about it? Also, the type of `intThings` was `Things[Int]`, though
-we could have used `Things[_]` to indicate we don't care, or even better just
-let its type be inferred. But that's not the point.
+Notice how we had to specify a type `A`{:.language-scala} on
+`count`{:.language-scala} even though we didn't actually care about it? Also,
+the type of `intThings`{:.language-scala} was `Things[Int]`{:.language-scala},
+though we could have used `Things[_]`{:.language-scala} to indicate we don't
+care, or even better just let its type be inferred. But that's not the point.
 
-Now let's use existential types to bake `A` into `Things` since we don't care.
+Now let's use existential types to bake `A`{:.language-scala} into
+`Things`{:.language-scala} since we don't care.
 
 ```scala
 case class Things(list: List[A] forSome { type A })
@@ -139,7 +141,7 @@ count(someThings)
 //=> 2
 ```
 
-Existential types let us drop the type annotation on `count`! Note, there's a
+Existential types let us drop the type annotation on `count`{:.language-scala}! Note, there's a
 shorthand way of expressing this:
 
 ``` scala
@@ -168,7 +170,7 @@ val intThings = SeqThings(List(1, 2, 3))
 //                                             ^
 ```
 
-Note: Scala does not have existential types apart from `Any` (according to
+Note: Scala does not have existential types apart from `Any`{:.language-scala} (according to
 [Rúnar Bjarnason](https://www.youtube.com/watch?v=hzf3hTUKk8U) who mentions this
 in his [FP is terrible](https://www.youtube.com/watch?v=hzf3hTUKk8U) talk).
 
@@ -196,7 +198,7 @@ trait ~>[F[_],G[_]] {
 }
 ```
 
-Read the post to see how the `~>` trait can be used to achieve rank-n types.
+Read the post to see how the `~>`{:.language-scala} trait can be used to achieve rank-n types.
 
 Another resource describing Haskell's support is
 [Higher rank types](http://en.wikibooks.org/wiki/Haskell/Polymorphism#Higher_rank_types).
