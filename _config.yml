@@ -13,8 +13,8 @@ sass:
     sass_dir: _sass
     style: compressed
 permalink: /:categories/:title/
-# markdown: kramdown
-markdown: KramdownPygments
+markdown: kramdown
+# markdown: KramdownPygments
 kramdown:
   input: GFM
 # markdown: redcarpet
