@@ -10,8 +10,7 @@ toc: true
 
 These are terms and concepts that I found unfamiliar the first time I
 encountered them. In most cases I'll provide a brief definition or example with
-a link to a more complete definition. Caution: wet paint! This is a work in
-progress.
+a link to a more complete definition. This is a work in progress.
 
 
 ## Natural Transformation
