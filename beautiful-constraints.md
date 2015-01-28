@@ -10,7 +10,7 @@ image:
   caption: Highline Singletrack, Rimrocks, Billings, MT. October 2014
 ---
 
-Being able to do *anything* is rarely a good thing, whether you're an
+The freedom to do anything you wish is rarely a good thing, whether you're an
 experienced developer or a 2-year-old child. Our interests and desires are too
 diverse and of varying merit to actually produce anything good without
 constraint. That's not to say freedom is intrinsically bad: sometimes we are
