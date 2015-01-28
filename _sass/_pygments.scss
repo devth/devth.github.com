@@ -8,19 +8,17 @@
 	border-bottom: 0 solid transparent;
 }
 
-.highlight {
-	overflow-x: auto;
-	@include font-size(14,no);
-	border: 1px solid darken($body-color, 5);
-	border-radius: $border-radius;
-	pre {
-		position: relative;
-		margin: 0;
-		padding: 1em;
-	}
-	&:hover {
-		border: 1px solid $form-border-color-hover;
-	}
+pre {
+  overflow-x: auto;
+  @include font-size(14,no);
+  border: 1px solid darken($body-color, 5);
+  border-radius: $border-radius;
+  position: relative;
+  margin: 0;
+  padding: 1em;
+  &:hover {
+    border: 1px solid $form-border-color-hover;
+  }
 }
 
 .highlighttable {
