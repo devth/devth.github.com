@@ -109,7 +109,7 @@ types to semantically restrict domains:
 Read [Existential type](https://www.haskell.org/haskellwiki/Existential_type) on
 the HaskellWiki.
 
-Exitential types provide a way of baking the generics into a type instead of
+Existential types provide a way of baking the generics into a type instead of
 explicitly declaring them. Consider the ultra-contrived example where we have a
 type `Things` which contains a list of stuff whose type we don't care about
 because the only operation we want to perform on it is to count how many there
