@@ -13,11 +13,17 @@ sass:
     sass_dir: _sass
     style: compressed
 permalink: /:categories/:title/
-markdown: kramdown
+# markdown: kramdown
+# kramdown:
+#   input: GFM
 # markdown: KramdownPygments
-kramdown:
-  input: GFM
 # markdown: redcarpet
+markdown: Pypedown
+pypedown:
+  input: GFM
+
+gems:
+    - jekyll-pypedown
 highlighter: pygments
 gems:
   - jekyll-sitemap
