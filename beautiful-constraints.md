@@ -45,7 +45,7 @@ workflow into it because it's consistent, fast, reliable, and most importantly
 As many have observed, using a mouse is almost always less efficient than using
 a keyboard shortcut or command (there are exceptions, but not many apply to the
 type of work done by developers). I've increasing eschewed mouse use and it
-turns out Terminal and vim are a very natural way to do so.
+so happens that Terminal and vim are a very natural way to do so.
 
 ## $EDITOR
 
@@ -54,7 +54,7 @@ Emacs is also an excellent choice for the precise and thoughtful
 automation-and-productivity-minded developer. Many of the points regarding
 Terminal's simplicity and consistency also apply to these great editors,
 originally built by yesterday's technologists and finely tuned over the decades.
-$EDITOR only gets better with age.
+`$EDITOR`{:.language-bash} only gets better with age.
 
 <img src="/images/vim_emacs.png" alt="Vim and Emacs vs Atom" />
 
@@ -124,13 +124,13 @@ double(50) / double(5)
 ```
 
 Running this code in your head is very easy because you can safely substitute
-`double(50)`{:.language-scala} for 100 and `double(5)`{:.language-scala} for 10.
-This concept of substitution scales up as your context gets wider and wider, as
-it naturally does in a program of any meaningful size. This is called local
-reasoning. RT gives you the ability to reason locally in a small context
-instead of having to worry about who is mutating what or where unpredictable
-values are coming from. It also makes functions more testable, composable, and
-parallelizable.
+`100`{:.language-scala} for `double(50)`{:.language-scala} and
+`10`{:.language-scala} for `double(5)`{:.language-scala}. This concept of
+substitution scales up as your context gets wider and wider, as it naturally
+does in a program of any meaningful size. This is called local reasoning. RT
+gives you the ability to reason locally in a small context instead of having to
+worry about who is mutating what or where unpredictable values are coming from.
+It also makes functions more testable, composable, and parallelizable.
 
 
 ## Constraint as freedom
