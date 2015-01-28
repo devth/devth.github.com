@@ -13,19 +13,23 @@ sass:
     sass_dir: _sass
     style: compressed
 permalink: /:categories/:title/
-# markdown: kramdown
-# kramdown:
-#   input: GFM
+
+markdown: kramdown
+
+kramdown:
+  input: GFM
+  enable_coderay: true
+  coderay_line_numbers: nil
+  coderay_css: style
+
 # markdown: KramdownPygments
 # markdown: redcarpet
-markdown: Pypedown
-pypedown:
-  input: GFM
-
+# markdown: Pypedown
+# pypedown:
+#   input: GFM
 # highlighter: pygments
 
 gems:
-  - jekyll-pypedown
   - jekyll-sitemap
 
 
