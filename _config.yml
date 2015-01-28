@@ -21,11 +21,10 @@ permalink: /:categories/:title/
 markdown: Pypedown
 pypedown:
   input: GFM
+highlighter: pygments
 
 gems:
-    - jekyll-pypedown
-highlighter: pygments
-gems:
+  - jekyll-pypedown
   - jekyll-sitemap
 
 
