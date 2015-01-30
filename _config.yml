@@ -12,7 +12,7 @@ url: http://devth.com
 sass:
     sass_dir: _sass
     style: compressed
-permalink: /:categories/:title/
+permalink: /:year/:title
 
 # markdown: kramdown
 # kramdown:

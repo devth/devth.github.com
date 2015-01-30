@@ -1,6 +1,7 @@
 ---
 layout: article
 title: About
+permalink: /about
 ---
 
 I'm what some people call a full stack developer, but really I just like to make

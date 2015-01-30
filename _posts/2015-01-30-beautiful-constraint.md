@@ -3,7 +3,6 @@ layout: article
 title: Beautiful constraint
 categories: philosophy
 comments: true
-published: false
 excerpt: "The freedom to do anything you wish is rarely a good thing, whether you're an experienced developer or a 2-year-old child"
 image:
   feature: constraint_1200_300.jpg
