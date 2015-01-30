@@ -141,10 +141,10 @@ Running this code in your head is very easy because you can safely substitute
 `100`{:.language-scala} for `double(50)`{:.language-scala} and
 `10`{:.language-scala} for `double(5)`{:.language-scala}. This concept of
 substitution scales up as your context gets wider and wider, as it naturally
-does in a program of any meaningful size. This is called local reasoning. RT
-gives you the ability to reason locally in a small context instead of having to
-worry about who is mutating what or where unpredictable values are coming from.
-It also makes functions more testable, composable, and parallelizable.
+does in a program of any meaningful size. This is called equational reasoning.
+RT gives you the ability to reason locally in a small context instead of having
+to worry about who is mutating what or where unpredictable values are coming
+from.  It also makes functions more testable, composable, and parallelizable.
 
 
 ## Constraint as freedom
