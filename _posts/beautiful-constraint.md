@@ -3,11 +3,12 @@ layout: article
 title: Beautiful constraint
 categories: philosophy
 comments: true
-excerpt: "Being able to do *anything* is rarely a good thing, whether you're an experienced developer or a 2-year-old child"
+published: false
+excerpt: "The freedom to do anything you wish is rarely a good thing, whether you're an experienced developer or a 2-year-old child"
 image:
-  feature: on_learning_1024_256.jpg
-  teaser: on_learning_410_228.jpg
-  caption: Highline Singletrack, Rimrocks, Billings, MT. October 2014
+  feature: constraint_1200_300.jpg
+  teaser: constraint_410_228.jpg
+  caption: Oak Alley Plantation, Vacherie, LA. September 2014
 ---
 
 The freedom to do anything you wish is rarely a good thing, whether you're an
