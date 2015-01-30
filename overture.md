@@ -5,7 +5,6 @@ image:
   feature: overture.jpg
   teaser: overture_300_200.jpg
   caption: Mount Rainier from Mailbox Peak, WA
-permalink: /overture
 ---
 
 Programming, tools and process are stuck in the past, held in place by hoards
