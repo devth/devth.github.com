@@ -113,9 +113,8 @@ the benefits of immutability. It's a wonderful constraint.
 ### Referential transparency
 
 Referential transparency (RT) is an attribute of pure functions, which do not
-perform side effects (e.g. IO, mutation), whose arguments are immutable, and do
-not depend on outside variables. RT says you can substitute the value for any
-expression.
+perform side effects (e.g. IO, mutation), mutate their arguments, nor depend on
+outside variables. RT says you can substitute the value for any expression.
 
 ```scala
 val double = {x: Int => x * 2}
@@ -144,7 +143,7 @@ substitution scales up as your context gets wider and wider, as it naturally
 does in a program of any meaningful size. This is called equational reasoning.
 RT gives you the ability to reason locally in a small context instead of having
 to worry about who is mutating what or where unpredictable values are coming
-from.  It also makes functions more testable, composable, and parallelizable.
+from. It also makes functions more testable, composable, and parallelizable.
 
 
 ## Constraint as freedom
