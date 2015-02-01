@@ -27,6 +27,10 @@ Let's find a better way.
   case for me and learning Haskell is what made it finally click. As a bonus,
   this book is also hilarious and brilliantly written and illustrated; one of my
   all time favorites.
+
+- [Functional Programming in Scala](http://www.manning.com/bjarnason/) by Paul
+  Chiusano and Rúnar Bjarnason
+
 - [Learning Scalaz](http://eed3si9n.com/learning-scalaz/)
   — This series of blog posts loosely follows LYAH and introduces
   [Scalaz](https://github.com/scalaz/scalaz)' equivalents to many of Haskell's
