@@ -16,8 +16,8 @@ And it was only by learning many hard concepts related to programming on my own
 that I observed and proved what worked. It unlocked a sort of power. Realizing
 how to learn nearly any hard topic is an incredibly useful skill. I found that
 efficient learning techniques had nothing to do with typical class structures
-found in high school or university settings, which had previously drained me of
-the desire to learn. In that regard, the subject of learning, or learning how to
+found in high school or university settings, which had previously drained my
+desire to learn. In that regard, the subject of learning, or learning how to
 learn is something I find very interesting and think about a fair amount, so
 when I found the [Learning How to
 Learn](https://class.coursera.org/learning-002) class on Coursera by Dr. Barbara
