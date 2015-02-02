@@ -29,11 +29,11 @@ observations gained from the class.
 
 There are two primary modes of thought:
 
-0. Focused: this mode is engaged when you're doing something you already know how
+0. **Focused**: this mode is engaged when you're doing something you already know how
    to do, quickly accessing the learned connections in your brain. The
    connections are very tightly spaced in the prefrontal cortex.
 
-0. Diffuse: this mode is for open minded thought that allows you to make new
+0. **Diffuse**: this mode is for open minded thought that allows you to make new
    connections in your brain. You can think of this mode as exercising your
    brain muscle and letting your mind wonder. Edison and Dalí are famous
    examples of thinkers who practiced the diffuse mode: they would hold
@@ -61,12 +61,12 @@ There are two primary modes of thought:
   Writing down the goal helps combat initial skatterbrain tendencies, which
   sometimes require continual re-focusing at first.
 
-- **Translation and rewriting**: when I read academic papers, I rarely understand
-  the cryptic math syntax. A good way to break through is to translate the
-  syntax to something you do understand. For me, this means Haskell. Then
-  rewrite the plain text sections in your own words (tip: try writing a blog
-  post that sumarizes the paper). You can't help but internalize the concepts if
-  you do this.
+- **Translation and rewriting**: when I read academic papers, I rarely
+  understand the cryptic math syntax. A good way to break through is to
+  translate the syntax to something you do understand. For me, this means
+  Haskell. Then rewrite the plain text sections in your own words (tip: try
+  writing a blog post that sumarizes the paper). You can't help but internalize
+  the concepts when you do this.
 
 - **Handwritten notes**: when learning a library of any complexity, simply reading
   the source doesn't always help. You need to run it and observe the values in
