@@ -203,4 +203,17 @@ Read the post to see how the `~>`{:.language-scala} trait can be used to achieve
 Another resource describing Haskell's support is
 [Higher rank types](http://en.wikibooks.org/wiki/Haskell/Polymorphism#Higher_rank_types).
 
+## Parametricity
+
+>> captures the intuition that all instances of a polymorphic function act the
+>> same way
+> — <cite>[Wikipedia](https://en.wikipedia.org/wiki/Parametricity)
+
+## Partial Function
+
+A function which is not defined for some inputs.
+
+## Total Function
+
+A function which is defined for all inputs, as opposed to a partial function.
 
