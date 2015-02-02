@@ -22,14 +22,15 @@ Let's find a better way.
 
 ## Recommended reading
 
-- [Learn You a Haskell for Great Good!](http://learnyouahaskell.com/chapters)
-  — Have you read a million monad tutorials and still don't get it? This was the
-  case for me and learning Haskell is what made it finally click. As a bonus,
-  this book is also hilarious and brilliantly written and illustrated; one of my
-  all time favorites.
+- [Learn You a Haskell for Great Good!](http://learnyouahaskell.com/chapters) by
+  Miran Lipovača — Have you read a million monad tutorials and still don't get
+  it? This was the case for me and learning Haskell is what made it finally
+  click. As a bonus, this book is also hilarious and brilliantly written and
+  illustrated; one of my all time favorites.
 
 - [Functional Programming in Scala](http://www.manning.com/bjarnason/) by Paul
-  Chiusano and Rúnar Bjarnason
+  Chiusano and Rúnar Bjarnason — Many of my topics and ideas came from this
+  book.
 
 - [Learning Scalaz](http://eed3si9n.com/learning-scalaz/)
   — This series of blog posts loosely follows LYAH and introduces
