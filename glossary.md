@@ -241,4 +241,4 @@ h :: Int -> Int
 h = x + x + x
 ```
 
-`f`{:.language-haskell} and `h`{:.language-haskell} are intentionally equal.
+`f`{:.language-haskell} and `h`{:.language-haskell} are intensionally equal.
