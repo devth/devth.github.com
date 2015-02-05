@@ -394,7 +394,9 @@ p.intro {
   }
   .entry-date {
     @include font-size(16,no);
-    color: lighten($text-color,25);
+    color: #999;
+    text-transform: uppercase;
+    font-size: .7em;
   }
   .post-title {
     @include font-size(18,no);
