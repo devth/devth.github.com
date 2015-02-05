@@ -13,8 +13,8 @@ specialization.
 I'm obsessed with discovering better ways of expressing solutions to programming
 problems. I can't handle boilerplate or repetitive code. This has lead me down a
 path of ongoing language discovery, from my early dark ages in Perl and VB, to
-C# and ActionScript 3, Ruby, Scala, Clojure and core.logic, Haskell and Elm, and
-a tiny bit of Idris.
+C# and ActionScript 3, Ruby, Scala, Clojure and core.logic, Swift, Haskell, and
+Elm.
 
 The past few years I've been on a quest to bring more rigor to my understanding
 and use of programming, and have become a bit of a Functional Programming zealot
