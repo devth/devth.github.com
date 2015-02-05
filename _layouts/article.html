@@ -28,7 +28,7 @@ layout: default
     </div>
     {% endif %}
 
-    {% if false && page.categories %}{% include breadcrumbs.html %}{% endif %}
+    {% if false and page.categories %}{% include breadcrumbs.html %}{% endif %}
     <div class="page-title">
       <h1>{{ page.title }}</h1>
     </div>
@@ -39,7 +39,7 @@ layout: default
         <hr />
         <footer class="page-footer">
           {% if page.categories %}{% include page-author.html %}{% endif %}
-          {% if page.share != false && site.share != false %}{% include share-this.html %}{% endif %}
+          {% if page.share != false and site.share == true %}{% include share-this.html %}{% endif %}
           {% include page-meta.html %}
           </footer><!-- /.footer -->
           <aside>
