@@ -26,6 +26,7 @@ markdown: Pypedown
 pypedown:
   input: GFM
   hard_wrap: false
+  line_width: 80
 
 highlighter: pygments
 
@@ -40,8 +41,8 @@ owner:
   email: trevorhartman@gmail.com
   twitter: devth
   google:
-    ad-client: 
-    ad-slot: 
+    ad-client:
+    ad-slot:
   bio: Automate or die
   avatar: bio-photo.png # 160x160 px image for author byline
 disqus-shortname: devth
@@ -50,4 +51,4 @@ disqus-shortname: devth
 exclude: ["lib", "config.rb", ".sass-cache", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "*.sublime-project", "*.sublime-workspace", "Gemfile", "Gemfile.lock", "README.md", "LICENSE", "node_modules", "Gruntfile.js", "package.json"]
 
 defaults:
-  caption: 
+  caption:

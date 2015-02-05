@@ -29,8 +29,8 @@ observations gained from the class.
 
 There are two primary modes of thought:
 
-0. **Focused**: this mode is engaged when you're doing something you already know how
-   to do, quickly accessing the learned connections in your brain. The
+0. **Focused**: this mode is engaged when you're doing something you already
+   know how to do, quickly accessing the learned connections in your brain. The
    connections are very tightly spaced in the prefrontal cortex.
 
 0. **Diffuse**: this mode is for open minded thought that allows you to make new

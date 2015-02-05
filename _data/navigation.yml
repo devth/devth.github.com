@@ -1,5 +1,10 @@
 # Site navigation links
 
+- title: About
+  url: /about
+  excerpt: "About Trevor Hartman"
+  image: about_300_200.jpg
+
 - title: Overture
   url: /overture
   excerpt: "Programming, tools and process are stuck in the past"
