@@ -4,12 +4,13 @@ layout: default
 
 <div id="main" role="main">
 
-  <p class="intro">
-    devth is Trevor Hartman, a developer living in Montana and working for eBay in
-    Seattle <a href="/about" title="About Trevor Hartman">↠ </a>
-  </p>
-
   <div class="wrap">
+
+    <p class="intro">
+      devth is Trevor Hartman, a developer living in Montana and working for eBay in
+      Seattle <a href="/about" title="About Trevor Hartman">↠ </a>
+    </p>
+
     {% if page.image.feature %}
     <div class="page-feature">
       <div class="page-image">
@@ -18,6 +19,7 @@ layout: default
       </div><!-- /.page-image -->
     </div><!-- /.page-feature -->
     {% endif %}
+
     <div class="page-title">
       <!-- <h1>{{ page.title }}</h1> -->
       {% if page.excerpt %}<h2>{{ page.excerpt }}</h2>{% endif %}
