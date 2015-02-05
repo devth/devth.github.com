@@ -3,7 +3,7 @@ layout: article
 title: Corporate process should mirror open source
 categories: process
 comments: true
-excerpt: "Within any big tech corporation you will find many disparate teams."
+excerpt: "Within any big tech corporation you will find many disparate teams"
 image:
   feature: open_source.jpg
   teaser: open_source_teaser.jpg
