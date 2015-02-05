@@ -217,3 +217,29 @@ A function which is not defined for some inputs.
 
 A function which is defined for all inputs, as opposed to a partial function.
 
+
+## Extensionality and intentsionality
+
+> In logic, extensionality, or extensional equality, refers to principles that
+> judge objects to be equal if they have the same external properties.  It
+> stands in contrast to the concept of intensionality, which is concerned with
+> whether the internal definitions of objects are the same.  —
+> <cite>[Wikipedia](http://en.wikipedia.org/wiki/Extensionality)</cite>
+
+```haskell
+f :: Int -> Int
+f = x + x + x
+
+g :: Int -> Int
+g = x * 3
+```
+
+`f`{.:language-haskell} and `g`{.:language-haskell} are extensionally equal, but
+not intentionally equal.
+
+```haskell
+h :: Int -> Int
+h = x + x + x
+```
+
+`f`{.:language-haskell} and `h`{.:language-haskell} are intentionally equal.
