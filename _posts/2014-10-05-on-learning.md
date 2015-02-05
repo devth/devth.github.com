@@ -89,16 +89,17 @@ to dry".
 
 ## Memory
 
-Long term memory vs Working memory.
+**Long term** memory vs **working memory**.
 
-Working memory (prefrontal cortex): what you're currently focusing and working
-on. Can hold about 4 chunks of information. We group things into chunks. It's
-like a blackboard (e.g. phone number).
+Working memory (prefrontal cortex) is what you're currently focusing and working
+on. It can hold about 4 chunks of information. We naturally group things into
+chunks (e.g. phone numbers). Working memory is like a blackboard.
 
-Long term is like a storage warehouse, spread over different areas of the brain.
-To store something in long term memory you need to revisit it several times. Can
-store billions of items, but they can bury each other. Spaced repetition is one
-technique: repeat something over a number of days.
+Long term memory is like a storage warehouse, spread over different areas of the
+brain. To store something in long term memory you need to revisit it several
+times. We can store billions of items, but they can bury each other. Spaced
+repetition is one technique of storing something in long term memory: repeat
+something over a number of days.
 
 ## Sleeping
 
@@ -113,7 +114,7 @@ strengthening and deepening them.
 If you focus on what you're learning right before you take a nap you have an
 increased chance of dreaming about it, especially if you want to dream about it.
 Dreaming about what you're studying can enhance your ability to understand: it
-consolidates your memories into easier to grasp chunks.
+consolidates your memories into easier-to-grasp chunks.
 
 ## Activity
 
@@ -129,8 +130,8 @@ brought a very different perspective and creativity to problem solving.
 
 ## Environment
 
-It's important to work in a space that inspires you to excellence. If you work
-from home, carve out a dedicated space to work, and spend time desigining or
+It's important to work in a space that inspires you to create. If you work from
+home, carve out a dedicated space to work, and spend time desigining or
 remodeling if necessary to make it suit your needs. For me, this means a modern
 space with interesting art and a mix of home made physical computing hackery.
 
