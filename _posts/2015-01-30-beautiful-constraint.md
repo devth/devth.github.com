@@ -86,7 +86,7 @@ going on here. It's simply a composition of library functions (lodash.js) which
 prevents me from writing any custom code. Instead, I'm forced to think of
 existing functions, and compose them in a way that produces intended behavior.
 
-Composition is the core of reusability, which is always a worthy pursuit.
+Composition is the foundation of reusability — a worthy pursuit.
 
 ### Immutability
 
