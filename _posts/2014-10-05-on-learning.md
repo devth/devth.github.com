@@ -24,8 +24,7 @@ Learn](https://class.coursera.org/learning-002) class on Coursera by Dr. Barbara
 Oakley, Dr. Terrence Sejnowski I immediately signed up. Here are my notes and
 observations gained from the class.
 
-
-## Learning modes
+## Modes
 
 There are two primary modes of thought:
 
@@ -52,7 +51,7 @@ There are two primary modes of thought:
 - Brain connectivity is dynamic even after it matures
 - Our brains develop new synapses while we sleep
 
-## Learning Techniques
+## Techniques
 
 - **Pomodoro**: set a 25 minute timer to focus on a specific task or goal and reward
   yourself when you're done (e.g. read the Internet, get a coffee). Use this to
@@ -76,7 +75,7 @@ There are two primary modes of thought:
   act of physically writing them makes abstract concepts more concrete.
 
 
-## Learning Abstract Concepts
+## Abstract Concepts
 
 Abstract concepts in particular require much more practice to create concrete
 neural thought patterns. The initial neural pattern is there but it is very
@@ -84,7 +83,7 @@ weak. When you solve a problem again you strengthen that pattern. When you've
 done it so many times you have it down, the thought pattern is very strong.
 
 Study and focus intently, then take a break to allow the brain's diffuse mode
-to help you out with your conceptual understanding. "Neural mortar has a change
+to help you out with your conceptual understanding. "Neural mortar has a chance
 to dry".
 
 ## Memory
