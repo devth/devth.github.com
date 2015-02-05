@@ -217,7 +217,7 @@ A function which is not defined for some inputs.
 
 A function which is defined for all inputs, as opposed to a partial function.
 
-## Extensionality and intensionality
+## Extensionality and Intensionality
 
 > In logic, extensionality, or extensional equality, refers to principles that
 > judge objects to be equal if they have the same external properties.  It
