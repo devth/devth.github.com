@@ -227,10 +227,10 @@ A function which is defined for all inputs, as opposed to a partial function.
 
 ```haskell
 f :: Int -> Int
-f = x + x + x
+f x = x + x + x
 
 g :: Int -> Int
-g = x * 3
+g x = x * 3
 ```
 
 `f`{:.language-haskell} and `g`{:.language-haskell} are extensionally equal, but
@@ -238,7 +238,7 @@ not intensionally equal.
 
 ```haskell
 h :: Int -> Int
-h = x + x + x
+h x = x + x + x
 ```
 
 `f`{:.language-haskell} and `h`{:.language-haskell} are intensionally equal.
