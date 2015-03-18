@@ -98,7 +98,7 @@ lhs == rhs
 => true
 ```
 
-Onward.
+Looks good to me. Onward.
 
 ## Option
 
@@ -167,7 +167,7 @@ I hope this post helped you internalize the Monad laws. If you need more
 practice, continue this excercise in your repl for the `Try` and `Either`
 monads, or better yet: create your own Monad and verify that it obeys the laws!
 
-## References
+## Further reading
 
 - [Monad laws — learning Scalaz](http://eed3si9n.com/learning-scalaz/Monad+laws.html)
 - [Monad laws — HaskellWiki](https://wiki.haskell.org/Monad_laws)
