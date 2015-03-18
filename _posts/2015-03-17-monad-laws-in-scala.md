@@ -115,7 +115,7 @@ val g: (Int => Option[Int]) = x => if (x > 50) Some(x + 1) else None
 ```
 
 For the sake of testing our laws, the implementations of these functions really
-doesn't matter, as long as the types line up.
+don't matter as long as the types line up.
 
 ### Left identity
 
