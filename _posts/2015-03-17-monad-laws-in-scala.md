@@ -98,7 +98,7 @@ lhs == rhs
 => true
 ```
 
-Looks good to me. Onward.
+Looks good to me.
 
 ## Option
 
