@@ -22,3 +22,5 @@ reality.
 I currently work remotely for eBay's Seattle office and live in Montana with my
 wife and two kids. I have a notebook full of ideas not yet started longer than
 I'd care to admit.
+
+I like to play.
