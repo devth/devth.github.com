@@ -9,6 +9,7 @@
 }
 
 pre {
+  clear: both;
   overflow-x: auto;
   @include font-size(14,no);
   border-radius: $border-radius;
@@ -17,9 +18,9 @@ pre {
   // position: relative;
   margin: 0;
   padding: 10px;
-  &:hover {
-    border: 1px solid $form-border-color-hover;
-  }
+  // &:hover {
+  //   border: 1px solid $form-border-color-hover;
+  // }
 }
 
 .highlighttable {
