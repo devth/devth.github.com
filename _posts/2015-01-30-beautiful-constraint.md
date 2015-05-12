@@ -133,7 +133,8 @@ It's obvious how the substitution works in this context. Now imagine the use of
 
 ```scala
 double(50) / double(5)
-//=> 100
+//=> 100 / 10
+//=> 10
 ```
 
 Running this code in your head is very easy because you can safely substitute
