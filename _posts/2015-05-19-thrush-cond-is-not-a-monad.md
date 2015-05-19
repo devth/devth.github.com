@@ -143,7 +143,7 @@ val request = requestPipeline(Request("/users"))
 Request(/users,Map(userName -> devth),Map(accept -> application/json))
 ```
 
-Will this as a Monoid, Functor, or Monad?
+Will this work as a Monoid, Functor, or Monad?
 
 - **Monoid** — It fails to meet Monoid's associativity laws: the application order of the
   "steps" *does* matter.
