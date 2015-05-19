@@ -143,7 +143,7 @@ val request = requestPipeline(Request("/users"))
 Request(/users,Map(userName -> devth),Map(accept -> application/json))
 ```
 
-This does not fit nicely into a Monoid, Functor, nor Monad.
+Will this as a Monoid, Functor, or Monad?
 
 - **Monoid** — It fails to meet Monoid's associativity laws: the application order of the
   "steps" *does* matter.
@@ -178,3 +178,5 @@ This does not fit nicely into a Monoid, Functor, nor Monad.
   *whether* the transformation is applied, and because of the signature, the
   decision whether to perform a transformation must be embedded in the
   transformation itself, hence `guard`{:.language-scala}.
+
+ThrushCond is not a Monad (nor a Functor, nor a Monoid).
