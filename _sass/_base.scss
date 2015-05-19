@@ -124,6 +124,11 @@ code {
   border-radius: $border-radius;
 }
 
+pre > code {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
 // Tables
 table {
   border-collapse: collapse;
