@@ -27,6 +27,7 @@ pypedown:
   input: GFM
   hard_wrap: false
   line_width: 80
+  typogruby: false
 
 highlighter: pygments
 

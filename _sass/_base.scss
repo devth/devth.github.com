@@ -4,15 +4,15 @@
 body {
   font-family: $base-font;
   color: $text-color;
-  @include font-size(16);
+  font-size: 16px;
 }
 
 p {
-  @include font-size(18,yes,28);
+  @include font-size(16,yes,28);
 }
 
 li {
-  @include font-size(18,yes,28);
+  // @include font-size(18,yes,28);
   margin-bottom: 6px;
 }
 
@@ -111,11 +111,12 @@ tt, code, kbd, samp, pre {
 pre {
   overflow-x: auto; // add scrollbars to wide code blocks
 }
-p code,
-li code {
-  @include font-size(18,no);
+
+code {
+  font-size: 12px;
+  line-height: 18px;
   color: $text-color;
-  white-space: nowrap;
+  // white-space: nowrap;
   margin: 0 2px;
   padding: 1px 5px;
   // border: 1px solid $border-color;
