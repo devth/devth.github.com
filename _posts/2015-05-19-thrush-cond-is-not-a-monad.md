@@ -51,9 +51,8 @@ some arbitrary conditions:
  :headers {:accept "application/json"}}
 ```
 
-Let's try to implement `cond->`{:.language-clojure} in Scala. Since Clojure's
-`->`{:.language-clojure} operator is sometimes referred to as the "thrush"
-operator, I'm going to call `cond->`{:.language-clojure}
+Since Clojure's `->`{:.language-clojure} operator is sometimes referred to as
+the "thrush" operator, I'm going to call `cond->`{:.language-clojure}
 `ThrushCond`{:.language-scala}.
 
 First let's model the `Request`{:.language-scala} and helpers equivalent to
