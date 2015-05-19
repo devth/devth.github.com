@@ -98,10 +98,9 @@ class ThrushCond[A](init: A, steps: Seq[Step[A]]) {
 }
 ```
 
-With that, let's try it out:
+Let's try it out.
 
 ```scala
-
 val steps: Seq[Step[Request]] = Seq(
   ({_ => userName.isDefined}, {setParam(_, "userName", userName.get)}),
   ({_ => userAddress.isDefined}, {setParam(_, "userAddress", userAddress.get)}),
