@@ -12,5 +12,6 @@ gem 'jekyll-pypedown'
 gem "sass"
 gem "bourbon"
 gem "neat"
+gem "rake"
 
 gem 'octopress', '~> 3.0.0.rc.12'
