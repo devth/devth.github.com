@@ -3,6 +3,7 @@ layout: article
 title: ThrushCond is not a Monad
 categories: scala
 comments: true
+excerpt: "Clojure has a useful macro called cond-> that conditionally threads an initial value through a series of predicate/function pairs"
 image:
   feature: thrush_cond_feature.jpg
   teaser: thrush_cond_teaser.jpg
