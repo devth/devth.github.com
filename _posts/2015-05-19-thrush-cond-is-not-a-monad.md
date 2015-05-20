@@ -129,9 +129,9 @@ import ThrushCond.guard
 
 val requestPipeline: (Request => Request) =
   Function.chain(Seq(
-  guard({_ => userName.isDefined}, {_.addParam("userName", userName.get)}),
-  guard({_ => userAddress.isDefined}, {_.addParam("userAddress", userAddress.get)}),
-  guard({_.isValidAccept(accept)}, {req => req.addHeader("accept", req.acceptMap(accept))})))
+    guard({_ => userName.isDefined}, {_.addParam("userName", userName.get)}),
+    guard({_ => userAddress.isDefined}, {_.addParam("userAddress", userAddress.get)}),
+    guard({_.isValidAccept(accept)}, {req => req.addHeader("accept", req.acceptMap(accept))})))
 
 val request = requestPipeline(Request("/users"))
 
