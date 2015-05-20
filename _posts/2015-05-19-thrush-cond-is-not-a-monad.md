@@ -62,7 +62,16 @@ those we used in the Clojure example:
 case class Request(
   target: String,
   params: Map[String, String] = Map.empty,
-  headers: Map[String, String] = Map.empty)
+  headers: Map[String, String] = Map.empty) {
+
+  // validation and helper functions
+  val acceptMap = Map("html" -> "text/html", "json" -> "application/json")
+  val isValidAccept: (String => Boolean) = acceptMap.isDefinedAt _
+
+  def addParam(k: String, v: String) = this.copy(params=params.updated(k, v))
+
+  def addHeader(k: String, v: String) = this.copy(headers=headers.updated(k, v))
+}
 
 // sample values from user input
 
@@ -70,18 +79,6 @@ val userId: Int = 1
 val userName: Option[String] = Some("devth")
 val userAddress: Option[String] = None
 val accept = "json"
-
-// validation and helper functions
-
-val acceptMap = Map("html" -> "text/html", "json" -> "application/json")
-val isValidAccept: (String => Boolean) = acceptMap.isDefinedAt _
-
-// too bad Scala doesn't have built-in Lenses!
-def setParam(req: Request, k: String, v: String) =
-  req.copy(params=req.params.updated(k, v))
-
-def setHeader(req: Request, k: String, v: String) =
-  req.copy(headers=req.headers.updated(k, v))
 ```
 
 Now let's create the `ThrushCond`{:.language-scala} class that takes an initial
@@ -102,9 +99,9 @@ Let's try it out.
 
 ```scala
 val steps: Seq[Step[Request]] = Seq(
-  ({_ => userName.isDefined}, {setParam(_, "userName", userName.get)}),
-  ({_ => userAddress.isDefined}, {setParam(_, "userAddress", userAddress.get)}),
-  ({_ => isValidAccept(accept)}, {setHeader(_, "accept", acceptMap(accept))})
+  ({_ => userName.isDefined}, {_.addParam("userName", userName.get)}),
+  ({_ => userAddress.isDefined}, {_.addParam("userAddress", userAddress.get)}),
+  ({_.isValidAccept(accept)}, {req => req.addHeader("accept", req.acceptMap(accept))})
 )
 
 val thrushCond = new ThrushCond(Request("/users"), steps)
@@ -132,9 +129,9 @@ import ThrushCond.guard
 
 val requestPipeline: (Request => Request) =
   Function.chain(Seq(
-    guard({_ => userName.isDefined}, {setParam(_, "userName", userName.get)}),
-    guard({_ => userAddress.isDefined}, {setParam(_, "userAddress", userAddress.get)}),
-    guard({_ => isValidAccept(accept)}, {setHeader(_, "accept", acceptMap(accept))})))
+  guard({_ => userName.isDefined}, {_.addParam("userName", userName.get)}),
+  guard({_ => userAddress.isDefined}, {_.addParam("userAddress", userAddress.get)}),
+  guard({_.isValidAccept(accept)}, {req => req.addHeader("accept", req.acceptMap(accept))})))
 
 val request = requestPipeline(Request("/users"))
 
