@@ -15,7 +15,8 @@ Clojure has a useful macro called
 threads an initial value through a series of predicate/function pairs only
 applying each function if its predicate returns true. In this post we're going
 to look at a Scala representation, and whether it fits the shape and laws of any
-common algebraic structures: Monoid, Functor, and Monad.
+common algebraic structures: Monoid, Functor (Endofunctor, to be specific), and
+Monad.
 
 Let's start with an example in Clojure. We want to build up a request based on
 some arbitrary conditions:
@@ -139,10 +140,9 @@ val request = requestPipeline(Request("/users"))
 Request(/users,Map(userName -> devth),Map(accept -> application/json))
 ```
 
-Will this work as a Monoid, Functor, or Monad?
+Will this work as a Functor, Monad, or Monoid?
 
-- **Monoid** — It fails to meet Monoid's associativity laws: the application order of the
-  "steps" *does* matter.
+
 - **Functor** — Consider Functor's `fmap`{:.language-scala}:
 
   ```scala
@@ -162,6 +162,7 @@ Will this work as a Monoid, Functor, or Monad?
 
   The essense of `ThrushCond`{:.language-scala} is in `guard`{:.language-scala}
   itself so it makes no sense to design a new Functor around it.
+
 - **Monad** — Likewise, Monad's `flatMap`{:.language-scala}:
 
   ```scala
@@ -175,4 +176,53 @@ Will this work as a Monoid, Functor, or Monad?
   decision whether to perform a transformation must be embedded in the
   transformation itself, hence `guard`{:.language-scala}.
 
-ThrushCond is not a Monad (nor a Functor, nor a Monoid).
+- **Monoid** — Let's see if it meets Monoid's associativity laws:
+
+  ```scala
+  case class F(x: Int)
+  val f = F(10)
+  val always = Function.const(true) _
+
+  val mult2: F => F = guard(always, {f => f.copy(x = f.x * 2)})
+  val sub4: F => F = guard(always, {f => f.copy(x = f.x - 4)})
+  val sub6: F => F = guard(always, {f => f.copy(x = f.x - 6)})
+
+  val g: (F => F) = (mult2 andThen sub6) andThen sub4
+  val h: (F => F) = mult2 andThen (sub6 andThen sub4)
+
+  g(f)
+  //=> F(10)
+  h(f)
+  //=> F(10)
+  ```
+
+  `guard`{:.language-scala} is associative but it doesn't have a Monoidial
+  `zero`{:.language-scala}, so let's move on to Semigroup.
+
+- **Semigroup** — ThrushCond is a Semigroup because it has an associative binary
+  operation.
+
+  ```scala
+  case class ThrushCond[A](init: A, steps: Seq[(A => Boolean), (A => A)]) {
+    def guard[A](pred: (A => Boolean), fn: (A => A)): (A => A) =
+      (a: A) => if (pred(a)) fn(a) else a
+  }
+  case object ThrushCond {
+    implicit def thrusCondSemigroup[A]: Semigroup[ThrushCond[A]] = new Semigroup[ThrushCond[A]] {
+      def append(t1: ThrushCond[A], t2: => ThrushCond[A])
+    }
+
+  }
+
+  ThrushCond(F(1), Seq(
+    ({f => f.x > 2}, mult2),
+    ({
+  mult2 sub4 sub6
+
+
+  ```
+
+
+ThrushCond is not a Monad, nor an Endofunctor, **but it is a Monoid**.
+
+
