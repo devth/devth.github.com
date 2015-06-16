@@ -3,7 +3,7 @@ layout: article
 title: ThrushCond is not a Monad
 categories: scala
 comments: true
-excerpt: "Clojure has a useful macro called cond-> that conditionally threads an initial value through a series of predicate/function pairs"
+excerpt: "Clojure has a useful macro called cond-> that conditionally threads an initial value through a series of predicate/function pairs — let's explore a Scala equivalent"
 image:
   feature: thrush_cond_feature.jpg
   teaser: thrush_cond_teaser.jpg
@@ -15,8 +15,9 @@ Clojure has a useful macro called
 threads an initial value through a series of predicate/function pairs only
 applying each function if its predicate returns true. In this post we're going
 to look at a Scala representation, and whether it fits the shape and laws of any
-common algebraic structures: Monoid, Functor (Endofunctor, to be specific), and
-Monad.
+[common algebraic structures](https://en.wikipedia.org/wiki/Outline_of_algebraic_structures#Types_of_algebraic_structures).
+We'll look at Functor (Endofunctor, to be specific), Monad, Monoid, and
+Semigroup.
 
 Let's start with an example in Clojure. We want to build up a request based on
 some arbitrary conditions:
@@ -54,7 +55,7 @@ some arbitrary conditions:
 
 Since Clojure's `->`{:.language-clojure} operator is sometimes referred to as
 the "thrush" operator, I'm going to call `cond->`{:.language-clojure}
-`ThrushCond`{:.language-scala}.
+in Scala `ThrushCond`{:.language-scala}.
 
 First let's model the `Request`{:.language-scala} and helpers equivalent to
 those we used in the Clojure example:
@@ -82,7 +83,7 @@ val userAddress: Option[String] = None
 val accept = "json"
 ```
 
-Now let's create the `ThrushCond`{:.language-scala} class that takes an initial
+Now we'll create the `ThrushCond`{:.language-scala} class that takes an initial
 value, the steps as a `Seq`{:.language-scala} of a predicate/function pairs,
 and defines a `fold`{:.language-scala} method which runs the computation:
 
@@ -96,14 +97,14 @@ class ThrushCond[A](init: A, steps: Seq[Step[A]]) {
 }
 ```
 
-Let's try it out.
+Try it out:
 
 ```scala
 val steps: Seq[Step[Request]] = Seq(
   ({_ => userName.isDefined}, {_.addParam("userName", userName.get)}),
   ({_ => userAddress.isDefined}, {_.addParam("userAddress", userAddress.get)}),
-  ({_.isValidAccept(accept)}, {req => req.addHeader("accept", req.acceptMap(accept))})
-)
+  ({_.isValidAccept(accept)}, {req => req.addHeader("accept",
+    req.acceptMap(accept))}))
 
 val thrushCond = new ThrushCond(Request("/users"), steps)
 val request = thrushCond.fold
@@ -132,7 +133,8 @@ val requestPipeline: (Request => Request) =
   Function.chain(Seq(
     guard({_ => userName.isDefined}, {_.addParam("userName", userName.get)}),
     guard({_ => userAddress.isDefined}, {_.addParam("userAddress", userAddress.get)}),
-    guard({_.isValidAccept(accept)}, {req => req.addHeader("accept", req.acceptMap(accept))})))
+    guard({_.isValidAccept(accept)}, {req => req.addHeader("accept",
+      req.acceptMap(accept))})))
 
 val request = requestPipeline(Request("/users"))
 
@@ -140,8 +142,7 @@ val request = requestPipeline(Request("/users"))
 Request(/users,Map(userName -> devth),Map(accept -> application/json))
 ```
 
-Will this work as a Functor, Monad, or Monoid?
-
+Will this work as one of the algebraic structures mentioned at the start?
 
 - **Functor** — Consider Functor's `fmap`{:.language-scala}:
 
@@ -196,33 +197,87 @@ Will this work as a Functor, Monad, or Monoid?
   //=> F(10)
   ```
 
-  `guard`{:.language-scala} is associative but it doesn't have a Monoidial
-  `zero`{:.language-scala}, so let's move on to Semigroup.
+  `guard`{:.language-scala} is associative when composed with itself because
+  [function composition is associative](https://en.wikipedia.org/wiki/Function_composition#Properties),
+  but it doesn't have a Monoidial `zero`{:.language-scala}, so let's move on to
+  Semigroup, which is like a Monoid in that it has an associative binary
+  operation, but is more general in that it doesn't have a
+  `zero`{:.language-scala} (AKA `identity`{:.language-scala}).
 
-- **Semigroup** — ThrushCond is a Semigroup because it has an associative binary
-  operation.
+- **Semigroup** — ThrushCond is a Semigroup because of its associative binary
+  operation, `guard`{:.language-scala}. Let's provide evidence using
+  `scalaz`{:.language-scala}'s `Semigroup`{:.language-scala}:
 
   ```scala
-  case class ThrushCond[A](init: A, steps: Seq[(A => Boolean), (A => A)]) {
+  import scalaz._, Scalaz._
+
+  type Step[A] = (A => Boolean, A => A)
+
+  case class ThrushCond[A](steps: Seq[Step[A]]) {
+    /** Perform a pipeline step only if the value meets a predicate */
     def guard[A](pred: (A => Boolean), fn: (A => A)): (A => A) =
       (a: A) => if (pred(a)) fn(a) else a
+    /** Compose the steps into a single function */
+    def comp = Function.chain(steps.map { step => guard(step._1, step._2) })
+    /** Run a value through the pipeline */
+    def run(a: A) = comp(a)
   }
+
+  /** Evidence of a Semigroup */
   case object ThrushCond {
-    implicit def thrusCondSemigroup[A]: Semigroup[ThrushCond[A]] = new Semigroup[ThrushCond[A]] {
-      def append(t1: ThrushCond[A], t2: => ThrushCond[A])
-    }
-
+    implicit def thrushCondSemigroup[A]: Semigroup[ThrushCond[A]] =
+      new Semigroup[ThrushCond[A]] {
+        def append(t1: ThrushCond[A], t2: => ThrushCond[A]): ThrushCond[A] =
+          ThrushCond[A](Seq((Function.const(true), t2.comp compose t1.comp)))
+      }
   }
-
-  ThrushCond(F(1), Seq(
-    ({f => f.x > 2}, mult2),
-    ({
-  mult2 sub4 sub6
-
-
   ```
 
+  We've defined a Semigroup over the set of all ThrushConds. What does this give
+  us? We can now combine any number of ThrushCond[A]s using Semigroup's
+  `|+|`{:.language-scala} operator. A simple example using
+  `ThrushCond[Int]`{:.language-scala}:
 
-ThrushCond is not a Monad, nor an Endofunctor, **but it is a Monoid**.
+  ```scala
+  import ThrushCond.thrushCondSemigroup
+
+  val addPipeline = ThrushCond[Int](Seq(
+    ((_ > 10), (_ + 2)),
+    ((_ < 20), (_ + 20))))
+
+  val multPipeline = ThrushCond[Int](Seq(
+    ((_ == 70), (_ * 10)),
+    ((_ > 0), (_ * 7))))
+
+  val pipeline = addPipeline |+| multPipeline
+
+  // Examples
+  multPipeline run 70 //=> 70 * 10 * 7 == 4900
+  pipeline run 2 //=> (2 + 20) * 7 == 154
+  pipeline run 12 //=> (12 + 2 + 20) * 7 == 238
+  ```
+
+  And finally, back to our `Request`{:.language-scala} example in Clojure,
+  splitting it into two pipelines for the purpose of demonstration (and possible
+  separation of concerns):
+
+  ```scala
+  val userPipeline = ThrushCond[Request](Seq(
+    ({_ => userName.isDefined}, {_.addParam("userName", userName.get)}),
+    ({_ => userAddress.isDefined}, {_.addParam("userAddress", userAddress.get)})))
+
+  val headerPipeline = ThrushCond[Request](Seq(
+    ({_.isValidAccept(accept)}, {req => req.addHeader("accept",
+      req.acceptMap(accept))})))
+
+  val requestPipeline = userPipeline |+| headerPipeline
+
+  requestPipeline run Request("/users")
+  //=>
+  Request(/users,Map(userName -> devth),Map(accept -> application/json))
+  ```
+
+ThrushCond is not a Monad, nor an Endofunctor, nor a Monoid, **but it is a
+Semigroup**.
 
 
