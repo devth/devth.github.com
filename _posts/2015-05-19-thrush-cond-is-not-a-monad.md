@@ -234,7 +234,7 @@ Will this work as one of the algebraic structures mentioned at the start?
   ```
 
   We've defined a Semigroup over the set of all ThrushConds. What does this give
-  us? We can now combine any number of ThrushCond[A]s using Semigroup's
+  us? We can now combine any number of ThrushConds using Semigroup's
   `|+|`{:.language-scala} operator. A simple example using
   `ThrushCond[Int]`{:.language-scala}:
 
