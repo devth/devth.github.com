@@ -18,5 +18,5 @@ and use of programming, and have become a bit of a Functional Programming zealot
 in the process.
 
 I currently work remotely for eBay's Seattle office and live in Montana with my
-wife and two kids. I have a notebook full of ideas not yet started longer than
+wife and three kids. I have a notebook full of ideas not yet started longer than
 I'd care to admit.
