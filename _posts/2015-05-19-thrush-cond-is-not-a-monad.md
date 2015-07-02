@@ -343,6 +343,7 @@ val cachePipeline = ThrushCond[Request](Seq(
   ({_ => !shouldCache}, {_.addHeader("cache-control", "no-cache")})))
 
 val requestPipeline = List(userPipeline, headerPipeline, cachePipeline) suml
+requestPipeline run Request("/users")
 //=>
 Request(/users,
   Map(userName -> devth),
