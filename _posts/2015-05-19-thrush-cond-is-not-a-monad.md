@@ -18,6 +18,8 @@ to look at a Scala representation, and whether it fits the shape and laws of any
 [common algebraic structures](https://en.wikipedia.org/wiki/Outline_of_algebraic_structures#Types_of_algebraic_structures).
 We'll look at Functor, Monad, Semigroup, and Monoid.
 
+**TL;DR** — [view the full code listing](https://gist.github.com/devth/308da859e5b584340f93).
+
 Let's start with an example in Clojure. We want to build up a request based on
 some arbitrary conditions:
 
@@ -70,76 +72,54 @@ case class Request(
   val isValidAccept: (String => Boolean) = acceptMap.isDefinedAt _
 
   def addParam(k: String, v: String) = this.copy(params=params.updated(k, v))
-
   def addHeader(k: String, v: String) = this.copy(headers=headers.updated(k, v))
 }
 
 // sample values from user input
-
 val userId: Int = 1
 val userName: Option[String] = Some("devth")
 val address: Option[String] = None
 val accept = "json"
 ```
 
-Now we'll create the `ThrushCond`{:.language-scala} class that takes an initial
-value, the steps as a `Seq`{:.language-scala} of a predicate/function pairs,
-and defines a `fold`{:.language-scala} method which runs the computation:
+Now we'll create the `ThrushCond`{:.language-scala} class that takes any number
+of predicate/function pairs, provides a `guard` function to only run a function
+if the predicate passes, a method to flatten the chain of functions via
+composition, and finally a `run`{:.language-scala} method that takes a value and
+runs it through the chain.
 
 ```scala
 type Step[A] = (A => Boolean, A => A)
 
-class ThrushCond[A](init: A, steps: Seq[Step[A]]) {
-  def fold = steps.foldLeft(init) { case (acc: A, step: Step[A]) =>
-    if (step._1(acc)) step._2(acc) else acc
-  }
+case class ThrushCond[A](steps: Step[A]*) {
+  /** Perform a pipeline step only if the value meets a predicate */
+  def guard[A](pred: (A => Boolean), fn: (A => A)): (A => A) =
+    (a: A) => if (pred(a)) fn(a) else a
+  /** Compose the steps into a single function */
+  def comp = Function.chain(steps.map { step => guard(step._1, step._2) })
+  /** Run a value through the pipeline */
+  def run(a: A) = comp(a)
 }
 ```
 
 Try it out:
 
 ```scala
-val steps: Seq[Step[Request]] = Seq(
+val requestPipeline = ThrushCond[Request](
   ({_ => userName.isDefined}, {_.addParam("userName", userName.get)}),
   ({_ => address.isDefined}, {_.addParam("address", address.get)}),
   ({_.isValidAccept(accept)}, {req => req.addHeader("accept",
     req.acceptMap(accept))}))
 
-val thrushCond = new ThrushCond(Request("/users"), steps)
-val request = thrushCond.fold
+val request = requestPipeline run Request("/users")
 
 //=>
 Request(/users,Map(userName -> devth),Map(accept -> application/json))
 ```
 
 As you can see, it correctly skipped the 2nd step based on the
-`address.isDefined`{:.language-scala} condition.
-
-
-We can simplify this a bit by distilling the essense of
-`ThrushCond`{:.language-scala} into a higher-order `guard` function, then use
-function composition to do the sequencing:
-
-```scala
-object ThrushCond {
-  def guard[A](pred: (A => Boolean), fn: (A => A)): (A => A) =
-    (a: A) => if (pred(a)) fn(a) else a
-}
-
-import ThrushCond.guard
-
-val requestPipeline: (Request => Request) =
-  Function.chain(Seq(
-    guard({_ => userName.isDefined}, {_.addParam("userName", userName.get)}),
-    guard({_ => address.isDefined}, {_.addParam("address", address.get)}),
-    guard({_.isValidAccept(accept)}, {req => req.addHeader("accept",
-      req.acceptMap(accept))})))
-
-val request = requestPipeline(Request("/users"))
-
-//=>
-Request(/users,Map(userName -> devth),Map(accept -> application/json))
-```
+`address.isDefined`{:.language-scala} condition and runs the other steps because
+their predicates evaluate to `true`{:.language-scala}.
 
 Will this work as one of the algebraic structures mentioned at the start?
 
@@ -205,23 +185,11 @@ h(f)
 `guard`{:.language-scala} is associative when composed with itself because
 [function composition is associative](https://en.wikipedia.org/wiki/Function_composition#Properties).
 Because of this associative binary operation we can provide evidence that
-ThrushCond is a Semigroup using `scalaz`{:.language-scala}'s
+`ThrushCond`{:.language-scala} is a Semigroup using `scalaz`{:.language-scala}'s
 `Semigroup`{:.language-scala} representation:
 
 ```scala
 import scalaz._, Scalaz._
-
-type Step[A] = (A => Boolean, A => A)
-
-case class ThrushCond[A](steps: Seq[Step[A]] = Seq.empty) {
-  /** Perform a pipeline step only if the value meets a predicate */
-  def guard[A](pred: (A => Boolean), fn: (A => A)): (A => A) =
-    (a: A) => if (pred(a)) fn(a) else a
-  /** Compose the steps into a single function */
-  def comp = Function.chain(steps.map { step => guard(step._1, step._2) })
-  /** Run a value through the pipeline */
-  def run(a: A) = comp(a)
-}
 
 case object ThrushCond {
   /** Evidence of a Semigroup */
@@ -233,8 +201,9 @@ case object ThrushCond {
 }
 ```
 
-We've defined a Semigroup over the set of all ThrushConds. What does this give
-us? We can now combine any number of ThrushConds using Semigroup's
+We've defined a Semigroup over the set of all
+`ThrushCond[A]`{:.language-scala}s.  What does this give us? We can now combine
+any number of `ThrushCond`{:.language-scala}s using Semigroup's
 `|+|`{:.language-scala} operator. A simple example using
 `ThrushCond[Int]`{:.language-scala}:
 
@@ -260,24 +229,28 @@ pipeline run 12 //=> (12 + 2 + 20) * 7 == 238
 
 ## Monoid via PlusEmpty
 
-Monoids are Semigroups with an identity element. ThrushCond's
-identity is simply a ThrushCond with an empty `Seq`{:.language-scala} of
-steps. However, as [@lmm mentioned in the comments](http://devth.com/2015/thrush-cond-is-not-a-monad/#comment-2082941866):
+Monoids are Semigroups with an identity element.
+`ThrushCond`{:.language-scala}'s identity is simply a
+`ThrushCond`{:.language-scala} without any `Step`{:.language-scala} arguments.
+However, as [@lmm mentioned in the
+comments](http://devth.com/2015/thrush-cond-is-not-a-monad/#comment-2082941866):
 
 > it's not ThrushCond itself that forms a Monoid but rather ThrushCond[A] for
 > any given A
 
-This is where PlusEmpty comes in. PlusEmpty is a ["universally quantified
+This is where `PlusEmpty`{:.language-scala} comes in.
+`PlusEmpty`{:.language-scala} is a ["universally quantified
 Monoid"](https://github.com/scalaz/scalaz/blob/series/7.2.x/core/src/main/scala/scalaz/PlusEmpty.scala#L3-7)
 which means it's like a Monoid but for first-order `* -> *`{:.language-scala}
-types instead of proper `*`{:.language-scala} types. PlusEmpty itself is a
-higher-order `(* -> *) -> *` type. A helpful quote from #scalaz:
+types instead of proper `*`{:.language-scala} types.
+`PlusEmpty`{:.language-scala} itself is a higher-order `(* -> *) -> *` type. A
+helpful quote from #scalaz:
 
 > tpolecat: so `String`{:.language-scala} is a monoid, but
-> `List`{:.language-scala} is a PlusEmpty (which means that
+> `List`{:.language-scala} is a `PlusEmpty`{:.language-scala} (which means that
 > `List[A]`{:.language-scala} is a monoid for all `A`{:.language-scala})
 
-To provide evidence of a PlusEmpty, we must be able to implement these two
+To provide evidence of a `PlusEmpty`{:.language-scala}, we must be able to implement these two
 methods (where `F`{:.language-scala} is `ThrushCond`{:.language-scala}):
 
 ```scala
@@ -285,8 +258,8 @@ def plus[A](a: F[A], b: => F[A]): F[A] // from Plus
 def empty[A]: F[A] // from PlusEmpty which extends Plus
 ```
 
-We already implemented `plus` for Semigroup's `append`, and `empty` is simply
-a `ThrushCond` with an empty `Seq` of steps.
+We already implemented `plus` for `Semigroup`{:.language-scala}'s `append`, and
+`empty` is simply a `ThrushCond`{:.language-scala} without args.
 
 ```scala
 case object ThrushCond {
@@ -301,6 +274,12 @@ case object ThrushCond {
   /** Use PlusEmpty to provide evidence of a Monoid[Request] */
   implicit def requestMonoid: Monoid[ThrushCond[Request]] =
     thrushCondPlusEmpty.monoid[Request]
+  /** Evidence of a Semigroup */
+  implicit def thrushCondSemigroup[A]: Semigroup[ThrushCond[A]] =
+    new Semigroup[ThrushCond[A]] {
+      def append(t1: ThrushCond[A], t2: => ThrushCond[A]): ThrushCond[A] =
+        ThrushCond[A](Seq((Function.const(true), t2.comp compose t1.comp)))
+    }
 }
 ```
 
@@ -329,10 +308,11 @@ requestPipeline run Request("/users")
 Request(/users,Map(userName -> devth),Map(accept -> application/json))
 ```
 
-Because PlusEmpty can derive a Monoid for a given type, we can combine any
-number of ThrushConds from a List. Let's construct one more ThrushCond
-pipeline that conditionally adds a cache-control header and try out our Monoid
-using `Foldable`{:.language-scala}'s `suml`{:.language-scala}:
+Because `PlusEmpty`{:.language-scala} can derive a Monoid for a given type, we can combine any
+number of `ThrushCond`{:.language-scala}s from a List. Let's construct one more
+`ThrushCond`{:.language-scala} pipeline that conditionally adds a cache-control
+header and try out our Monoid using `Foldable`{:.language-scala}'s
+`suml`{:.language-scala}:
 
 ```scala
 import scala.language.postfixOps
@@ -352,6 +332,8 @@ Request(/users,
 
 ThrushCond is not a Monad, nor a Functor, **but it is a PlusEmpty from which can
 be derived a Monoid**.
+
+[View the full code listing](https://gist.github.com/devth/308da859e5b584340f93).
 
 *Updated July 1, 2015: incorporated lmm's PlusEmpty suggestion.*
 
