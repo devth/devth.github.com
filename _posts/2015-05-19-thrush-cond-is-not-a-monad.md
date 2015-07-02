@@ -108,8 +108,7 @@ Try it out:
 val requestPipeline = ThrushCond[Request](
   ({_ => userName.isDefined}, {_.addParam("userName", userName.get)}),
   ({_ => address.isDefined}, {_.addParam("address", address.get)}),
-  ({_.isValidAccept(accept)}, {req => req.addHeader("accept",
-    req.acceptMap(accept))}))
+  ({_.isValidAccept(accept)}, {r => r.addHeader("accept", r.acceptMap(accept))}))
 
 val request = requestPipeline run Request("/users")
 
