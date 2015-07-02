@@ -258,7 +258,7 @@ pipeline run 12 //=> (12 + 2 + 20) * 7 == 238
 ```
 
 
-## Monoid (with PlusEmpty)
+## Monoid via PlusEmpty
 
 Monoids are Semigroups with an identity element. ThrushCond's
 identity is simply a ThrushCond with an empty `Seq`{:.language-scala} of
