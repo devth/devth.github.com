@@ -3,7 +3,7 @@ layout: article
 title: ThrushCond is not a Monad
 categories: scala
 comments: true
-excerpt: "Clojure has a useful macro called cond-> that conditionally threads an initial value through a series of predicate/function pairs — let's explore a Scala equivalent"
+excerpt: "Clojure has a useful macro called cond-> — let's explore a Scala equivalent"
 image:
   feature: thrush_cond_feature.jpg
   teaser: thrush_cond_teaser.jpg
@@ -16,8 +16,7 @@ threads an initial value through a series of predicate/function pairs only
 applying each function if its predicate returns true. In this post we're going
 to look at a Scala representation, and whether it fits the shape and laws of any
 [common algebraic structures](https://en.wikipedia.org/wiki/Outline_of_algebraic_structures#Types_of_algebraic_structures).
-We'll look at Functor (Endofunctor, to be specific), Monad, Monoid, and
-Semigroup.
+We'll look at Functor, Monad, Semigroup, and Monoid.
 
 Let's start with an example in Clojure. We want to build up a request based on
 some arbitrary conditions:
@@ -79,7 +78,7 @@ case class Request(
 
 val userId: Int = 1
 val userName: Option[String] = Some("devth")
-val userAddress: Option[String] = None
+val address: Option[String] = None
 val accept = "json"
 ```
 
@@ -102,7 +101,7 @@ Try it out:
 ```scala
 val steps: Seq[Step[Request]] = Seq(
   ({_ => userName.isDefined}, {_.addParam("userName", userName.get)}),
-  ({_ => userAddress.isDefined}, {_.addParam("userAddress", userAddress.get)}),
+  ({_ => address.isDefined}, {_.addParam("address", address.get)}),
   ({_.isValidAccept(accept)}, {req => req.addHeader("accept",
     req.acceptMap(accept))}))
 
@@ -114,7 +113,7 @@ Request(/users,Map(userName -> devth),Map(accept -> application/json))
 ```
 
 As you can see, it correctly skipped the 2nd step based on the
-`userAddress.isDefined`{:.language-scala} condition.
+`address.isDefined`{:.language-scala} condition.
 
 
 We can simplify this a bit by distilling the essense of
@@ -132,7 +131,7 @@ import ThrushCond.guard
 val requestPipeline: (Request => Request) =
   Function.chain(Seq(
     guard({_ => userName.isDefined}, {_.addParam("userName", userName.get)}),
-    guard({_ => userAddress.isDefined}, {_.addParam("userAddress", userAddress.get)}),
+    guard({_ => address.isDefined}, {_.addParam("address", address.get)}),
     guard({_.isValidAccept(accept)}, {req => req.addHeader("accept",
       req.acceptMap(accept))})))
 
@@ -144,140 +143,214 @@ Request(/users,Map(userName -> devth),Map(accept -> application/json))
 
 Will this work as one of the algebraic structures mentioned at the start?
 
-- **Functor** — Consider Functor's `fmap`{:.language-scala}:
+## Functor
 
-  ```scala
-  def fmap[A, B](f: A => B): F[A] => F[B]
-  ```
+Consider Functor's `fmap`{:.language-scala}:
 
-  In our case, both `A`{:.language-scala} and `B`{:.language-scala} are the
-  same type, `Request`{:.language-scala}. `guard`{:.language-scala} produces a
-  function that fits, but we could easily use that with an existing Functor,
-  e.g.:
+```scala
+def fmap[A, B](f: A => B): F[A] => F[B]
+```
 
-  ```scala
-  val step: Request => Request =
-    guard({_ => userName.isDefined}, {setParam(_, "userName", userName.get)})
-  Some(Request("/users")).map(step)
-  ```
+In our case, both `A`{:.language-scala} and `B`{:.language-scala} are the
+same type, `Request`{:.language-scala}. `guard`{:.language-scala} produces a
+function that fits, but we could easily use that with an existing Functor,
+e.g.:
 
-  The essense of `ThrushCond`{:.language-scala} is in `guard`{:.language-scala}
-  itself so it makes no sense to design a new Functor around it.
+```scala
+val step: Request => Request =
+  guard({_ => userName.isDefined}, {setParam(_, "userName", userName.get)})
+Some(Request("/users")).map(step)
+```
 
-- **Monad** — Likewise, Monad's `flatMap`{:.language-scala}:
+The essense of `ThrushCond`{:.language-scala} is in `guard`{:.language-scala}
+itself so it makes no sense to design a new Functor around it.
 
-  ```scala
-  def flatMap[A, B](f: A => F[B]): F[A] => F[B]
-  ```
+## Monad
 
-  We could make `guard`{:.language-scala} fit `flatMap`{:.language-scala}'s
-  signature, but there's no point in doing so for the same reason it didn't make
-  sense for Functor: the essense is not how a transformation is applied, it's
-  *whether* the transformation is applied, and because of the signature, the
-  decision whether to perform a transformation must be embedded in the
-  transformation itself, hence `guard`{:.language-scala}.
+Likewise, Monad's `flatMap`{:.language-scala}:
 
-- **Monoid** — Let's see if it meets Monoid's associativity laws:
+```scala
+def flatMap[A, B](f: A => F[B]): F[A] => F[B]
+```
 
-  ```scala
-  case class F(x: Int)
-  val f = F(10)
-  val always = Function.const(true) _
+We could make `guard`{:.language-scala} fit `flatMap`{:.language-scala}'s
+signature, but there's no point in doing so for the same reason it didn't make
+sense for Functor: the essense is not how a transformation is applied, it's
+*whether* the transformation is applied, and because of the signature, the
+decision whether to perform a transformation must be embedded in the
+transformation itself, hence `guard`{:.language-scala}.
 
-  val mult2: F => F = guard(always, {f => f.copy(x = f.x * 2)})
-  val sub4: F => F = guard(always, {f => f.copy(x = f.x - 4)})
-  val sub6: F => F = guard(always, {f => f.copy(x = f.x - 6)})
+## Semigroup
 
-  val g: (F => F) = (mult2 andThen sub6) andThen sub4
-  val h: (F => F) = mult2 andThen (sub6 andThen sub4)
+Let's see if it meets Semigroup's associativity laws:
 
-  g(f)
-  //=> F(10)
-  h(f)
-  //=> F(10)
-  ```
+```scala
+case class F(x: Int)
+val f = F(10)
+val always = Function.const(true) _
 
-  `guard`{:.language-scala} is associative when composed with itself because
-  [function composition is associative](https://en.wikipedia.org/wiki/Function_composition#Properties),
-  but it doesn't have a Monoidial `zero`{:.language-scala}, so let's move on to
-  Semigroup, which is like a Monoid in that it has an associative binary
-  operation, but is more general in that it doesn't have a
-  `zero`{:.language-scala} (AKA `identity`{:.language-scala}).
+val mult2: F => F = guard(always, {f => f.copy(x = f.x * 2)})
+val sub4: F => F = guard(always, {f => f.copy(x = f.x - 4)})
+val sub6: F => F = guard(always, {f => f.copy(x = f.x - 6)})
 
-- **Semigroup** — ThrushCond is a Semigroup because of its associative binary
-  operation, `guard`{:.language-scala}. Let's provide evidence using
-  `scalaz`{:.language-scala}'s `Semigroup`{:.language-scala}:
+val g: (F => F) = (mult2 andThen sub6) andThen sub4
+val h: (F => F) = mult2 andThen (sub6 andThen sub4)
 
-  ```scala
-  import scalaz._, Scalaz._
+g(f)
+//=> F(10)
+h(f)
+//=> F(10)
+```
 
-  type Step[A] = (A => Boolean, A => A)
+`guard`{:.language-scala} is associative when composed with itself because
+[function composition is associative](https://en.wikipedia.org/wiki/Function_composition#Properties).
+Because of this associative binary operation we can provide evidence that
+ThrushCond is a Semigroup using `scalaz`{:.language-scala}'s
+`Semigroup`{:.language-scala} representation:
 
-  case class ThrushCond[A](steps: Seq[Step[A]]) {
-    /** Perform a pipeline step only if the value meets a predicate */
-    def guard[A](pred: (A => Boolean), fn: (A => A)): (A => A) =
-      (a: A) => if (pred(a)) fn(a) else a
-    /** Compose the steps into a single function */
-    def comp = Function.chain(steps.map { step => guard(step._1, step._2) })
-    /** Run a value through the pipeline */
-    def run(a: A) = comp(a)
-  }
+```scala
+import scalaz._, Scalaz._
 
+type Step[A] = (A => Boolean, A => A)
+
+case class ThrushCond[A](steps: Seq[Step[A]] = Seq.empty) {
+  /** Perform a pipeline step only if the value meets a predicate */
+  def guard[A](pred: (A => Boolean), fn: (A => A)): (A => A) =
+    (a: A) => if (pred(a)) fn(a) else a
+  /** Compose the steps into a single function */
+  def comp = Function.chain(steps.map { step => guard(step._1, step._2) })
+  /** Run a value through the pipeline */
+  def run(a: A) = comp(a)
+}
+
+case object ThrushCond {
   /** Evidence of a Semigroup */
-  case object ThrushCond {
-    implicit def thrushCondSemigroup[A]: Semigroup[ThrushCond[A]] =
-      new Semigroup[ThrushCond[A]] {
-        def append(t1: ThrushCond[A], t2: => ThrushCond[A]): ThrushCond[A] =
-          ThrushCond[A](Seq((Function.const(true), t2.comp compose t1.comp)))
-      }
-  }
-  ```
+  implicit def thrushCondSemigroup[A]: Semigroup[ThrushCond[A]] =
+    new Semigroup[ThrushCond[A]] {
+      def append(t1: ThrushCond[A], t2: => ThrushCond[A]): ThrushCond[A] =
+        ThrushCond[A](Seq((Function.const(true), t2.comp compose t1.comp)))
+    }
+}
+```
 
-  We've defined a Semigroup over the set of all ThrushConds. What does this give
-  us? We can now combine any number of ThrushConds using Semigroup's
-  `|+|`{:.language-scala} operator. A simple example using
-  `ThrushCond[Int]`{:.language-scala}:
+We've defined a Semigroup over the set of all ThrushConds. What does this give
+us? We can now combine any number of ThrushConds using Semigroup's
+`|+|`{:.language-scala} operator. A simple example using
+`ThrushCond[Int]`{:.language-scala}:
 
-  ```scala
-  import ThrushCond.thrushCondSemigroup
+```scala
+import ThrushCond.thrushCondSemigroup
 
-  val addPipeline = ThrushCond[Int](Seq(
-    ((_ > 10), (_ + 2)),
-    ((_ < 20), (_ + 20))))
+val addPipeline = ThrushCond[Int](Seq(
+  ((_ > 10), (_ + 2)),
+  ((_ < 20), (_ + 20))))
 
-  val multPipeline = ThrushCond[Int](Seq(
-    ((_ == 70), (_ * 10)),
-    ((_ > 0), (_ * 7))))
+val multPipeline = ThrushCond[Int](Seq(
+  ((_ == 70), (_ * 10)),
+  ((_ > 0), (_ * 7))))
 
-  val pipeline = addPipeline |+| multPipeline
+val pipeline = addPipeline |+| multPipeline
 
-  // Examples
-  multPipeline run 70 //=> 70 * 10 * 7 == 4900
-  pipeline run 2 //=> (2 + 20) * 7 == 154
-  pipeline run 12 //=> (12 + 2 + 20) * 7 == 238
-  ```
+// Examples
+multPipeline run 70 //=> 70 * 10 * 7 == 4900
+pipeline run 2 //=> (2 + 20) * 7 == 154
+pipeline run 12 //=> (12 + 2 + 20) * 7 == 238
+```
 
-  And finally, back to our `Request`{:.language-scala} example in Clojure,
-  splitting it into two pipelines for the purpose of demonstration (and possible
-  separation of concerns):
 
-  ```scala
-  val userPipeline = ThrushCond[Request](Seq(
-    ({_ => userName.isDefined}, {_.addParam("userName", userName.get)}),
-    ({_ => userAddress.isDefined}, {_.addParam("userAddress", userAddress.get)})))
+## Monoid (with PlusEmpty)
 
-  val headerPipeline = ThrushCond[Request](Seq(
-    ({_.isValidAccept(accept)}, {req => req.addHeader("accept",
-      req.acceptMap(accept))})))
+Monoids are Semigroups with an identity element. ThrushCond's
+identity is simply a ThrushCond with an empty `Seq`{:.language-scala} of
+steps. However, as [@lmm mentioned in the comments](http://devth.com/2015/thrush-cond-is-not-a-monad/#comment-2082941866):
 
-  val requestPipeline = userPipeline |+| headerPipeline
+> it's not ThrushCond itself that forms a Monoid but rather ThrushCond[A] for
+> any given A
 
-  requestPipeline run Request("/users")
-  //=>
-  Request(/users,Map(userName -> devth),Map(accept -> application/json))
-  ```
+This is where PlusEmpty comes in. PlusEmpty is a ["universally quantified
+Monoid"](https://github.com/scalaz/scalaz/blob/series/7.2.x/core/src/main/scala/scalaz/PlusEmpty.scala#L3-7)
+which means it's like a Monoid but for first-order `* -> *`{:.language-scala}
+types instead of proper `*`{:.language-scala} types. PlusEmpty itself is a
+higher-order `(* -> *) -> *` type. A helpful quote from #scalaz:
 
-ThrushCond is not a Monad, nor an Endofunctor, nor a Monoid, **but it is a
-Semigroup**.
+> tpolecat: so `String`{:.language-scala} is a monoid, but
+> `List`{:.language-scala} is a PlusEmpty (which means that
+> `List[A]`{:.language-scala} is a monoid for all `A`{:.language-scala})
 
+To provide evidence of a PlusEmpty, we must be able to implement these two
+methods (where `F`{:.language-scala} is `ThrushCond`{:.language-scala}):
+
+```scala
+def plus[A](a: F[A], b: => F[A]): F[A] // from Plus
+def empty[A]: F[A] // from PlusEmpty which extends Plus
+```
+
+We already implemented `plus` for Semigroup's `append`, and `empty` is simply
+a `ThrushCond` with an empty `Seq` of steps.
+
+```scala
+case object ThrushCond {
+  /** Evidence of a PlusEmpty */
+  implicit def thrushCondPlusEmpty: PlusEmpty[ThrushCond] =
+    new PlusEmpty[ThrushCond] {
+      def plus[A](a: ThrushCond[A], b: => ThrushCond[A]): ThrushCond[A] =
+        ThrushCond[A](Seq((Function.const(true), b.comp compose a.comp)))
+
+      def empty[A]: ThrushCond[A] = ThrushCond[A]()
+    }
+  /** Use PlusEmpty to provide evidence of a Monoid[Request] */
+  implicit def requestMonoid: Monoid[ThrushCond[Request]] =
+    thrushCondPlusEmpty.monoid[Request]
+}
+```
+
+Let's go back to our `Request`{:.language-scala} example in Clojure and use
+PlusEmpty's `<+>`{:.language-scala} to combine separate transformation
+pipelines:
+
+```scala
+import ThrushCond._ // evidence
+
+val userPipeline = ThrushCond[Request](Seq(
+  ({_ => userName.isDefined}, {_.addParam("userName", userName.get)}),
+  ({_ => address.isDefined}, {_.addParam("address", address.get)})))
+
+val headerPipeline = ThrushCond[Request](Seq(
+  ({_.isValidAccept(accept)}, {req =>
+    req.addHeader("accept", req.acceptMap(accept))})))
+
+// <+> is an alias for plus
+val requestPipeline = userPipeline <+> headerPipeline
+// A PlusEmpty[ThrushCond] is implicitly obtained and used to plus the two
+// ThrushCond[Request]s
+
+requestPipeline run Request("/users")
+//=>
+Request(/users,Map(userName -> devth),Map(accept -> application/json))
+```
+
+Because PlusEmpty can derive a Monoid for a given type, we can combine any
+number of ThrushConds from a List. Let's construct one more ThrushCond
+pipeline that conditionally adds a cache-control header and try out our Monoid
+using `Foldable`{:.language-scala}'s `suml`{:.language-scala}:
+
+```scala
+import scala.language.postfixOps
+
+val shouldCache = false
+
+val cachePipeline = ThrushCond[Request](Seq(
+  ({_ => !shouldCache}, {_.addHeader("cache-control", "no-cache")})))
+
+val requestPipeline = List(userPipeline, headerPipeline, cachePipeline) suml
+//=>
+Request(/users,
+  Map(userName -> devth),
+  Map(accept -> application/json, cache-control -> no-cache))
+```
+
+ThrushCond is not a Monad, nor a Functor, **but it is a PlusEmpty from which can
+be derived a Monoid**.
+
+*Updated July 1, 2015: incorporated lmm's PlusEmpty suggestion.*
 
