@@ -195,7 +195,7 @@ case object ThrushCond {
   implicit def thrushCondSemigroup[A]: Semigroup[ThrushCond[A]] =
     new Semigroup[ThrushCond[A]] {
       def append(t1: ThrushCond[A], t2: => ThrushCond[A]): ThrushCond[A] =
-        ThrushCond[A](Seq((Function.const(true), t2.comp compose t1.comp)))
+        ThrushCond[A]((Function.const(true), t2.comp compose t1.comp))
     }
 }
 ```
@@ -209,13 +209,13 @@ any number of `ThrushCond`{:.language-scala}s using Semigroup's
 ```scala
 import ThrushCond.thrushCondSemigroup
 
-val addPipeline = ThrushCond[Int](Seq(
+val addPipeline = ThrushCond[Int](
   ((_ > 10), (_ + 2)),
-  ((_ < 20), (_ + 20))))
+  ((_ < 20), (_ + 20)))
 
-val multPipeline = ThrushCond[Int](Seq(
+val multPipeline = ThrushCond[Int](
   ((_ == 70), (_ * 10)),
-  ((_ > 0), (_ * 7))))
+  ((_ > 0), (_ * 7)))
 
 val pipeline = addPipeline |+| multPipeline
 
@@ -266,7 +266,7 @@ case object ThrushCond {
   implicit def thrushCondPlusEmpty: PlusEmpty[ThrushCond] =
     new PlusEmpty[ThrushCond] {
       def plus[A](a: ThrushCond[A], b: => ThrushCond[A]): ThrushCond[A] =
-        ThrushCond[A](Seq((Function.const(true), b.comp compose a.comp)))
+        ThrushCond[A((Function.const(true), b.comp compose a.comp)))
 
       def empty[A]: ThrushCond[A] = ThrushCond[A]()
     }
@@ -277,7 +277,7 @@ case object ThrushCond {
   implicit def thrushCondSemigroup[A]: Semigroup[ThrushCond[A]] =
     new Semigroup[ThrushCond[A]] {
       def append(t1: ThrushCond[A], t2: => ThrushCond[A]): ThrushCond[A] =
-        ThrushCond[A](Seq((Function.const(true), t2.comp compose t1.comp)))
+        ThrushCond[A]((Function.const(true), t2.comp compose t1.comp))
     }
 }
 ```
@@ -289,13 +289,13 @@ pipelines:
 ```scala
 import ThrushCond._ // evidence
 
-val userPipeline = ThrushCond[Request](Seq(
+val userPipeline = ThrushCond[Request](
   ({_ => userName.isDefined}, {_.addParam("userName", userName.get)}),
-  ({_ => address.isDefined}, {_.addParam("address", address.get)})))
+  ({_ => address.isDefined}, {_.addParam("address", address.get)}))
 
-val headerPipeline = ThrushCond[Request](Seq(
+val headerPipeline = ThrushCond[Request](
   ({_.isValidAccept(accept)}, {req =>
-    req.addHeader("accept", req.acceptMap(accept))})))
+    req.addHeader("accept", req.acceptMap(accept))}))
 
 // <+> is an alias for plus
 val requestPipeline = userPipeline <+> headerPipeline
@@ -318,8 +318,8 @@ import scala.language.postfixOps
 
 val shouldCache = false
 
-val cachePipeline = ThrushCond[Request](Seq(
-  ({_ => !shouldCache}, {_.addHeader("cache-control", "no-cache")})))
+val cachePipeline = ThrushCond[Request](
+  ({_ => !shouldCache}, {_.addHeader("cache-control", "no-cache")}))
 
 val requestPipeline = List(userPipeline, headerPipeline, cachePipeline) suml
 requestPipeline run Request("/users")
