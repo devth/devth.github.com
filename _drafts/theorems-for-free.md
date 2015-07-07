@@ -107,3 +107,4 @@ References:
 0. [The Relation with Types (slides)](https://github.com/LambdaCon/2015/blob/master/The%20relation%20with%20types/slides/relation%20with%20types.pdf)
 0. [Reasoning about type inhabitants in Haskell](https://gist.github.com/pchiusano/444de1f222f1ceb09596)
 0. [Theorems for free!](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0CB4QFjAA&url=http%3A%2F%2Fttic.uchicago.edu%2F~dreyer%2Fcourse%2Fpapers%2Fwadler.pdf&ei=mLTOVI3FLtCJNvyHhNgB&usg=AFQjCNHSssGM3vM9RLjlQeG0E29lNJisZQ&sig2=MrmxPit07TEutkLtQP8ydA&bvm=bv.85076809,d.eXY)
+0. [A brief bibliography on parametricity](http://wadler.blogspot.it/2015/06/a-brief-bibliography-on-parametricity.html)

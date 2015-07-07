@@ -12,6 +12,29 @@ These are terms and concepts that I found unfamiliar the first time I
 encountered them. In most cases I'll provide a brief definition or example with
 a link to a more complete definition. This is a work in progress.
 
+## Type Lambda (Scala)
+
+I think of type lambda as a tool for partially applying type constructors. For
+example, `List`{:.language-scala}'s is a type constructor whose kind is `* ->
+*`{:.language-scala}. This means it takes 1 type and returns 1 fully constructed
+type. `Tuple2` is a type constructor whose kind is `(* -> *) ->
+*`{:.language-scala} meaning it takes 2 types and returns 1 fully constructed
+type. What if you want to make `Tuple2`{:.language-scala} into a type
+constructor of kind `* -> *`{:.language-scala}?
+
+```scala
+({ type L[A] = Tuple2[
+```
+
+
+Read more:
+
+- [kind-projector(https://github.com/non/kind-projector) - compiler plugin that
+  introduces very concise type aliases.
+
+
+
+
 
 ## Natural Transformation
 
