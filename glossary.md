@@ -27,9 +27,9 @@ simple in practice. Let's try that out in Scala using the Functors `List`{:.lang
 val someString: Option[String] = Some("foo")
 val noneString: Option[String] = None
 
-// We can intuitively think of Option as being a List of 1 element, so the
-// natural transformation is trivial (note: I'm intentionally avoiding the use of
-// Scala's own .toList):
+// We can intuitively think of Option as being a List of 0 or 1 elements, so the
+// natural transformation is trivial (note: I'm intentionally avoiding the use
+// of Scala's own .toList):
 def optionToList[A](a: Option[A]): List[A] =
   a.map(x => List(x)).getOrElse(List.empty[A])
 
