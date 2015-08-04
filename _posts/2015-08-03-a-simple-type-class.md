@@ -1,7 +1,6 @@
 ---
 layout: article
 title: A Simple type class
-published: false
 image:
   feature: typeclass_wide.jpg
   teaser: typeclass_teaser.jpg
