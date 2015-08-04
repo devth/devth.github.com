@@ -1,6 +1,7 @@
 ---
 layout: article
 title: A Simple type class
+categories: scala
 excerpt: "Type classes provide a way of achieving ad hoc polymorphism"
 comments: true
 image:
