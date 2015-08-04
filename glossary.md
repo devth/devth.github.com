@@ -23,8 +23,15 @@ type. What if you want to make `Tuple2`{:.language-scala} into a type
 constructor of kind `* -> *`{:.language-scala}?
 
 ```scala
-({ type L[A] = Tuple2[
+def tup[A](x: A) = {
+
+  type T[B] = ({ type L[B] = Tuple2[B })#L[B]
+  // Now we have a Tuple2 of kind (* -> *) called T
+  // TODO: define a use case for a Tuple2 of kind (* -> *)
+  T(x, 1)
+}
 ```
+
 
 
 Read more:
