@@ -23,9 +23,10 @@ Here are the laws, from [Monad laws](https://wiki.haskell.org/Monad_laws) on Has
 0. Right identity: `m >>= return ≡ m`{:.language-haskell}
 0. Associativity: `(m >>= f) >>= g ≡  m >>= (\x -> f x >>= g)`{:.language-haskell}
 
-In Haskell, `return` is used to "inject a value into the monadic type". In
-Scala, we do this via constructors (unless you're using Scalaz, in which case
-you probably already know everything this post has to offer).
+In Haskell, `return`{:.language-haskell} is used to "inject a value into the
+monadic type". In Scala, we do this via constructors (unless you're using
+Scalaz, in which case you probably already know everything this post has to
+offer).
 
 The `>>=`{:.language-haskell} operator in Haskell corresponds to Scala's
 `flatMap`{:.language-scala} method.
@@ -164,8 +165,9 @@ lhs == rhs
 ## The end
 
 I hope this post helped you internalize the Monad laws. If you need more
-practice, continue this excercise in your repl for the `Try` and `Either`
-monads, or better yet: create your own Monad and verify that it obeys the laws!
+practice, continue this exercise in your REPL for the `Try`{:.language-scala}
+and `Either`{:.language-scala} monads, or better yet: create your own Monad and
+verify that it obeys the laws!
 
 ### Further reading
 
