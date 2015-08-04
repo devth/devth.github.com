@@ -1,6 +1,7 @@
 ---
 layout: article
 title: A Simple type class
+excerpt: "Type classes provide a way of achieving ad hoc polymorphism"
 image:
   feature: typeclass_wide.jpg
   teaser: typeclass_teaser.jpg
