@@ -285,3 +285,6 @@ elegantly supported at the language level) and operator syntax.
 - [Types and Typeclasses — Learn you a Haskell](http://learnyouahaskell.com/types-and-typeclasses)
 - [Simalacrum](https://github.com/mpilquist/simulacrum) — a modern, concise type
   class encoding for Scala using annotations
+- [Typeclassopedia](https://wiki.haskell.org/Typeclassopedia) — overview of
+  Haskell's type classes, many of which are also represented in Scalaz, along
+  with a very useful diagram showing relationships between type classes.
