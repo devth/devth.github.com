@@ -175,3 +175,11 @@ When learning a mental concept, form a chunk by:
 0. Practice and repetition
 
 It helps to learn major concepts first, then go back in and fill in the details.
+
+
+## Further reading
+
+- [Learning How to Learn](https://www.coursera.org/learn/learning-how-to-learn)
+  — the class this post references, now available "on dmeand"
+- [Brains Sweep Themselves Clean Of Toxins During Sleep](http://www.npr.org/sections/health-shots/2013/10/18/236211811/brains-sweep-themselves-clean-of-toxins-during-sleep)
+  — NPR
