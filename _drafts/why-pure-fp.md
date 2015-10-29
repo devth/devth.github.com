@@ -58,3 +58,31 @@ programs into two distinct parts:
    improved over time. In the case of Scala, we have the scalaz-stream library. In the
    case of Haskell, we have the language runtime itself.
 
+
+To help us separte out these two parts, let's use a tool that already exist
+to do exactly that: scalaz-stream.
+
+So scalaz-stream has this thing called `Process` that encapsulates normal
+side-effectful code, allowing you to keep your methods pure only because you
+never *run* the side effects yourself.
+
+For example, let's say you want to add two numbers and emit a log statement in
+the process:
+
+```scala
+def impureAdd(x: Int, y: Int) = {
+  logger.info(s"impureAdd $x $y")
+  x + y
+}
+```
+
+Scalaz lets us wrap up this side-effect in a `Task`{:.language-scala} that
+produces an `Int`{:.language-scala}:
+
+```scala
+
+```
+
+Process[Task, Int]
+Process[Task, Int]
+

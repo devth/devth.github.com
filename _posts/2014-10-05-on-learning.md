@@ -175,3 +175,13 @@ When learning a mental concept, form a chunk by:
 0. Practice and repetition
 
 It helps to learn major concepts first, then go back in and fill in the details.
+
+
+## Teaching
+
+I've found that is nothing is as effective for learning hard, abstract concepts
+than trying to teach it. It's a forcing factor that causes you to *really* learn
+something. You might think you understand a concept, but when you try to teach
+someone else and have a hard time, you have to go back and learn it better. I do
+this through blogging, code reviewing and discussions in chat.
+

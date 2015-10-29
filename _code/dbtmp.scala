@@ -1,7 +1,11 @@
+import scalaz._, Scalaz._
+
 /** Run with `scala db.scala` */
 object Database {
 
-  type FilterExpr = Tuple2[String, Seq[Product]]
+  import Operators._
+
+  type FilterExpr = Tree[String]
 
   // Store a mapping of column name to ordinal for fast projection
   val schema: Map[String, Int] = Seq("name", "birthYear", "dissertation").zipWithIndex.toMap
@@ -19,27 +23,30 @@ object Database {
     def isFiltered(row: Product): Boolean = evalFilterOn(row)
 
     private def evalFilterOn(row: Product): Boolean = {
-      def eval(expr: Product): Boolean = {
-        val (operator, operands: Seq[Product]) = expr
+      def eval(expr: FilterExpr): Boolean = {
+        val (operator, operands: Stream[FilterExpr]) = (expr.rootLabel, expr.subForest)
         operator match {
-          case "AND" => operands.forall(eval)
-          case "OR" => operands.exists(eval)
-          case "IS_NOT_NULL" => valueFor(operands(0)) != null
-          case "LESS_THAN" => {
-            val (x :: y :: _) = operands.map(o => valueFor(o).asInstanceOf[Int])
+          case And => operands.forall(eval)
+          case Or => operands.exists(eval)
+          case IsNotNull => valueFor(operands(0)) != null
+          case LessThan => {
+            val (x :: y :: _) = operands.map(o => valueFor(o).toString.toInt).toList
             x < y
           }
         }
       }
-      def valueFor(node: Product) = node match {
-        case ("item", column: String) => row.productElement(schema(column))
-        case ("literal", lit) => lit
+      def valueFor(node: FilterExpr) = node.rootLabel match {
+        // Item expects a single operand
+        case Item => row.productElement(schema(node.subForest.head.rootLabel))
+        // Literal expects a single operand
+        case Literal => node.subForest.head.rootLabel
       }
       eval(expr)
     }
   }
 
-  // Query loop
+  // Query loop. Scans the table, applying filtering and projection along the
+  // way.
   def query(projections: Seq[Int], filter: FilterExpr): Seq[Seq[Any]] = {
     val filterer = new FilterInterpreter(filter, schema)
     db.flatMap { row =>
@@ -55,11 +62,19 @@ object Database {
     // i.e. SELECT name, dissertation
     val projections = Seq(0, 2)
 
+    val filterExpr: FilterExpr = And.node(
+      IsNotNull.node(
+        Item.node("name".leaf)),
+      LessThan.node(
+        Item.node("birthYear".leaf),
+        Literal.node("1910".leaf)))
+
     // i.e. WHERE name != null AND birthYear < 1910
-    val filterExpr: FilterExpr = ("AND",
-      Seq(
-        ("IS_NOT_NULL", Seq(("item", "name"))),
-        ("LESS_THAN", Seq(("item", "birthYear"), ("literal", 1910)))))
+
+    // val filterExpr: FilterExpr = ("AND",
+    //   Seq(
+    //     ("IS_NOT_NULL", Seq(("item", "name"))),
+    //     ("LESS_THAN", Seq(("item", "birthYear"), ("literal", 1910)))))
 
     val result = query(projections, filterExpr)
     result.map(println)
