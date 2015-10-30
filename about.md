@@ -4,7 +4,20 @@ title: About Trevor Hartman
 streetview: true
 ---
 
-I like to make stuff.
+Senior software engineer with over 15 years experience crafting high quality web
+and mobile applications. I've worked at every layer of the stack with extensive
+experience iterating on meticulously-detailed front ends for both client sites
+and web applications, at the API level efficiently piping and transforming data
+between backend and frontend with considerations around concurrency, code
+reusability and authentication, and currently at the very backend, working on an
+in-memory distributed columnar-store for eBay which powers realtime analytics
+for seller tools.
+
+I'm a huge proponent of using automation to make process more efficient and
+repeatable. I build an open source chat bot called
+[yetibot](https://github.com/devth/yetibot) which we increasingly use for
+[ChatOps](http://devops.com/2014/07/16/chatops-communicating-speed-devops/) to
+run internal automation.
 
 I'm obsessed with discovering better ways of expressing solutions to programming
 problems. I can't handle boilerplate, repetitive code or senseless abstraction.
@@ -13,9 +26,9 @@ ages in Perl, JavaScript, Lingo and VB, to C# and ActionScript 3, Ruby and
 Python, Java, Scala, Clojure and ClojureScript, some Datalog, some Swift, some
 Haskell, and a tiny bit of Elm.
 
-The past few years I've been on a quest to bring more rigor to my understanding
-and use of programming, and have become a bit of a Functional Programming zealot
-in the process.
+The past several years I've been on a quest to bring more rigor to my
+understanding and use of programming, and have become a bit of a Functional
+Programming zealot in the process.
 
 Most of my post topics are areas I wanted to better understand, and writing
 about them was a way to achieve that. I don't claim to be an expert in
@@ -24,6 +37,9 @@ leave it in the comments! If you'd like to chat, I usually hang out on
 freenode.net as `devth`, or you can Tweet [@devth](https://twitter.com/devth).
 
 I currently work remotely for eBay's Seattle office and live in Montana with my
-wife and three kids. I have a notebook full of ideas not yet started longer than
-I'd care to admit.
+wife and three kids and am an aspiring electronics tinkerer, musician, climber,
+learner and maker of things.
 
+- [Resume](Trevor-Hartman-resume.pdf)
+- [Portfolio](http://cargocollective.com/devth) (front end)
+- [Github](https://github.com/devth)
