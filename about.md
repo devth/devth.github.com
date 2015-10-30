@@ -39,8 +39,8 @@ leave it in the comments! If you'd like to chat, I usually hang out on
 freenode.net as `devth`, or you can Tweet [@devth](https://twitter.com/devth).
 
 I currently work remotely for eBay's Seattle office and live in Montana with my
-wife and three kids and am an aspiring electronics tinkerer, musician, climber,
-learner and maker of things.
+wife and three kids. I'm an aspiring electronics tinkerer, musician, climber,
+learner, and maker of things. I endorse the oxford comma.
 
 - [Résumé](Trevor-Hartman-resume.pdf)
 - [Frontend Portfolio](http://cargocollective.com/devth)
