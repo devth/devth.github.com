@@ -5,13 +5,15 @@ streetview: true
 ---
 
 Senior software engineer with over 15 years experience crafting high quality web
-and mobile applications. I've worked at every layer of the stack with extensive
-experience iterating on meticulously-detailed front ends for both client sites
-and web applications, at the API level efficiently piping and transforming data
-between backend and frontend with considerations around concurrency, code
-reusability and authentication, and currently at the very backend, working on an
-in-memory distributed columnar-store for eBay which powers realtime analytics
-for seller tools.
+and mobile applications. I've worked at every layer of the stack:
+
+- extensive experience iterating on meticulously-detailed frontends for both
+  client sites and web applications
+- at the API level efficiently piping and transforming data between backend and
+  frontend with considerations around concurrency, code reusability and
+  authentication
+- currently at the very backend, working on an Scala-based in-memory distributed
+  columnar data store for eBay which powers realtime analytics for seller tools.
 
 I'm a huge proponent of using automation to make process more efficient and
 repeatable. I build an open source chat bot called
