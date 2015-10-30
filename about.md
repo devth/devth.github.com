@@ -15,7 +15,7 @@ and mobile applications. I've worked at every layer of the stack:
   distributed columnar data store for eBay which powers real-time analytics for
   seller tools
 
-I'm a huge proponent of using automation to make process more efficient and
+I'm a huge proponent of using automation to make processes more efficient and
 repeatable. I build an open source chat bot called
 [yetibot](https://github.com/devth/yetibot) which we increasingly use for
 [ChatOps](http://devops.com/2014/07/16/chatops-communicating-speed-devops/) to
