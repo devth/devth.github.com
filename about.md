@@ -23,7 +23,7 @@ run internal automation.
 
 I'm obsessed with discovering better ways of expressing solutions to programming
 problems. I can't handle boilerplate, repetitive code or senseless abstraction.
-This has lead me down a path of ongoing language discovery, from my early dark
+This has led me down a path of ongoing language discovery, from my early dark
 ages in Perl, JavaScript, Lingo and VB, to C# and ActionScript 3, Ruby and
 Python, Java, Scala with Scalaz, Clojure and ClojureScript, some Datalog, some
 Swift, some Haskell, and a tiny bit of Elm.
