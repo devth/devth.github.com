@@ -11,9 +11,9 @@ and mobile applications. I've worked at every layer of the stack:
   sites, interactive experiences, and web applications
 - at the API level efficiently piping and transforming data between backend and
   frontend with considerations around concurrency and authentication
-- (currently) at the very backend, working on an Scala-based in-memory
-  distributed columnar data store for eBay which powers realtime analytics for
-  seller tools.
+- (currently) at the very backend, working on a Scala-based in-memory
+  distributed columnar data store for eBay which powers real-time analytics for
+  seller tools
 
 I'm a huge proponent of using automation to make process more efficient and
 repeatable. I build an open source chat bot called
@@ -42,6 +42,6 @@ I currently work remotely for eBay's Seattle office and live in Montana with my
 wife and three kids and am an aspiring electronics tinkerer, musician, climber,
 learner and maker of things.
 
-- [Resume](Trevor-Hartman-resume.pdf)
+- [Résumé](Trevor-Hartman-resume.pdf)
 - [Frontend Portfolio](http://cargocollective.com/devth)
 - [Github](https://github.com/devth)
