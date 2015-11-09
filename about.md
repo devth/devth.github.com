@@ -5,7 +5,8 @@ streetview: true
 ---
 
 Senior software engineer with over 15 years experience crafting high quality web
-and mobile applications. I've worked at every layer of the stack:
+and mobile applications. Very interested in making your life easier, and mine
+too! I've worked at every layer of the stack:
 
 - extensive experience iterating on meticulously-detailed frontends for client
   sites, interactive experiences, and web applications
