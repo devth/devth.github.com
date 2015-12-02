@@ -1,6 +1,6 @@
 import scalaz._, Scalaz._
 
-object InterpretedQuery {
+object InterpretedQuery extends Query {
 
   import Database.schema, Database.FilterExpr, Operators._
 
@@ -33,13 +33,19 @@ object InterpretedQuery {
 
   // Query loop. Scans the table, applying filtering and projection along the
   // way.
-  def query(db: Seq[(String, Integer, String)], projections: Seq[Int], filter: FilterExpr): Seq[Seq[Any]] = {
+  def query(db: Seq[Product],
+            projections: Seq[Int],
+            filter: FilterExpr): Seq[Row] = {
     val filterer = new FilterInterpreter(filter, schema)
     db.flatMap { row =>
       // Filter
       if (filterer.isFiltered(row)) None
       // Project
-      else Some(projections.map(row.productElement))
+      else Some {
+        projections.foldLeft(DissertationRow()) { case (acc, i) =>
+          acc.setValueForOrdinal(i, row.productElement(i))
+        }
+      }
     }
   }
 

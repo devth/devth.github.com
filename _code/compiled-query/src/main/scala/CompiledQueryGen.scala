@@ -10,15 +10,20 @@ object CompiledQueryGen extends Opcodes {
     val cw = new ClassWriter(ClassWriter.COMPUTE_FRAMES)
     var mv: MethodVisitor = null
 
-    cw.visit(52, ACC_PUBLIC + ACC_SUPER, generatedClassName, null,
-      "java/lang/Object", null)
+    cw.visit(V1_8,
+      ACC_PUBLIC + ACC_SUPER,
+      generatedClassName,
+      "LQuery",
+      "Query",
+      null)
+
 
     // Constructor
     {
       mv = cw.visitMethod(ACC_PUBLIC, "<init>", "()V", null, null)
       mv.visitCode()
       mv.visitVarInsn(ALOAD, 0)
-      mv.visitMethodInsn(INVOKESPECIAL, "java/lang/Object", "<init>", "()V", false)
+      mv.visitMethodInsn(INVOKESPECIAL, "Query", "<init>", "()V", false)
       mv.visitInsn(RETURN)
       mv.visitMaxs(1, 1)
       mv.visitEnd()
@@ -31,6 +36,8 @@ object CompiledQueryGen extends Opcodes {
         "(Lscala/collection/Seq<Lscala/Tuple3<Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;>;>;)Lscala/collection/Seq<Lscala/Tuple2<Ljava/lang/String;Ljava/lang/String;>;>;",
         null)
       mv.visitCode()
+
+
 
       // Load the `db` argument onto the stack
       mv.visitVarInsn(ALOAD, 0)
@@ -193,8 +200,9 @@ object CompiledQueryGen extends Opcodes {
   }
 
   def classFrom(bytes: Array[Byte]) = {
-    import scala.collection.mutable
+
     class DynamicClassLoader extends ClassLoader {
+      import scala.collection.mutable
       val bytecodes = mutable.Map.empty[String, Array[Byte]]
       def putClass(name: String, bytecode: Array[Byte]) =
         bytecodes.put(name, bytecode)
@@ -208,9 +216,14 @@ object CompiledQueryGen extends Opcodes {
     val loader = new DynamicClassLoader
     loader.putClass(generatedClassName, bytes)
 
-    val query: BaseQuery[JavaResult] =
-      loader.findClass(className).newInstance.asInstanceOf[Query]
+    // TODO: how to load it out? We need a superclass that the generated query
+    // extends from in order to use it!
+    // val query: BaseQuery[JavaResult] =
+    //   loader.findClass(className).newInstance.asInstanceOf[Query]
 
+    println(s"load generatedClassName: $generatedClassName")
+    val query: Class[_] = loader.findClass(generatedClassName)
+    // query
 
   }
 

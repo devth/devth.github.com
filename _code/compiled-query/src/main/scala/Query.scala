@@ -1,4 +1,5 @@
-trait Query {
+
+abstract class Query {
   import Database.FilterExpr
-  def query(db: Seq[(String, Integer, String)], projections: Seq[Int], filter: FilterExpr): Product
+  def query(db: Seq[Product], projections: Seq[Int], filter: FilterExpr): Seq[Row]
 }
