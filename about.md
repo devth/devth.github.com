@@ -41,7 +41,8 @@ freenode.net as `devth`, or you can Tweet [@devth](https://twitter.com/devth).
 
 I currently work remotely for eBay's Seattle office and live in Montana with my
 wife and three kids. I'm an aspiring electronics tinkerer, musician, climber,
-learner, and maker of things. I endorse the oxford comma.
+learner, and maker of things. I endorse the oxford comma, but only when it
+disambiguates.
 
 - [Résumé](Trevor-Hartman-resume.pdf)
 - [Frontend Portfolio](http://cargocollective.com/devth)
