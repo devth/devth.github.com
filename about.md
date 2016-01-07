@@ -23,7 +23,7 @@ repeatable. I build an open source chat bot called
 run internal automation.
 
 I'm obsessed with discovering better ways of expressing solutions to programming
-problems. I loath boilerplate, repetitive code or senseless abstraction.
+problems. I abhor boilerplate, repetitive code or senseless abstraction.
 This has led me down a path of ongoing language discovery, from my early dark
 ages in Perl, JavaScript, Lingo and VB, to C# and ActionScript 3, Ruby and
 Python, Java, Scala with Scalaz, Clojure and ClojureScript, some Datalog, some
