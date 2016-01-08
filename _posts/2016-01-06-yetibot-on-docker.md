@@ -44,8 +44,8 @@ docker logs -f yetibot
 
 > If you are using Docker Machine on Mac or Windows, your Docker daemon has only
 > limited access to your OS X or Windows filesystem. Docker Machine tries to
-> auto-share your /Users (OS X) or C:\Users (Windows) directory. So, you can
-> mount files or directories on OS X using. — [Mount a host directory as a data volume](https://docs.docker.com/engine/userguide/dockervolumes/#mount-a-host-directory-as-a-data-volume)
+> auto-share your /Users (OS X) or C:\Users (Windows) directory.
+> — [Mount a host directory as a data volume](https://docs.docker.com/engine/userguide/dockervolumes/#mount-a-host-directory-as-a-data-volume)
 
 If you're not using Docker Machine feel free to put it wherever you like.
 
