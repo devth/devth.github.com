@@ -13,9 +13,9 @@ image:
 Yetibot is now [on Docker](https://hub.docker.com/r/devth/yetibot/tags/)! This
 is the fastest way to get up and running. To demonstrate, let's run it with
 Docker using the most minimal configuration possible: an in-memory
-(non-durable) Datomic configuration and a single IRC adapter config. I'm
+(non-durable) Datomic configuration and a single IRC adapter config. (I'm
 assuming your local Docker is all [setup and
-configured](https://www.docker.com/docker-toolbox).
+configured](https://www.docker.com/docker-toolbox).)
 
 ```bash
 mkdir -p ~/tmp/config
