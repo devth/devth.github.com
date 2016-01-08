@@ -12,15 +12,15 @@ image:
 
 Yetibot is now [on Docker](https://hub.docker.com/r/devth/yetibot/tags/)! This
 is the fastest way to get up and running. To demonstrate, let's run it with
-Docker using the most minimal configuration possible using an in-memory
+Docker using the most minimal configuration possible: an in-memory
 (non-durable) Datomic configuration and a single IRC adapter config. I'm
 assuming your local Docker is all [setup and
 configured](https://www.docker.com/docker-toolbox).
 
 ```bash
-$ mkdir -p ~/tmp/config
+mkdir -p ~/tmp/config
 
-$ cat << EOF > ~/tmp/config/config.edn
+cat << EOF > ~/tmp/config/config.edn
 {:yetibot
  {:db {:datomic-url "datomic:mem://yetibot"}
   :adapters
@@ -28,15 +28,16 @@ $ cat << EOF > ~/tmp/config/config.edn
     :type :irc,
     :host "chat.freenode.net",
     :port "6665",
-    :username "yetibot-docker"}]}}
+    :username "yetibot-docker"
+    :rooms #{"#yetibot"}}]}}
 EOF
 
-$ docker run --name yetibot \
+docker run --name yetibot \
   -d -p 3000:3000 \
   -v ~/tmp/config:/usr/src/app/config \
   devth/yetibot
 
-$ docker logs -f yetibot
+docker logs -f yetibot
 ```
 
 **N.B.** I chose `~/tmp/config` because:
@@ -48,22 +49,26 @@ $ docker logs -f yetibot
 
 If you're not using Docker Machine feel free to put it wherever you like.
 
-Once it starts up (you'll see some logs containing freenode.net) run
-`/invite yetibot-docker` to some IRC channel on Freenode (you must be an op to
-invite, which you can get by creating your own channel) and try it out!
-
+Hop on Freenode and join the #yetibot channel. Once `yetibot-docker` joins, try
+it out!
 
 ```
 !list yetibot on docker | xargs echo ⚡️⚡️⚡️ %s ⚡️⚡️⚡️
 ```
 
+
+<img src="/images/yetibot-on-docker-irc.png" />
+
 When you're done, clean up with:
 
-```
+```bash
 docker rm -f yetibot
 ```
 
-Check out [yetibot.com](http://yetibot.com) for more info on the cool things you
-can do with Yetibot!
+To get the most out of Yetibot you'll want to configure some of the optional
+services. See the full [config
+sample](https://github.com/devth/yetibot/blob/master/config/config-sample.edn)
+and check out [yetibot.com](http://yetibot.com) for more info on the cool things
+you can do with Yetibot!
 
 <small><sub>where 𝓧 ≈ somewhere between 1 and 3.5 minutes</sub></small>
