@@ -158,6 +158,6 @@ Maker, choose your constraints wisely.
 
 ## Further exploration
 
-- [https://www.youtube.com/watch?v=GqmsQeSzMdw](https://www.youtube.com/watch?v=GqmsQeSzMdw):
+- [Constraints Liberate, Liberties Constrain](https://www.youtube.com/watch?v=GqmsQeSzMdw):
    an excellent talk by the always-brilliant [Rúnar Bjarnason](http://blog.higher-order.com/),
    co-author of [Functional Programming in Scala](https://www.manning.com/books/functional-programming-in-scala)
