@@ -3,7 +3,7 @@ layout: article
 title: Beautiful constraint
 categories: philosophy
 comments: true
-excerpt: "The freedom to do anything you wish is rarely a good thing, whether you're an experienced developer or a 2-year-old child"
+excerpt: "The freedom to do anything you wish is rarely a good thing, whether you're an experienced engineer or a 2-year-old child"
 image:
   feature: constraint_1200_300.jpg
   teaser: constraint_410_228.jpg
@@ -11,7 +11,7 @@ image:
 ---
 
 The freedom to do anything you wish is rarely a good thing, whether you're an
-experienced developer or a 2-year-old child. Our interests and desires are too
+experienced engineer or a 2-year-old child. Our interests and desires are too
 diverse and of varying merit to actually produce anything good without
 constraint. That's not to say freedom is intrinsically bad: sometimes we are
 able to choose the right constraints ourselves; other times they are chosen for
@@ -156,3 +156,8 @@ using them as a rudder to guide you during the creative problem-solving process.
 
 Maker, choose your constraints wisely.
 
+## Further exploration
+
+- [https://www.youtube.com/watch?v=GqmsQeSzMdw](https://www.youtube.com/watch?v=GqmsQeSzMdw):
+   an excellent talk by the always-brilliant [Rúnar Bjarnason](http://blog.higher-order.com/),
+   co-author of [Functional Programming in Scala](https://www.manning.com/books/functional-programming-in-scala)
