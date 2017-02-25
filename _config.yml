@@ -4,10 +4,8 @@ title: devth
 description: there must be a better way
 logo: logo_120.jpg
 teaser: teaser_450_250.jpg
-locale:
+locale: en_US
 url: https://devth.com
-
-
 
 # Jekyll configuration
 
