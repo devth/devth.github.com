@@ -2,7 +2,7 @@ language: ruby
 
 branches:
   only:
-  - stable
+  - source
 
 rvm:
   - 2.2
