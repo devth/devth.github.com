@@ -1,4 +1,9 @@
 language: ruby
+
+branches:
+  only:
+  - stable
+
 rvm:
   - 2.2
 
