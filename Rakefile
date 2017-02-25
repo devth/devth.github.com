@@ -28,8 +28,8 @@ task :publish => [:generate] do
 
     system 'git config user.name "Trevor Hartman"'
     system "git config user.email 'trevorhartman@gmail.com'"
-    token = ENV['GH_TOKEN']
-    system "git remote add origin https://#{GH_TOKEN}@github.com/#{GITHUB_REPONAME}.git"
+    gh_token = ENV['GH_TOKEN']
+    system "git remote add origin https://#{gh_token}@github.com/#{GITHUB_REPONAME}.git"
     message = "Generate updated site at #{Time.now.utc}"
     system "git commit -m #{message.inspect}"
     system "git push origin master --force"
