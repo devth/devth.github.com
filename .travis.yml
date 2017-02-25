@@ -1,0 +1,13 @@
+language: ruby
+rvm:
+  - 2.2
+
+install:
+  - bundle install
+
+script:
+  - bundle exec rake publish
+
+env:
+  global:
+    secure: RLWkA7bkeLyhMvfmI449zmeuTa4TQIzbY4UrGMY4q7s/R5I843UOlmINyEV4ICgAmweOQjjahv7p6ZswFtzCVjTyQF4Y+Wc5qam2dlzwPWfOZNBVwote+30512bU6nEtjCNb6M8kVu93mjlsCohPEXMs4sZxJiAiz7xTPP8mhfk=
