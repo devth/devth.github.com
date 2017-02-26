@@ -1,0 +1,29 @@
+digraph querytree {
+
+  node[arrowType=none shape=box style=filled
+    fontcolor="#d3335c"
+    color="#f7f7f7"
+    fillcolor="#f7f7f7"
+    fontname=helvetica
+  ];
+
+  edge [arrowhead="none"];
+
+  And [label = "And"];
+    IsNotNull [label = "IsNotNull"];
+      NameItem [label = "Item"];
+        NameLiteral [label = "name"];
+
+  LessThan [label = "LessThan"];
+    BirthYearItem [label = "Item"];
+      BirthYearItemLiteral [label = "birthYear"];
+    Literal [label = "Literal"];
+      Literal1910 [label = "1910"];
+
+  And -> {IsNotNull, LessThan}
+    IsNotNull -> {NameItem}
+      NameItem -> {NameLiteral}
+    LessThan -> {BirthYearItem, Literal}
+      BirthYearItem -> {BirthYearItemLiteral}
+      Literal -> {Literal1910}
+}

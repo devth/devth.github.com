@@ -1,0 +1,40 @@
+compile
+~ compile
+reload
+compile
+~ compile
+run
+compile run
+~ ;compile;run
+reload
+~ ;compile;test
+sbt
+~ ;compile;test
+rebuild
+reload
+~ ;compile;
+~ ;compile
+update
+repl
+test
+compile
+test
+repl
+console
+test-compile
+compile
+~ test-only CompiledQueryGenTest
+compile
+console
+reload
+scala
+console
+~ test-only QuasiGenTest
+reload
+~ test-only QuasiGenTest
+repl
+console
+~ test-only QuasiGenTest
+~ test-only StaticQueryTest
+console
+~ test-only InterpretedQueryTest

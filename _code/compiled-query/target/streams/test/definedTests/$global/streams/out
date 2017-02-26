@@ -1,0 +1,2 @@
+[0m[[0mdebug[0m] [0mSubclass fingerprints: List((org.scalatest.Suite,false,org.scalatest.tools.Framework$$anon$1@5454f503), (org.scalameter.AbstractPerformanceTest,false,sbt.SubclassFingerprintWrapper@7ce3ec30), (org.scalameter.AbstractPerformanceTest,true,sbt.SubclassFingerprintWrapper@4829020))[0m
+[0m[[0mdebug[0m] [0mAnnotation fingerprints: List((org.scalatest.WrapWith,false,org.scalatest.tools.Framework$$anon$2@6e883803))[0m

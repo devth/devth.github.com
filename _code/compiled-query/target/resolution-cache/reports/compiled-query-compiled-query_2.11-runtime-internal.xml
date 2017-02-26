@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ivy-report.xsl"?>
+<ivy-report version="1.0">
+	<info
+		organisation="compiled-query"
+		module="compiled-query_2.11"
+		revision="1.0"
+		conf="runtime-internal"
+		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool"
+		date="20151202085206"/>
+	<dependencies>
+		<module organisation="org.scalaz.stream" name="scalaz-stream_2.11">
+			<revision name="0.8" status="release" pubdate="20151029172353" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/scalaz/scalaz-stream" extra-info.apiURL="http://docs.typelevel.org/api/scalaz-stream/stable/0.8/doc/" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="22">
+				<license name="MIT" url="http://opensource.org/licenses/MIT"/>
+				<metadata-artifact status="no" details="" size="3555" time="0" location="/Users/thartman/.ivy2/cache/org.scalaz.stream/scalaz-stream_2.11/ivy-0.8.xml" searched="false" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/scalaz/stream/scalaz-stream_2.11/0.8/scalaz-stream_2.11-0.8.pom"/>
+				<caller organisation="compiled-query" name="compiled-query_2.11" conf="compile, runtime-internal, runtime, optional" rev="0.8" rev-constraint-default="0.8" rev-constraint-dynamic="0.8" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="scalaz-stream_2.11" type="bundle" ext="jar" status="no" details="" size="1534975" time="0" location="/Users/thartman/.ivy2/cache/org.scalaz.stream/scalaz-stream_2.11/bundles/scalaz-stream_2.11-0.8.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/org/scalaz/stream/scalaz-stream_2.11/0.8/scalaz-stream_2.11-0.8.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scodec" name="scodec-bits_2.11">
+			<revision name="1.0.9" status="release" pubdate="20151029172356" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://github.com/scodec/scodec-bits" extra-info.apiURL="http://scodec.org/api/scodec-bits/1.0.9/" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="26">
+				<license name="Three-clause BSD-style" url="https://github.com/scodec/scodec-bits/blob/master/LICENSE"/>
+				<metadata-artifact status="no" details="" size="2993" time="0" location="/Users/thartman/.ivy2/cache/org.scodec/scodec-bits_2.11/ivy-1.0.9.xml" searched="false" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/scodec/scodec-bits_2.11/1.0.9/scodec-bits_2.11-1.0.9.pom"/>
+				<caller organisation="org.scalaz.stream" name="scalaz-stream_2.11" conf="default, compile, runtime, master" rev="1.0.9" rev-constraint-default="1.0.9" rev-constraint-dynamic="1.0.9" callerrev="0.8"/>
+				<artifacts>
+					<artifact name="scodec-bits_2.11" type="bundle" ext="jar" status="no" details="" size="317992" time="0" location="/Users/thartman/.ivy2/cache/org.scodec/scodec-bits_2.11/bundles/scodec-bits_2.11-1.0.9.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/org/scodec/scodec-bits_2.11/1.0.9/scodec-bits_2.11-1.0.9.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scalaz" name="scalaz-concurrent_2.11">
+			<revision name="7.1.4" status="release" pubdate="20150925005833" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://scalaz.org" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="24">
+				<license name="BSD-style" url="http://opensource.org/licenses/BSD-3-Clause"/>
+				<metadata-artifact status="no" details="" size="2949" time="0" location="/Users/thartman/.ivy2/cache/org.scalaz/scalaz-concurrent_2.11/ivy-7.1.4.xml" searched="false" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/scalaz/scalaz-concurrent_2.11/7.1.4/scalaz-concurrent_2.11-7.1.4.pom"/>
+				<caller organisation="org.scalaz.stream" name="scalaz-stream_2.11" conf="default, compile, runtime, master" rev="7.1.4" rev-constraint-default="7.1.4" rev-constraint-dynamic="7.1.4" callerrev="0.8"/>
+				<artifacts>
+					<artifact name="scalaz-concurrent_2.11" type="bundle" ext="jar" status="no" details="" size="396861" time="0" location="/Users/thartman/.ivy2/cache/org.scalaz/scalaz-concurrent_2.11/bundles/scalaz-concurrent_2.11-7.1.4.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/org/scalaz/scalaz-concurrent_2.11/7.1.4/scalaz-concurrent_2.11-7.1.4.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scalaz" name="scalaz-effect_2.11">
+			<revision name="7.1.4" status="release" pubdate="20150925005824" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://scalaz.org" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="25">
+				<license name="BSD-style" url="http://opensource.org/licenses/BSD-3-Clause"/>
+				<metadata-artifact status="no" details="" size="2790" time="0" location="/Users/thartman/.ivy2/cache/org.scalaz/scalaz-effect_2.11/ivy-7.1.4.xml" searched="false" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/scalaz/scalaz-effect_2.11/7.1.4/scalaz-effect_2.11-7.1.4.pom"/>
+				<caller organisation="org.scalaz" name="scalaz-concurrent_2.11" conf="compile, runtime" rev="7.1.4" rev-constraint-default="7.1.4" rev-constraint-dynamic="7.1.4" callerrev="7.1.4"/>
+				<artifacts>
+					<artifact name="scalaz-effect_2.11" type="bundle" ext="jar" status="no" details="" size="469163" time="0" location="/Users/thartman/.ivy2/cache/org.scalaz/scalaz-effect_2.11/bundles/scalaz-effect_2.11-7.1.4.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/org/scalaz/scalaz-effect_2.11/7.1.4/scalaz-effect_2.11-7.1.4.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scalaz" name="scalaz-core_2.11">
+			<revision name="7.1.4" status="release" pubdate="20151029172354" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://scalaz.org" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master, default, default(compile)" position="23">
+				<license name="BSD-style" url="http://opensource.org/licenses/BSD-3-Clause"/>
+				<metadata-artifact status="no" details="" size="2964" time="0" location="/Users/thartman/.ivy2/cache/org.scalaz/scalaz-core_2.11/ivy-7.1.4.xml" searched="false" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/scalaz/scalaz-core_2.11/7.1.4/scalaz-core_2.11-7.1.4.pom"/>
+				<caller organisation="org.scalaz.stream" name="scalaz-stream_2.11" conf="default, compile, runtime, master" rev="7.1.4" rev-constraint-default="7.1.4" rev-constraint-dynamic="7.1.4" callerrev="0.8"/>
+				<caller organisation="org.scalaz" name="scalaz-effect_2.11" conf="compile, runtime" rev="7.1.4" rev-constraint-default="7.1.4" rev-constraint-dynamic="7.1.4" callerrev="7.1.4"/>
+				<caller organisation="org.scalaz" name="scalaz-concurrent_2.11" conf="compile, runtime" rev="7.1.4" rev-constraint-default="7.1.4" rev-constraint-dynamic="7.1.4" callerrev="7.1.4"/>
+				<caller organisation="compiled-query" name="compiled-query_2.11" conf="compile, runtime-internal, runtime, optional" rev="7.1.3" rev-constraint-default="7.1.3" rev-constraint-dynamic="7.1.3" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="scalaz-core_2.11" type="bundle" ext="jar" status="no" details="" size="10739329" time="0" location="/Users/thartman/.ivy2/cache/org.scalaz/scalaz-core_2.11/bundles/scalaz-core_2.11-7.1.4.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/org/scalaz/scalaz-core_2.11/7.1.4/scalaz-core_2.11-7.1.4.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+			<revision name="7.1.3" status="release" pubdate="20150619095900" resolver="sbt-chain" artresolver="sbt-chain" evicted="latest-revision" evicted-reason="" homepage="http://scalaz.org" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="-1">
+				<license name="BSD-style" url="http://opensource.org/licenses/BSD-3-Clause"/>
+				<metadata-artifact status="no" details="" size="2964" time="0" location="/Users/thartman/.ivy2/cache/org.scalaz/scalaz-core_2.11/ivy-7.1.3.xml" searched="false" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/scalaz/scalaz-core_2.11/7.1.3/scalaz-core_2.11-7.1.3.pom"/>
+				<evicted-by rev="7.1.4"/>
+				<caller organisation="compiled-query" name="compiled-query_2.11" conf="compile, runtime-internal, runtime, optional" rev="7.1.3" rev-constraint-default="7.1.3" rev-constraint-dynamic="7.1.3" callerrev="1.0"/>
+				<artifacts>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="asm" name="asm-all">
+			<revision name="3.3.1" status="release" pubdate="20110112070157" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="21">
+				<metadata-artifact status="no" details="" size="2948" time="0" location="/Users/thartman/.ivy2/cache/asm/asm-all/ivy-3.3.1.xml" searched="false" origin-is-local="false" origin-location="https://jcenter.bintray.com/asm/asm-all/3.3.1/asm-all-3.3.1.pom"/>
+				<caller organisation="compiled-query" name="compiled-query_2.11" conf="compile, runtime-internal, runtime, optional" rev="3.3.1" rev-constraint-default="3.3.1" rev-constraint-dynamic="3.3.1" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="asm-all" type="jar" ext="jar" status="no" details="" size="207007" time="0" location="/Users/thartman/.ivy2/cache/asm/asm-all/jars/asm-all-3.3.1.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/asm/asm-all/3.3.1/asm-all-3.3.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.storm-enroute" name="scalameter_2.11">
+			<revision name="0.7" status="release" pubdate="20150827051221" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://scalameter.github.io/" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="5">
+				<license name="BSD-style" url="http://opensource.org/licenses/BSD-3-Clause"/>
+				<metadata-artifact status="no" details="" size="4031" time="0" location="/Users/thartman/.ivy2/cache/com.storm-enroute/scalameter_2.11/ivy-0.7.xml" searched="false" origin-is-local="false" origin-location="https://jcenter.bintray.com/com/storm-enroute/scalameter_2.11/0.7/scalameter_2.11-0.7.pom"/>
+				<caller organisation="compiled-query" name="compiled-query_2.11" conf="compile, runtime-internal, runtime, optional" rev="0.7" rev-constraint-default="0.7" rev-constraint-dynamic="0.7" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="scalameter_2.11" type="jar" ext="jar" status="no" details="" size="1178826" time="0" location="/Users/thartman/.ivy2/cache/com.storm-enroute/scalameter_2.11/jars/scalameter_2.11-0.7.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/com/storm-enroute/scalameter_2.11/0.7/scalameter_2.11-0.7.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.fasterxml.jackson.module" name="jackson-module-scala_2.11">
+			<revision name="2.5.2" status="release" pubdate="20150412160500" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://wiki.fasterxml.com/JacksonModuleScala" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="16">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="4198" time="0" location="/Users/thartman/.ivy2/cache/com.fasterxml.jackson.module/jackson-module-scala_2.11/ivy-2.5.2.xml" searched="false" origin-is-local="false" origin-location="https://jcenter.bintray.com/com/fasterxml/jackson/module/jackson-module-scala_2.11/2.5.2/jackson-module-scala_2.11-2.5.2.pom"/>
+				<caller organisation="com.storm-enroute" name="scalameter_2.11" conf="default, compile, runtime, master" rev="2.5.2" rev-constraint-default="2.5.2" rev-constraint-dynamic="2.5.2" callerrev="0.7"/>
+				<artifacts>
+					<artifact name="jackson-module-scala_2.11" type="bundle" ext="jar" status="no" details="" size="501143" time="0" location="/Users/thartman/.ivy2/cache/com.fasterxml.jackson.module/jackson-module-scala_2.11/bundles/jackson-module-scala_2.11-2.5.2.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/com/fasterxml/jackson/module/jackson-module-scala_2.11/2.5.2/jackson-module-scala_2.11-2.5.2.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.thoughtworks.paranamer" name="paranamer">
+			<revision name="2.6" status="release" pubdate="20131008205654" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="20">
+				<metadata-artifact status="no" details="" size="4124" time="0" location="/Users/thartman/.ivy2/cache/com.thoughtworks.paranamer/paranamer/ivy-2.6.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/com/thoughtworks/paranamer/paranamer/2.6/paranamer-2.6.pom"/>
+				<caller organisation="com.fasterxml.jackson.module" name="jackson-module-scala_2.11" conf="compile, runtime" rev="2.6" rev-constraint-default="2.6" rev-constraint-dynamic="2.6" callerrev="2.5.2"/>
+				<artifacts>
+					<artifact name="paranamer" type="jar" ext="jar" status="no" details="" size="32806" time="0" location="/Users/thartman/.ivy2/cache/com.thoughtworks.paranamer/paranamer/jars/paranamer-2.6.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/com/thoughtworks/paranamer/paranamer/2.6/paranamer-2.6.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.fasterxml.jackson.core" name="jackson-databind">
+			<revision name="2.5.2" status="release" pubdate="20150329175300" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://github.com/FasterXML/jackson" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="19">
+				<metadata-artifact status="no" details="" size="8592" time="0" location="/Users/thartman/.ivy2/cache/com.fasterxml.jackson.core/jackson-databind/ivy-2.5.2.xml" searched="false" origin-is-local="false" origin-location="https://jcenter.bintray.com/com/fasterxml/jackson/core/jackson-databind/2.5.2/jackson-databind-2.5.2.pom"/>
+				<caller organisation="com.fasterxml.jackson.module" name="jackson-module-scala_2.11" conf="compile, runtime" rev="2.5.2" rev-constraint-default="2.5.2" rev-constraint-dynamic="2.5.2" callerrev="2.5.2"/>
+				<artifacts>
+					<artifact name="jackson-databind" type="bundle" ext="jar" status="no" details="" size="1142036" time="0" location="/Users/thartman/.ivy2/cache/com.fasterxml.jackson.core/jackson-databind/bundles/jackson-databind-2.5.2.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/com/fasterxml/jackson/core/jackson-databind/2.5.2/jackson-databind-2.5.2.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.fasterxml.jackson.core" name="jackson-annotations">
+			<revision name="2.5.2" status="release" pubdate="20150329174600" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://github.com/FasterXML/jackson" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="18">
+				<metadata-artifact status="no" details="" size="6301" time="0" location="/Users/thartman/.ivy2/cache/com.fasterxml.jackson.core/jackson-annotations/ivy-2.5.2.xml" searched="false" origin-is-local="false" origin-location="https://jcenter.bintray.com/com/fasterxml/jackson/core/jackson-annotations/2.5.2/jackson-annotations-2.5.2.pom"/>
+				<caller organisation="com.fasterxml.jackson.module" name="jackson-module-scala_2.11" conf="compile, runtime" rev="2.5.2" rev-constraint-default="2.5.2" rev-constraint-dynamic="2.5.2" callerrev="2.5.2"/>
+				<caller organisation="com.fasterxml.jackson.core" name="jackson-databind" conf="compile, runtime" rev="2.5.0" rev-constraint-default="2.5.0" rev-constraint-dynamic="2.5.0" callerrev="2.5.2"/>
+				<artifacts>
+					<artifact name="jackson-annotations" type="bundle" ext="jar" status="no" details="" size="39819" time="0" location="/Users/thartman/.ivy2/cache/com.fasterxml.jackson.core/jackson-annotations/bundles/jackson-annotations-2.5.2.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/com/fasterxml/jackson/core/jackson-annotations/2.5.2/jackson-annotations-2.5.2.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+			<revision name="2.5.0" evicted="latest-revision" evicted-reason="" downloaded="false" searched="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="-1">
+				<evicted-by rev="2.5.2"/>
+				<caller organisation="com.fasterxml.jackson.core" name="jackson-databind" conf="compile, runtime" rev="2.5.0" rev-constraint-default="2.5.0" rev-constraint-dynamic="2.5.0" callerrev="2.5.2"/>
+				<artifacts>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.fasterxml.jackson.core" name="jackson-core">
+			<revision name="2.5.2" status="release" pubdate="20150329175000" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/FasterXML/jackson" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="17">
+				<metadata-artifact status="no" details="" size="6749" time="0" location="/Users/thartman/.ivy2/cache/com.fasterxml.jackson.core/jackson-core/ivy-2.5.2.xml" searched="false" origin-is-local="false" origin-location="https://jcenter.bintray.com/com/fasterxml/jackson/core/jackson-core/2.5.2/jackson-core-2.5.2.pom"/>
+				<caller organisation="com.fasterxml.jackson.module" name="jackson-module-scala_2.11" conf="compile, runtime" rev="2.5.2" rev-constraint-default="2.5.2" rev-constraint-dynamic="2.5.2" callerrev="2.5.2"/>
+				<caller organisation="com.fasterxml.jackson.core" name="jackson-databind" conf="compile, runtime" rev="2.5.1" rev-constraint-default="2.5.1" rev-constraint-dynamic="2.5.1" callerrev="2.5.2"/>
+				<artifacts>
+					<artifact name="jackson-core" type="bundle" ext="jar" status="no" details="" size="229993" time="0" location="/Users/thartman/.ivy2/cache/com.fasterxml.jackson.core/jackson-core/bundles/jackson-core-2.5.2.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/com/fasterxml/jackson/core/jackson-core/2.5.2/jackson-core-2.5.2.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+			<revision name="2.5.1" evicted="latest-revision" evicted-reason="" downloaded="false" searched="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="-1">
+				<evicted-by rev="2.5.2"/>
+				<caller organisation="com.fasterxml.jackson.core" name="jackson-databind" conf="compile, runtime" rev="2.5.1" rev-constraint-default="2.5.1" rev-constraint-dynamic="2.5.1" callerrev="2.5.2"/>
+				<artifacts>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-tools.testing" name="test-interface">
+			<revision name="0.5" status="release" pubdate="20100327173658" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="15">
+				<metadata-artifact status="no" details="" size="2336" time="0" location="/Users/thartman/.ivy2/cache/org.scala-tools.testing/test-interface/ivy-0.5.xml" searched="false" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/scala-tools/testing/test-interface/0.5/test-interface-0.5.pom"/>
+				<caller organisation="com.storm-enroute" name="scalameter_2.11" conf="default, compile, runtime, master" rev="0.5" rev-constraint-default="0.5" rev-constraint-dynamic="0.5" callerrev="0.7"/>
+				<artifacts>
+					<artifact name="test-interface" type="jar" ext="jar" status="no" details="" size="4407" time="0" location="/Users/thartman/.ivy2/cache/org.scala-tools.testing/test-interface/jars/test-interface-0.5.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/org/scala-tools/testing/test-interface/0.5/test-interface-0.5.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.github.wookietreiber" name="scala-chart_2.11">
+			<revision name="0.4.2" status="release" pubdate="20140418063900" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/wookietreiber/scala-chart" extra-info.apiURL="http://wookietreiber.github.io/scala-chart/latest/api/" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="10">
+				<license name="GNU Lesser General Public Licence" url="http://www.gnu.org/licenses/lgpl.txt"/>
+				<metadata-artifact status="no" details="" size="3422" time="0" location="/Users/thartman/.ivy2/cache/com.github.wookietreiber/scala-chart_2.11/ivy-0.4.2.xml" searched="false" origin-is-local="false" origin-location="https://jcenter.bintray.com/com/github/wookietreiber/scala-chart_2.11/0.4.2/scala-chart_2.11-0.4.2.pom"/>
+				<caller organisation="com.storm-enroute" name="scalameter_2.11" conf="default, compile, runtime, master" rev="0.4.2" rev-constraint-default="0.4.2" rev-constraint-dynamic="0.4.2" callerrev="0.7"/>
+				<artifacts>
+					<artifact name="scala-chart_2.11" type="jar" ext="jar" status="no" details="" size="406967" time="0" location="/Users/thartman/.ivy2/cache/com.github.wookietreiber/scala-chart_2.11/jars/scala-chart_2.11-0.4.2.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/com/github/wookietreiber/scala-chart_2.11/0.4.2/scala-chart_2.11-0.4.2.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-lang.modules" name="scala-swing_2.11">
+			<revision name="1.0.1" status="release" pubdate="20150912110805" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.scala-lang.org/" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="14">
+				<license name="BSD 3-clause" url="http://opensource.org/licenses/BSD-3-Clause"/>
+				<metadata-artifact status="no" details="" size="2663" time="0" location="/Users/thartman/.ivy2/cache/org.scala-lang.modules/scala-swing_2.11/ivy-1.0.1.xml" searched="false" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/scala-lang/modules/scala-swing_2.11/1.0.1/scala-swing_2.11-1.0.1.pom"/>
+				<caller organisation="com.github.wookietreiber" name="scala-chart_2.11" conf="compile, runtime" rev="1.0.1" rev-constraint-default="1.0.1" rev-constraint-dynamic="1.0.1" callerrev="0.4.2"/>
+				<artifacts>
+					<artifact name="scala-swing_2.11" type="bundle" ext="jar" status="no" details="" size="726500" time="0" location="/Users/thartman/.ivy2/cache/org.scala-lang.modules/scala-swing_2.11/bundles/scala-swing_2.11-1.0.1.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/org/scala-lang/modules/scala-swing_2.11/1.0.1/scala-swing_2.11-1.0.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.jfree" name="jfreechart">
+			<revision name="1.0.17" status="release" pubdate="20140211072700" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.jfree.org/jfreechart/" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="11">
+				<license name="GNU Lesser General Public Licence" url="http://www.gnu.org/licenses/lgpl.txt"/>
+				<metadata-artifact status="no" details="" size="4254" time="0" location="/Users/thartman/.ivy2/cache/org.jfree/jfreechart/ivy-1.0.17.xml" searched="false" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/jfree/jfreechart/1.0.17/jfreechart-1.0.17.pom"/>
+				<caller organisation="com.github.wookietreiber" name="scala-chart_2.11" conf="compile, runtime" rev="1.0.17" rev-constraint-default="1.0.17" rev-constraint-dynamic="1.0.17" callerrev="0.4.2"/>
+				<artifacts>
+					<artifact name="jfreechart" type="jar" ext="jar" status="no" details="" size="1544449" time="0" location="/Users/thartman/.ivy2/cache/org.jfree/jfreechart/jars/jfreechart-1.0.17.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/org/jfree/jfreechart/1.0.17/jfreechart-1.0.17.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="xml-apis" name="xml-apis">
+			<revision name="1.3.04" status="release" pubdate="20150912110804" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://xml.apache.org/commons/components/external/" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="13">
+				<metadata-artifact status="no" details="" size="2945" time="0" location="/Users/thartman/.ivy2/cache/xml-apis/xml-apis/ivy-1.3.04.xml" searched="false" origin-is-local="false" origin-location="https://jcenter.bintray.com/xml-apis/xml-apis/1.3.04/xml-apis-1.3.04.pom"/>
+				<caller organisation="org.jfree" name="jfreechart" conf="compile, runtime" rev="1.3.04" rev-constraint-default="1.3.04" rev-constraint-dynamic="1.3.04" callerrev="1.0.17"/>
+				<artifacts>
+					<artifact name="xml-apis" type="jar" ext="jar" status="no" details="" size="194354" time="0" location="/Users/thartman/.ivy2/cache/xml-apis/xml-apis/jars/xml-apis-1.3.04.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/xml-apis/xml-apis/1.3.04/xml-apis-1.3.04.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.jfree" name="jcommon">
+			<revision name="1.0.21" status="release" pubdate="20140212003400" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.jfree.org/jcommon/" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="12">
+				<license name="GNU Lesser General Public Licence" url="http://www.gnu.org/licenses/lgpl.txt"/>
+				<metadata-artifact status="no" details="" size="3609" time="0" location="/Users/thartman/.ivy2/cache/org.jfree/jcommon/ivy-1.0.21.xml" searched="false" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/jfree/jcommon/1.0.21/jcommon-1.0.21.pom"/>
+				<caller organisation="org.jfree" name="jfreechart" conf="compile, runtime" rev="1.0.21" rev-constraint-default="1.0.21" rev-constraint-dynamic="1.0.21" callerrev="1.0.17"/>
+				<artifacts>
+					<artifact name="jcommon" type="jar" ext="jar" status="no" details="" size="323663" time="0" location="/Users/thartman/.ivy2/cache/org.jfree/jcommon/jars/jcommon-1.0.21.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/org/jfree/jcommon/1.0.21/jcommon-1.0.21.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.storm-enroute" name="scalameter-core_2.11">
+			<revision name="0.7" status="release" pubdate="20150827051220" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://scalameter.github.io/" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="6">
+				<license name="BSD-style" url="http://opensource.org/licenses/BSD-3-Clause"/>
+				<metadata-artifact status="no" details="" size="3814" time="0" location="/Users/thartman/.ivy2/cache/com.storm-enroute/scalameter-core_2.11/ivy-0.7.xml" searched="false" origin-is-local="false" origin-location="https://jcenter.bintray.com/com/storm-enroute/scalameter-core_2.11/0.7/scalameter-core_2.11-0.7.pom"/>
+				<caller organisation="com.storm-enroute" name="scalameter_2.11" conf="default, compile, runtime, master" rev="0.7" rev-constraint-default="0.7" rev-constraint-dynamic="0.7" callerrev="0.7"/>
+				<artifacts>
+					<artifact name="scalameter-core_2.11" type="jar" ext="jar" status="no" details="" size="395265" time="0" location="/Users/thartman/.ivy2/cache/com.storm-enroute/scalameter-core_2.11/jars/scalameter-core_2.11-0.7.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/com/storm-enroute/scalameter-core_2.11/0.7/scalameter-core_2.11-0.7.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.ow2.asm" name="asm">
+			<revision name="5.0.4" status="release" pubdate="20150912110800" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="9">
+				<metadata-artifact status="no" details="" size="3884" time="0" location="/Users/thartman/.ivy2/cache/org.ow2.asm/asm/ivy-5.0.4.xml" searched="false" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/ow2/asm/asm/5.0.4/asm-5.0.4.pom"/>
+				<caller organisation="com.storm-enroute" name="scalameter-core_2.11" conf="compile, runtime" rev="5.0.4" rev-constraint-default="5.0.4" rev-constraint-dynamic="5.0.4" callerrev="0.7"/>
+				<artifacts>
+					<artifact name="asm" type="jar" ext="jar" status="no" details="" size="53297" time="0" location="/Users/thartman/.ivy2/cache/org.ow2.asm/asm/jars/asm-5.0.4.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/org/ow2/asm/asm/5.0.4/asm-5.0.4.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.apache.commons" name="commons-lang3">
+			<revision name="3.4" status="release" pubdate="20150912110757" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://commons.apache.org/proper/commons-lang/" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="8">
+				<metadata-artifact status="no" details="" size="11571" time="0" location="/Users/thartman/.ivy2/cache/org.apache.commons/commons-lang3/ivy-3.4.xml" searched="false" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/apache/commons/commons-lang3/3.4/commons-lang3-3.4.pom"/>
+				<caller organisation="com.storm-enroute" name="scalameter-core_2.11" conf="compile, runtime" rev="3.4" rev-constraint-default="3.4" rev-constraint-dynamic="3.4" callerrev="0.7"/>
+				<artifacts>
+					<artifact name="commons-lang3" type="jar" ext="jar" status="no" details="" size="434678" time="0" location="/Users/thartman/.ivy2/cache/org.apache.commons/commons-lang3/jars/commons-lang3-3.4.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/org/apache/commons/commons-lang3/3.4/commons-lang3-3.4.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.apache.commons" name="commons-math3">
+			<revision name="3.2" status="release" pubdate="20130402133128" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://commons.apache.org/proper/commons-math/" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="7">
+				<metadata-artifact status="no" details="" size="9561" time="0" location="/Users/thartman/.ivy2/cache/org.apache.commons/commons-math3/ivy-3.2.xml" searched="false" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/apache/commons/commons-math3/3.2/commons-math3-3.2.pom"/>
+				<caller organisation="com.storm-enroute" name="scalameter_2.11" conf="default, compile, runtime, master" rev="3.2" rev-constraint-default="3.2" rev-constraint-dynamic="3.2" callerrev="0.7"/>
+				<caller organisation="com.storm-enroute" name="scalameter-core_2.11" conf="compile, runtime" rev="3.2" rev-constraint-default="3.2" rev-constraint-dynamic="3.2" callerrev="0.7"/>
+				<artifacts>
+					<artifact name="commons-math3" type="jar" ext="jar" status="no" details="" size="1692782" time="0" location="/Users/thartman/.ivy2/cache/org.apache.commons/commons-math3/jars/commons-math3-3.2.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/org/apache/commons/commons-math3/3.2/commons-math3-3.2.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-lang" name="scala-compiler">
+			<revision name="2.11.7" status="release" pubdate="20150622141800" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.scala-lang.org/" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="0">
+				<license name="BSD 3-Clause" url="http://www.scala-lang.org/license.html"/>
+				<metadata-artifact status="no" details="" size="3259" time="0" location="/Users/thartman/.ivy2/cache/org.scala-lang/scala-compiler/ivy-2.11.7.xml" searched="false" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/scala-lang/scala-compiler/2.11.7/scala-compiler-2.11.7.pom"/>
+				<caller organisation="compiled-query" name="compiled-query_2.11" conf="compile, runtime-internal, runtime, optional" rev="2.11.7" rev-constraint-default="2.11.7" rev-constraint-dynamic="2.11.7" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="scala-compiler" type="jar" ext="jar" status="no" details="" size="15244851" time="0" location="/Users/thartman/.ivy2/cache/org.scala-lang/scala-compiler/jars/scala-compiler-2.11.7.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/org/scala-lang/scala-compiler/2.11.7/scala-compiler-2.11.7.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-lang.modules" name="scala-parser-combinators_2.11">
+			<revision name="1.0.4" status="release" pubdate="20150430080700" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.scala-lang.org/" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="4">
+				<license name="BSD 3-clause" url="http://opensource.org/licenses/BSD-3-Clause"/>
+				<metadata-artifact status="no" details="" size="2929" time="0" location="/Users/thartman/.ivy2/cache/org.scala-lang.modules/scala-parser-combinators_2.11/ivy-1.0.4.xml" searched="false" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/scala-lang/modules/scala-parser-combinators_2.11/1.0.4/scala-parser-combinators_2.11-1.0.4.pom"/>
+				<caller organisation="org.scalaz" name="scalaz-core_2.11" conf="compile, runtime" rev="1.0.4" rev-constraint-default="1.0.4" rev-constraint-dynamic="1.0.4" callerrev="7.1.4"/>
+				<caller organisation="com.storm-enroute" name="scalameter_2.11" conf="default, compile, runtime, master" rev="1.0.1" rev-constraint-default="1.0.1" rev-constraint-dynamic="1.0.1" callerrev="0.7"/>
+				<caller organisation="com.storm-enroute" name="scalameter-core_2.11" conf="compile, runtime" rev="1.0.1" rev-constraint-default="1.0.1" rev-constraint-dynamic="1.0.1" callerrev="0.7"/>
+				<caller organisation="org.scalaz" name="scalaz-core_2.11" conf="default, compile, runtime, master" rev="1.0.4" rev-constraint-default="1.0.4" rev-constraint-dynamic="1.0.4" callerrev="7.1.3"/>
+				<caller organisation="org.scala-lang" name="scala-compiler" conf="default, compile, runtime, master" rev="1.0.4" rev-constraint-default="1.0.4" rev-constraint-dynamic="1.0.4" callerrev="2.11.7"/>
+				<artifacts>
+					<artifact name="scala-parser-combinators_2.11" type="bundle" ext="jar" status="no" details="" size="423753" time="0" location="/Users/thartman/.ivy2/cache/org.scala-lang.modules/scala-parser-combinators_2.11/bundles/scala-parser-combinators_2.11-1.0.4.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/org/scala-lang/modules/scala-parser-combinators_2.11/1.0.4/scala-parser-combinators_2.11-1.0.4.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+			<revision name="1.0.1" evicted="latest-revision" evicted-reason="" downloaded="false" searched="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="-1">
+				<evicted-by rev="1.0.4"/>
+				<caller organisation="com.storm-enroute" name="scalameter_2.11" conf="default, compile, runtime, master" rev="1.0.1" rev-constraint-default="1.0.1" rev-constraint-dynamic="1.0.1" callerrev="0.7"/>
+				<caller organisation="com.storm-enroute" name="scalameter-core_2.11" conf="compile, runtime" rev="1.0.1" rev-constraint-default="1.0.1" rev-constraint-dynamic="1.0.1" callerrev="0.7"/>
+				<artifacts>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-lang.modules" name="scala-xml_2.11">
+			<revision name="1.0.4" status="release" pubdate="20150430075300" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.scala-lang.org/" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="3">
+				<license name="BSD 3-clause" url="http://opensource.org/licenses/BSD-3-Clause"/>
+				<metadata-artifact status="no" details="" size="3137" time="0" location="/Users/thartman/.ivy2/cache/org.scala-lang.modules/scala-xml_2.11/ivy-1.0.4.xml" searched="false" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/scala-lang/modules/scala-xml_2.11/1.0.4/scala-xml_2.11-1.0.4.pom"/>
+				<caller organisation="org.scalaz" name="scalaz-core_2.11" conf="compile, runtime" rev="1.0.4" rev-constraint-default="1.0.4" rev-constraint-dynamic="1.0.4" callerrev="7.1.4"/>
+				<caller organisation="com.storm-enroute" name="scalameter_2.11" conf="default, compile, runtime, master" rev="1.0.1" rev-constraint-default="1.0.1" rev-constraint-dynamic="1.0.1" callerrev="0.7"/>
+				<caller organisation="com.storm-enroute" name="scalameter-core_2.11" conf="compile, runtime" rev="1.0.1" rev-constraint-default="1.0.1" rev-constraint-dynamic="1.0.1" callerrev="0.7"/>
+				<caller organisation="org.scalaz" name="scalaz-core_2.11" conf="default, compile, runtime, master" rev="1.0.4" rev-constraint-default="1.0.4" rev-constraint-dynamic="1.0.4" callerrev="7.1.3"/>
+				<caller organisation="org.scala-lang" name="scala-compiler" conf="default, compile, runtime, master" rev="1.0.4" rev-constraint-default="1.0.4" rev-constraint-dynamic="1.0.4" callerrev="2.11.7"/>
+				<artifacts>
+					<artifact name="scala-xml_2.11" type="bundle" ext="jar" status="no" details="" size="647891" time="0" location="/Users/thartman/.ivy2/cache/org.scala-lang.modules/scala-xml_2.11/bundles/scala-xml_2.11-1.0.4.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/org/scala-lang/modules/scala-xml_2.11/1.0.4/scala-xml_2.11-1.0.4.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+			<revision name="1.0.1" evicted="latest-revision" evicted-reason="" downloaded="false" searched="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="-1">
+				<evicted-by rev="1.0.4"/>
+				<caller organisation="com.storm-enroute" name="scalameter_2.11" conf="default, compile, runtime, master" rev="1.0.1" rev-constraint-default="1.0.1" rev-constraint-dynamic="1.0.1" callerrev="0.7"/>
+				<caller organisation="com.storm-enroute" name="scalameter-core_2.11" conf="compile, runtime" rev="1.0.1" rev-constraint-default="1.0.1" rev-constraint-dynamic="1.0.1" callerrev="0.7"/>
+				<artifacts>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-lang" name="scala-reflect">
+			<revision name="2.11.7" status="release" pubdate="20150622141700" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.scala-lang.org/" extra-info.apiURL="http://www.scala-lang.org/api/2.11.7/" downloaded="false" searched="false" default="false" conf="default, compile, runtime(*), master(compile), runtime, default(compile), compile(*), master" position="2">
+				<license name="BSD 3-Clause" url="http://www.scala-lang.org/license.html"/>
+				<metadata-artifact status="no" details="" size="2825" time="0" location="/Users/thartman/.ivy2/cache/org.scala-lang/scala-reflect/ivy-2.11.7.xml" searched="false" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/scala-lang/scala-reflect/2.11.7/scala-reflect-2.11.7.pom"/>
+				<caller organisation="com.storm-enroute" name="scalameter_2.11" conf="default, compile, runtime, master" rev="2.11.0" rev-constraint-default="2.11.0" rev-constraint-dynamic="2.11.0" callerrev="0.7"/>
+				<caller organisation="com.fasterxml.jackson.module" name="jackson-module-scala_2.11" conf="compile, runtime" rev="2.11.4" rev-constraint-default="2.11.4" rev-constraint-dynamic="2.11.4" callerrev="2.5.2"/>
+				<caller organisation="com.storm-enroute" name="scalameter-core_2.11" conf="compile, runtime" rev="2.11.0" rev-constraint-default="2.11.0" rev-constraint-dynamic="2.11.0" callerrev="0.7"/>
+				<caller organisation="org.scala-lang" name="scala-compiler" conf="default, compile, runtime, master" rev="2.11.7" rev-constraint-default="2.11.7" rev-constraint-dynamic="2.11.7" callerrev="2.11.7"/>
+				<caller organisation="compiled-query" name="compiled-query_2.11" conf="compile, runtime-internal, runtime, optional" rev="2.11.7" rev-constraint-default="2.11.7" rev-constraint-dynamic="2.11.7" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="scala-reflect" type="jar" ext="jar" status="no" details="" size="4576443" time="0" location="/Users/thartman/.ivy2/cache/org.scala-lang/scala-reflect/jars/scala-reflect-2.11.7.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/org/scala-lang/scala-reflect/2.11.7/scala-reflect-2.11.7.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+			<revision name="2.11.4" evicted="latest-revision" evicted-reason="" downloaded="false" searched="false" conf="compile, runtime(*), master(compile), runtime, compile(*)" position="-1">
+				<evicted-by rev="2.11.7"/>
+				<caller organisation="com.fasterxml.jackson.module" name="jackson-module-scala_2.11" conf="compile, runtime" rev="2.11.4" rev-constraint-default="2.11.4" rev-constraint-dynamic="2.11.4" callerrev="2.5.2"/>
+				<artifacts>
+				</artifacts>
+			</revision>
+			<revision name="2.11.0" evicted="latest-revision" evicted-reason="" downloaded="false" searched="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="-1">
+				<evicted-by rev="2.11.7"/>
+				<caller organisation="com.storm-enroute" name="scalameter_2.11" conf="default, compile, runtime, master" rev="2.11.0" rev-constraint-default="2.11.0" rev-constraint-dynamic="2.11.0" callerrev="0.7"/>
+				<caller organisation="com.fasterxml.jackson.module" name="jackson-module-scala_2.11" conf="compile, runtime" rev="2.11.4" rev-constraint-default="2.11.4" rev-constraint-dynamic="2.11.4" callerrev="2.5.2"/>
+				<caller organisation="com.storm-enroute" name="scalameter-core_2.11" conf="compile, runtime" rev="2.11.0" rev-constraint-default="2.11.0" rev-constraint-dynamic="2.11.0" callerrev="0.7"/>
+				<artifacts>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-lang" name="scala-library">
+			<revision name="2.11.7" status="release" pubdate="20150803100311" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.scala-lang.org/" extra-info.apiURL="http://www.scala-lang.org/api/2.11.7/" downloaded="false" searched="false" default="false" conf="default, compile, runtime(*), master(compile), runtime, default(compile), compile(*), master" position="1">
+				<license name="BSD 3-Clause" url="http://www.scala-lang.org/license.html"/>
+				<metadata-artifact status="no" details="" size="2653" time="0" location="/Users/thartman/.ivy2/cache/org.scala-lang/scala-library/ivy-2.11.7.xml" searched="false" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/scala-lang/scala-library/2.11.7/scala-library-2.11.7.pom"/>
+				<caller organisation="com.storm-enroute" name="scalameter_2.11" conf="default, compile, runtime, master" rev="2.11.4" rev-constraint-default="2.11.4" rev-constraint-dynamic="2.11.4" callerrev="0.7"/>
+				<caller organisation="com.fasterxml.jackson.module" name="jackson-module-scala_2.11" conf="compile, runtime" rev="2.11.4" rev-constraint-default="2.11.4" rev-constraint-dynamic="2.11.4" callerrev="2.5.2"/>
+				<caller organisation="com.storm-enroute" name="scalameter-core_2.11" conf="compile, runtime" rev="2.11.4" rev-constraint-default="2.11.4" rev-constraint-dynamic="2.11.4" callerrev="0.7"/>
+				<caller organisation="org.scala-lang.modules" name="scala-swing_2.11" conf="compile, runtime" rev="2.11.0" rev-constraint-default="2.11.0" rev-constraint-dynamic="2.11.0" callerrev="1.0.1"/>
+				<caller organisation="com.github.wookietreiber" name="scala-chart_2.11" conf="compile, runtime" rev="2.11.0" rev-constraint-default="2.11.0" rev-constraint-dynamic="2.11.0" callerrev="0.4.2"/>
+				<caller organisation="org.scala-lang.modules" name="scala-xml_2.11" conf="compile, runtime" rev="2.11.4" rev-constraint-default="2.11.4" rev-constraint-dynamic="2.11.4" callerrev="1.0.4"/>
+				<caller organisation="compiled-query" name="compiled-query_2.11" conf="compile, runtime-internal, runtime, optional" rev="2.11.7" rev-constraint-default="2.11.7" rev-constraint-dynamic="2.11.7" callerrev="1.0"/>
+				<caller organisation="org.scalaz" name="scalaz-core_2.11" conf="compile, runtime" rev="2.11.7" rev-constraint-default="2.11.7" rev-constraint-dynamic="2.11.7" callerrev="7.1.4"/>
+				<caller organisation="org.scalaz.stream" name="scalaz-stream_2.11" conf="default, compile, runtime, master" rev="2.11.7" rev-constraint-default="2.11.7" rev-constraint-dynamic="2.11.7" callerrev="0.8"/>
+				<caller organisation="org.scalaz" name="scalaz-effect_2.11" conf="compile, runtime" rev="2.11.7" rev-constraint-default="2.11.7" rev-constraint-dynamic="2.11.7" callerrev="7.1.4"/>
+				<caller organisation="org.scala-lang" name="scala-reflect" conf="compile, runtime" rev="2.11.7" rev-constraint-default="2.11.7" rev-constraint-dynamic="2.11.7" callerrev="2.11.7"/>
+				<caller organisation="org.scala-lang.modules" name="scala-parser-combinators_2.11" conf="compile, runtime" rev="2.11.6" rev-constraint-default="2.11.6" rev-constraint-dynamic="2.11.6" callerrev="1.0.4"/>
+				<caller organisation="org.scalaz" name="scalaz-concurrent_2.11" conf="compile, runtime" rev="2.11.7" rev-constraint-default="2.11.7" rev-constraint-dynamic="2.11.7" callerrev="7.1.4"/>
+				<caller organisation="org.scodec" name="scodec-bits_2.11" conf="compile, runtime" rev="2.11.6" rev-constraint-default="2.11.6" rev-constraint-dynamic="2.11.6" callerrev="1.0.9"/>
+				<caller organisation="org.scalaz" name="scalaz-core_2.11" conf="default, compile, runtime, master" rev="2.11.6" rev-constraint-default="2.11.6" rev-constraint-dynamic="2.11.6" callerrev="7.1.3"/>
+				<caller organisation="org.scala-lang" name="scala-compiler" conf="default, compile, runtime, master" rev="2.11.7" rev-constraint-default="2.11.7" rev-constraint-dynamic="2.11.7" callerrev="2.11.7"/>
+				<artifacts>
+					<artifact name="scala-library" type="jar" ext="jar" status="no" details="" size="5745606" time="0" location="/Users/thartman/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.11.7.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/org/scala-lang/scala-library/2.11.7/scala-library-2.11.7.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+			<revision name="2.11.0" evicted="latest-revision" evicted-reason="" downloaded="false" searched="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="-1">
+				<evicted-by rev="2.11.7"/>
+				<caller organisation="org.scala-lang.modules" name="scala-swing_2.11" conf="compile, runtime" rev="2.11.0" rev-constraint-default="2.11.0" rev-constraint-dynamic="2.11.0" callerrev="1.0.1"/>
+				<caller organisation="com.github.wookietreiber" name="scala-chart_2.11" conf="compile, runtime" rev="2.11.0" rev-constraint-default="2.11.0" rev-constraint-dynamic="2.11.0" callerrev="0.4.2"/>
+				<artifacts>
+				</artifacts>
+			</revision>
+			<revision name="2.11.6" evicted="latest-revision" evicted-reason="" downloaded="false" searched="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="-1">
+				<evicted-by rev="2.11.7"/>
+				<caller organisation="org.scala-lang.modules" name="scala-parser-combinators_2.11" conf="compile, runtime" rev="2.11.6" rev-constraint-default="2.11.6" rev-constraint-dynamic="2.11.6" callerrev="1.0.4"/>
+				<caller organisation="org.scodec" name="scodec-bits_2.11" conf="compile, runtime" rev="2.11.6" rev-constraint-default="2.11.6" rev-constraint-dynamic="2.11.6" callerrev="1.0.9"/>
+				<caller organisation="org.scalaz" name="scalaz-core_2.11" conf="default, compile, runtime, master" rev="2.11.6" rev-constraint-default="2.11.6" rev-constraint-dynamic="2.11.6" callerrev="7.1.3"/>
+				<artifacts>
+				</artifacts>
+			</revision>
+			<revision name="2.11.4" evicted="latest-revision" evicted-reason="" downloaded="false" searched="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="-1">
+				<evicted-by rev="2.11.7"/>
+				<caller organisation="com.storm-enroute" name="scalameter_2.11" conf="default, compile, runtime, master" rev="2.11.4" rev-constraint-default="2.11.4" rev-constraint-dynamic="2.11.4" callerrev="0.7"/>
+				<caller organisation="com.fasterxml.jackson.module" name="jackson-module-scala_2.11" conf="compile, runtime" rev="2.11.4" rev-constraint-default="2.11.4" rev-constraint-dynamic="2.11.4" callerrev="2.5.2"/>
+				<caller organisation="com.storm-enroute" name="scalameter-core_2.11" conf="compile, runtime" rev="2.11.4" rev-constraint-default="2.11.4" rev-constraint-dynamic="2.11.4" callerrev="0.7"/>
+				<caller organisation="com.github.wookietreiber" name="scala-chart_2.11" conf="compile, runtime" rev="2.11.0" rev-constraint-default="2.11.0" rev-constraint-dynamic="2.11.0" callerrev="0.4.2"/>
+				<caller organisation="org.scala-lang.modules" name="scala-xml_2.11" conf="compile, runtime" rev="2.11.4" rev-constraint-default="2.11.4" rev-constraint-dynamic="2.11.4" callerrev="1.0.4"/>
+				<artifacts>
+				</artifacts>
+			</revision>
+		</module>
+	</dependencies>
+</ivy-report>
