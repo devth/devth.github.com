@@ -12,9 +12,10 @@ too! I've worked at every layer of the stack:
   sites, interactive experiences, and web applications
 - at the API level efficiently piping and transforming data between backend and
   frontend with considerations around concurrency and authentication
-- (currently) at the very backend, working on a Scala-based in-memory
-  distributed columnar data store for eBay which powers real-time analytics for
-  seller tools
+- at the very backend working on a Scala-based in-memory distributed columnar
+  data store for eBay which powered real-time analytics for seller tools
+- as a Site Reliability Engineer creating automation, standards, and
+  modern infrastructure
 
 I'm a huge proponent of using automation to make processes more efficient and
 repeatable. I build an open source chat bot called
@@ -23,11 +24,11 @@ repeatable. I build an open source chat bot called
 run internal automation.
 
 I'm obsessed with discovering better ways of expressing solutions to programming
-problems. I abhor boilerplate, repetitive code or senseless abstraction.
-This has led me down a path of ongoing language discovery, from my early dark
-ages in Perl, JavaScript, Lingo and VB, to C# and ActionScript 3, Ruby and
-Python, Java, Scala with Scalaz, Clojure and ClojureScript, some Datalog, some
-Swift, some Haskell, and a tiny bit of Elm.
+problems. I abhor boilerplate, repetitive code or senseless abstraction.  This
+has led me down a path of ongoing language discovery, from my early dark ages in
+Perl, JavaScript, Lingo and VB, middle ages in C# and ActionScript 3, Ruby and
+Python, Java up to modern day using Scala with Scalaz, Clojure and
+ClojureScript, some Datalog, some Swift, some Haskell, and a tiny bit of Elm.
 
 The past several years I've been on a quest to bring more rigor to my
 understanding and use of programming, and have become a bit of a Functional
@@ -36,14 +37,17 @@ Programming zealot in the process.
 Most of my post topics are areas I wanted to better understand, and writing
 about them was a way to achieve that. I don't claim to be an expert in
 everything I write about. If you have any type of feedback, good or bad, please
-leave it in the comments! If you'd like to chat, I usually hang out on
+leave it in the comments. If you'd like to chat, I usually hang out on
 freenode.net as `devth`, or you can Tweet [@devth](https://twitter.com/devth).
 
-I currently work remotely for eBay's Seattle office and live in Montana with my
-wife and three kids. I'm an aspiring electronics tinkerer, musician, climber,
-learner, and maker of things. I endorse the oxford comma, but only when it
-disambiguates.
+I currently work remotely on a globally-distributed team for a seed-stage
+startup based in San Francisco and live in Montana with my wife and three kids.
+I'm an aspiring electronics tinkerer, musician, climber, mountain biker,
+learner, avid [listener of music](https://www.last.fm/user/trevorhartman), and
+maker of things.
+
+[Yetibot](http://yetibot.com) is my primary open source work, but see my
+[GitHub](https://github.com/devth) for the full list.
 
 - [Résumé](Trevor-Hartman-resume.pdf)
 - [Frontend Portfolio](http://cargocollective.com/devth)
-- [GitHub](https://github.com/devth)
