@@ -10,30 +10,30 @@ url: https://devth.com
 # Jekyll configuration
 
 sass:
-    sass_dir: _sass
-    style: compressed
+  sass_dir: _sass
+  style: compressed
 permalink: /:year/:title
 
-# markdown: kramdown
-# kramdown:
-#   input: GFM
 
 # markdown: KramdownPygments
 # markdown: redcarpet
 
-markdown: Pypedown
-pypedown:
-  input: GFM
-  hard_wrap: false
-  line_width: 80
-  typogruby: false
+# markdown: Pypedown
+# pypedown:
+#   input: GFM
+#   hard_wrap: false
+#   line_width: 80
+#   typogruby: false
 
-highlighter: pygments
+markdown: kramdown
+kramdown:
+  input: GFM
+
+highlighter: rouge
 
 gems:
-  - jekyll-pypedown
   - jekyll-sitemap
-
+  - jekyll-feed
 
 # Site owner
 owner:
@@ -49,7 +49,29 @@ disqus-shortname: devth
 
 share: false
 
-exclude: ["lib", "config.rb", ".sass-cache", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "*.sublime-project", "*.sublime-workspace", "Gemfile", "Gemfile.lock", "README.md", "LICENSE", "node_modules", "Gruntfile.js", "package.json"]
+exclude:
+  - "*.less"
+  - "*.sublime-project"
+  - "*.sublime-workspace"
+  - .asset-cache
+  - .bundle
+  - .jekyll-assets-cache
+  - .sass-cache
+  - CHANGELOG
+  - Capfile
+  - Gemfile
+  - Gruntfile.js
+  - LICENSE
+  - README
+  - Rakefile
+  - config
+  - gulpfile.js
+  - lib
+  - log
+  - node_modules
+  - package.json
+  - spec
+  - tmp
 
 defaults:
   caption:

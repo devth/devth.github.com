@@ -1,17 +1,18 @@
 # Skinny Bones Gemfile
 source "https://rubygems.org"
 
-gem "jekyll", '~> 2.5.3'
-gem "jekyll-sitemap", '~> 0.7.0'
-gem 'jekyll-pypedown'
+gem "jekyll", '~> 3.1.6'
+gem "jekyll-sitemap"
+gem "jekyll-feed"
 
+# gem 'jekyll-pypedown'
 # gem 'coderay', github: 'janm399/coderay'
-
 # gem 'github-pages', '32'
 
+gem "rouge"
 gem "sass"
 gem "bourbon"
 gem "neat"
 gem "rake"
 
-gem 'octopress', '~> 3.0.0.rc.12'
+# gem 'octopress', '~> 3.0'
