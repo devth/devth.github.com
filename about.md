@@ -6,7 +6,8 @@ streetview: true
 
 Senior software engineer with over 15 years experience crafting high quality web
 and mobile applications. Very interested in making your life easier, and mine
-too! I've worked at every layer of the stack:
+too! I care deeply about product and UX and using technology to build great
+things. I've worked on doing just that at every layer of the stack:
 
 - extensive experience iterating on meticulously-detailed frontends for client
   sites, interactive experiences, and web applications
@@ -15,11 +16,11 @@ too! I've worked at every layer of the stack:
 - at the very backend working on a Scala-based in-memory distributed columnar
   data store for eBay which powered real-time analytics for seller tools
 - as a Site Reliability Engineer creating automation, standards, and
-  modern infrastructure
+  modern container-based infrastructure in public and private clouds
 
 I'm a huge proponent of using automation to make processes more efficient and
 repeatable. I build an open source chat bot called
-[yetibot](https://github.com/devth/yetibot) which we increasingly use for
+[Yetibot](https://github.com/devth/yetibot) which we increasingly use for
 [ChatOps](http://devops.com/2014/07/16/chatops-communicating-speed-devops/) to
 run internal automation.
 
@@ -46,8 +47,12 @@ I'm an aspiring electronics tinkerer, musician, climber, mountain biker,
 learner, avid [listener of music](https://www.last.fm/user/trevorhartman), and
 maker of things.
 
-[Yetibot](http://yetibot.com) is my primary open source work, but see my
-[GitHub](https://github.com/devth) for the full list.
+<figure>
+  <img src="/images/dakota-50.jpg" alt="Dakota 50" />
+  <figcaption>
+    Racing at the Dakota 50 in Spearfish, SD, September 2016
+  </figcaption>
+</figure>
 
 - [Résumé](Trevor-Hartman-resume.pdf)
 - [Frontend Portfolio](http://cargocollective.com/devth)
