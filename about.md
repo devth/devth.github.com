@@ -50,8 +50,8 @@ maker of things.
 <figure>
   <img src="/images/dakota-50.jpg" alt="Dakota 50" />
   <figcaption>
-    Racing at the [Dakota Five-O](http://www.dakotafiveo.com/) in Spearfish, SD,
-    September 2016
+    Racing at the <a href="http://www.dakotafiveo.com/">Dakota Five-O</a> in
+    Spearfish, SD, September 2016
   </figcaption>
 </figure>
 
