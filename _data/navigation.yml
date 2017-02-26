@@ -1,5 +1,9 @@
 # Site navigation links
 
+- title: devth
+  url: /
+  excerpt: "Home"
+
 - title: About
   url: /about
   excerpt: "About Trevor Hartman"
