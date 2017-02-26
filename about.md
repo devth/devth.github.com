@@ -43,9 +43,9 @@ freenode.net as `devth`, or you can Tweet [@devth](https://twitter.com/devth).
 
 I currently work remotely on a globally-distributed team for a seed-stage
 startup based in San Francisco and live in Montana with my wife and three kids.
-I'm an aspiring electronics tinkerer, musician, climber, mountain biker,
-learner, avid [listener of music](https://www.last.fm/user/trevorhartman), and
-maker of things.
+I'm an aspiring electronics tinkerer, musician, climber, [mountain biker and
+cyclist](https://www.strava.com/athletes/devth), learner, avid [listener of
+music](https://www.last.fm/user/trevorhartman), and maker of things.
 
 <figure>
   <img src="/images/dakota-50.jpg" alt="Dakota 50" />
