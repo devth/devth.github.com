@@ -51,7 +51,8 @@ music](https://www.last.fm/user/trevorhartman), and maker of things.
   <img src="/images/dakota-50.jpg" alt="Dakota 50" />
   <figcaption>
     Racing at the <a href="http://www.dakotafiveo.com/">Dakota Five-O</a> in
-    Spearfish, SD, September 2016
+    Spearfish, SD<br>
+    <strong>September 2016</strong>
   </figcaption>
 </figure>
 
