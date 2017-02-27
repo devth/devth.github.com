@@ -6,8 +6,8 @@ streetview: true
 
 Senior software engineer with over 15 years experience crafting high quality web
 and mobile applications. Very interested in making your life easier, and mine
-too! I care deeply about product and UX and using technology to build great
-things. I've worked on doing just that at every layer of the stack:
+too! I care deeply about wielding technology to build great products and
+experiences. I've worked on doing just that at every layer of the stack:
 
 - extensive experience iterating on meticulously-detailed frontends for client
   sites, interactive experiences, and web applications
@@ -25,11 +25,14 @@ repeatable. I build an open source chat bot called
 run internal automation.
 
 I'm obsessed with discovering better ways of expressing solutions to programming
-problems. I abhor boilerplate, repetitive code or senseless abstraction.  This
-has led me down a path of ongoing language discovery, from my early dark ages in
-Perl, JavaScript, Lingo and VB, middle ages in C# and ActionScript 3, Ruby and
-Python, Java up to modern day using Scala with Scalaz, Clojure and
-ClojureScript, some Datalog, some Swift, some Haskell, and a tiny bit of Elm.
+problems. I abhor boilerplate, repetitive code or senseless abstraction. This
+has led me down a path of ongoing language discovery, from:
+
+- my early dark ages in Perl, JavaScript, Lingo and VB
+- middle ages in C# and ActionScript 3, Ruby and Python, Java
+- up to modern day using Scala with Scalaz (and investigating Cats), Clojure and
+  ClojureScript, Datalog (via Datomic), some Swift, some Haskell, and a tiny bit
+  of Elm
 
 The past several years I've been on a quest to bring more rigor to my
 understanding and use of programming, and have become a bit of a Functional
