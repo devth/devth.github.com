@@ -1,46 +1,38 @@
 ---
 layout: article
-title: Compiled queries in Scala with ASM
+title: Compiled queries in Scala
 categories: scala
 comments: true
 toc: true
 image:
-  feature: cartesian_1024_256.jpg
-  teaser: cartesian_410_228.jpg
-  caption: Beartooth Highway. June 2014
+  feature: compiled-queries-feature.jpg
+  teaser: compiled-queries-teaser.jpg
+  caption: Northwest San Francisco and the Golden Gate strait from the Hamon Observation Tower at de Young Museum. February 2017
 ---
 
-Idea: onion-peel db diagrams at the right as you scroll? e.g.
-http://roblafratta.com/mariowario
+Why would you want to generate bytecode from Scala?
 
-Why would you ever want to generate bytecode from Scala, you ask?
+**Speed**.
 
-<img src="/images/speed-cage.jpg" />
+To demonstrate, lets build an interpreter that runs projection and filtering on
+a simulated database, then build a compiled version and look at some performance
+numbers.
 
-You probably don't believe me. Or maybe Nic Cage just isn't that convincing. In
-any case, let me help you by building an interpreter that runs projection and
-filtering on a simulated database, then build a compiled version and look at
-some performance numbers.
+To be clear, this is our goal: **compile a data structure representing a query
+into native code to speed up a query loop**.
 
-To be clear, this is our goal: *compile a data structure representing a query
-into native code to speed up a query loop*. We'll look at two specific
-code-generation tools to achieve our goal: ASM and Scala Quasiquotes.
+We'll look at two specific code-generation tools to achieve our goal: ASM and
+Scala Quasiquotes.
 
-ASM has been used by Java developers for years for all sorts of codegen tasks.
-It's is very fast and has low-memory requirements, but it's also very low-level,
-making it time-consuming and tedious to use and very difficult to debug.
+ASM has been used by Java developers for years for all sorts of codegen
+purposes. It's is very fast and has low-memory requirements, but it's also very
+low-level, making it time-consuming and tedious to use and very difficult to
+debug.
 
 Quasiquotes are a new Scala tool for code generation. They are similar to
 macros, except they can be used at runtime whereas macros are compile-time only.
 They're much higher-level than ASM, so we'll compare benchmarks against the two
 to see what cost these high-levelel semantics incur, if any.
-
-This is gonna be a long one, so I've broken it up into 4 parts:
-
-- Part 1: A query system
-- Part 2: Intro to ASM, including transforming a Tree into nested while loops
-- Part 3: Using ASM to dynamically generate a query
-- Part 4: Using Scala Quasiquotes to generate the query
 
 ## A query system
 
@@ -845,7 +837,9 @@ all arguments to `visitMaxs`{:.language-scala} as
 calls to `visitMaxs`{:language-scala} but ignores the arguments.
 
 
+## Scala Quasiquotes
 
+TODO
 
 ## Further reading
 
