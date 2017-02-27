@@ -35,6 +35,9 @@ gems:
   - jekyll-sitemap
   - jekyll-feed
 
+feed:
+  path: atom.xml
+
 # Site owner
 owner:
   name: Trevor Hartman

@@ -842,6 +842,10 @@ calls to `visitMaxs`{:language-scala} but ignores the arguments.
 TODO - compile queries with
 [Quasiquotes](http://docs.scala-lang.org/overviews/quasiquotes/intro.html).
 
+[Generative Programming Basics](https://scala-lms.github.io/tutorials/02_basics.html#__toc_id:54231)
+
+[Introduction to code generation with scalameta](http://www.michaelpollmeier.com/2016/12/01/scalameta-code-generation-tutorial)
+
 ## Next steps
 
 An interesting direction to take this, now that we have a foundation for
