@@ -839,7 +839,14 @@ calls to `visitMaxs`{:language-scala} but ignores the arguments.
 
 ## Scala Quasiquotes
 
-TODO
+TODO - compile queries with
+[Quasiquotes](http://docs.scala-lang.org/overviews/quasiquotes/intro.html).
+
+## Next steps
+
+An interesting direction to take this, now that we have a foundation for
+dynamically compiling queries, would be to add a SQL interface. [Apache
+Calcite](https://calcite.apache.org/) is well-suited to do just that.
 
 ## Further reading
 
