@@ -12,15 +12,18 @@ of OO-wielding proletariats collectively chanting "good enough".
 
 Let's find a better way.
 
-## Required reading
+## Recommended reading
+
+- [Isaac Asimov Asks, “How Do People Get New
+  Ideas?”](https://www.technologyreview.com/s/531911/isaac-asimov-asks-how-do-people-get-new-ideas/)
+  — An insightful essay on the fragile process of creativity by the brilliant
+  science fiction writer.
 
 - [Complexity and Learning (2011)](http://mth.io/posts/complexity-and-learning/)
   — The view on learning and applying knowledge described here is one I've long
   held and argued for. This post uses an intuitive anaology of runtime
   complexity to describe learning a concept and the cost of applying it over
   time.
-
-## Recommended reading
 
 - [Learn You a Haskell for Great Good!](http://learnyouahaskell.com/chapters) by
   Miran Lipovača — Have you read a million monad tutorials and still don't get
