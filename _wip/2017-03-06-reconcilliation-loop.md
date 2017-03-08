@@ -24,3 +24,19 @@ This lets you determine:
 Excellence is often made up of "nice to haves" or a collection of many
 seemingly-inconsequential things that get overlooked. Being explicit about what
 excellence means gives your team a chance to actually achieve it.
+
+
+Seemingly inconsequential things might be:
+
+- having a language style guide that eliminates diff noise
+- defined process for consistently verifying correctness
+
+
+Why does this matter? What does this provide over the typical task-tracking and
+sprint-planning process?
+
+It's a different mental model but it doesn't replace your existing process. It
+simply shifts how you think holistically about your code base and technology.
+
+It allows engineers to act like the cyborgs they want to be (vs the cyborgs they
+are).
