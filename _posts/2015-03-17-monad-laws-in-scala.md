@@ -19,9 +19,9 @@ verifying them using our intuition.
 
 Here are the laws, from [Monad laws](https://wiki.haskell.org/Monad_laws) on HaskellWiki.
 
-0. Left identity: `return a >>= f ≡ f a`{:.language-haskell}
-0. Right identity: `m >>= return ≡ m`{:.language-haskell}
-0. Associativity: `(m >>= f) >>= g ≡  m >>= (\x -> f x >>= g)`{:.language-haskell}
+1. Left identity: `return a >>= f ≡ f a`{:.language-haskell}
+1. Right identity: `m >>= return ≡ m`{:.language-haskell}
+1. Associativity: `(m >>= f) >>= g ≡  m >>= (\x -> f x >>= g)`{:.language-haskell}
 
 In Haskell, `return`{:.language-haskell} is used to "inject a value into the
 monadic type". In Scala, we do this via constructors (unless you're using
@@ -50,7 +50,8 @@ List[Int]`{:.language-scala}.
 // neighboring Ints along with itself:
 val f: (Int => List[Int]) = x => List(x - 1, x, x + 1)
 
-// Let g be a function that takes an Int x and produces a List containing +x and -x
+// Let g be a function that takes an Int x
+// and produces a List containing +x and -x
 val g: (Int => List[Int]) = x => List(x, -x)
 ```
 
@@ -141,7 +142,7 @@ val lhs = m.flatMap(Option(_))
 => Some(30)
 
 val rhs = m
-=> Some(3)
+=> Some(30)
 
 lhs == rhs
 => true
