@@ -1,3 +1,4 @@
+# Spec coupling
 
 How do you create a standard set of documents and practices that go with every
 project, but also enforce it?
@@ -12,10 +13,10 @@ As an example, given an arbitrary set of requirements like:
 
 > We want every project repository to include a README that documents:
 >
-> - How to run in development
-> - How to run in production
-> - Sample configuration
-> - FAQ that exposes current thinking and why certain design choices were made
+> How to run in development
+> How to run in production
+> Sample configuration
+> FAQ that exposes current thinking and why certain design choices were made
 
 Could you "lint" this and determine whether it met your specs?
 
