@@ -17,3 +17,7 @@ be the most obvious thing to you.
 - [DMN](https://en.wikipedia.org/wiki/Default_mode_network)
 - [Task negative network](https://en.wikipedia.org/wiki/Task-negative)
 - [Task positive network](https://en.wikipedia.org/wiki/Task-positive_network)
+
+## TODO
+
+Read http://www.overcomingbias.com/2017/04/hail-humans.html
