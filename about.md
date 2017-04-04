@@ -61,4 +61,5 @@ music](https://www.last.fm/user/trevorhartman), and maker of things.
 
 - [Résumé](Trevor-Hartman-resume.pdf)
 - [Frontend Portfolio](http://cargocollective.com/devth)
+- [Yetibot](https://github.com/devth/yetibot)
 - [dotfiles](https://github.com/devth/dotfiles)
