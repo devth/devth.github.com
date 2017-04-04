@@ -40,9 +40,9 @@ a work in progress.
 
 Most of my post topics are areas I wanted to better understand, and writing
 about them was a way to achieve that. I don't claim to be an expert in
-everything I write about. If you have any type of feedback, good or bad, please
-leave it in the comments. If you'd like to chat, I usually hang out on
-freenode.net as `devth`, or you can Tweet [@devth](https://twitter.com/devth).
+everything I write about. Please give me feedback, good or bad! If you'd like to
+chat, I usually hang out on freenode.net as `devth`, or you can Tweet
+[@devth](https://twitter.com/devth).
 
 I currently work remotely on a globally-distributed team for a seed-stage
 startup based in San Francisco and live in Montana with my wife and three kids.
