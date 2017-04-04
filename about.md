@@ -4,10 +4,10 @@ title: About Trevor Hartman
 streetview: true
 ---
 
-Senior software engineer with over 15 years experience crafting high quality web
-and mobile applications. Very interested in making your life easier, and mine
-too! I care deeply about wielding technology to build great products and
-experiences. I've worked on doing just that at every layer of the stack:
+Software engineer with nearly two decades experience crafting high quality web
+and mobile applications. Very interested in making your life easier. I care
+deeply about wielding technology to build great products and experiences. I've
+worked on doing just that at every layer of the stack:
 
 - extensive experience iterating on meticulously-detailed frontends for client
   sites, interactive experiences, and web applications
