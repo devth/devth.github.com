@@ -18,13 +18,13 @@ worked on doing just that at every layer of the stack:
 - as a Site Reliability Engineer creating automation, standards, and
   modern container-based infrastructure in public and private clouds
 
-I'm a huge proponent of using automation to make processes more efficient and
+Strong proponent of using automation to make processes more efficient and
 repeatable. I build an open source chat bot called
 [Yetibot](https://github.com/devth/yetibot) which we increasingly use for
 [ChatOps](http://devops.com/2014/07/16/chatops-communicating-speed-devops/) to
 run internal automation.
 
-I'm obsessed with discovering better ways of expressing solutions to programming
+Obsessed with discovering better ways of expressing solutions to programming
 problems. I abhor boilerplate, repetitive code or senseless abstraction. This
 has led me down a path of ongoing language discovery, from:
 
