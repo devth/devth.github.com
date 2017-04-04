@@ -23,18 +23,20 @@ repeatable. I build an open source chat bot called
 [Yetibot](https://github.com/devth/yetibot) for this purpose and for fun.
 
 Obsessed with discovering better ways of expressing solutions to programming
-problems. I abhor boilerplate, repetitive code or senseless abstraction. This
-has led me down a path of ongoing language discovery, from:
+problems. I abhor unsoundness, boilerplate, repetitive code and senseless
+abstraction. This has led me down a path of ongoing language discovery, from:
 
 - my early dark ages in Perl, JavaScript, Lingo and VB
 - middle ages in C# and ActionScript 3, Ruby and Python, Java
-- up to modern day using Scala with Scalaz (and investigating Cats), Clojure and
-  ClojureScript, Datalog (via Datomic), some Swift, some Haskell, and a tiny bit
-  of Elm
+- up to modern day using Scala with Scalaz (investigating Cats), Clojure and
+  ClojureScript, Datalog (via Datomic), some Swift
+- and playing with Haskell, Eta, Elm and any other mind-bending languages that
+  come to my attention
 
 The past several years I've been on a quest to bring more rigor to my
 understanding and use of programming, and have become a bit of a Functional
-Programming zealot in the process.
+Programming zealot in the process, though my understanding of Category Theory is
+a work in progress.
 
 Most of my post topics are areas I wanted to better understand, and writing
 about them was a way to achieve that. I don't claim to be an expert in

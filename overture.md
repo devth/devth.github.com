@@ -31,6 +31,11 @@ Let's find a better way.
   click. As a bonus, this book is also hilarious and brilliantly written and
   illustrated; one of my all time favorites.
 
+- [Category Theory for
+  Programmers](https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/)
+  — I'll be working through this for quite a long time, but it's mind blowing
+  and very challenging so far.
+
 - [Functional Programming in Scala](http://www.manning.com/bjarnason/) by Paul
   Chiusano and Rúnar Bjarnason — Many of my topics and ideas came from this
   book.
