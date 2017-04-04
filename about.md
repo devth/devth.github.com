@@ -26,12 +26,12 @@ Obsessed with discovering better ways of expressing solutions to programming
 problems. I abhor unsoundness, boilerplate, repetitive code and senseless
 abstraction. This has led me down a path of ongoing language discovery, from:
 
-- my early dark ages in Perl, JavaScript, Lingo and VB
+- my early dark ages in Perl, JavaScript¹, Lingo and VB
 - middle ages in C# and ActionScript 3, Ruby and Python, Java
 - up to modern day using Scala with Scalaz (investigating Cats), Clojure and
   ClojureScript, Datalog (via Datomic), some Swift
-- and playing with Haskell, Eta, Elm and any other mind-bending languages that
-  come to my attention
+- playing with Haskell, Eta, Elm and any other mind-bending languages that come
+  to my attention
 
 The past several years I've been on a quest to bring more rigor to my
 understanding and use of programming, and have become a bit of a Functional
@@ -63,3 +63,5 @@ music](https://www.last.fm/user/trevorhartman), and maker of things.
 - [Frontend Portfolio](http://cargocollective.com/devth)
 - [Yetibot](https://github.com/devth/yetibot)
 - [dotfiles](https://github.com/devth/dotfiles)
+
+¹ don't take offense; JavaScript in IE4 really does belong to the dark ages
