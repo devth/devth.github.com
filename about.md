@@ -20,9 +20,7 @@ worked on doing just that at every layer of the stack:
 
 Strong proponent of using automation to make processes more efficient and
 repeatable. I build an open source chat bot called
-[Yetibot](https://github.com/devth/yetibot) which we increasingly use for
-[ChatOps](http://devops.com/2014/07/16/chatops-communicating-speed-devops/) to
-run internal automation.
+[Yetibot](https://github.com/devth/yetibot) for this purpose and for fun.
 
 Obsessed with discovering better ways of expressing solutions to programming
 problems. I abhor boilerplate, repetitive code or senseless abstraction. This
