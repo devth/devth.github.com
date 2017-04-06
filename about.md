@@ -64,4 +64,6 @@ music](https://www.last.fm/user/trevorhartman), and maker of things.
 - [Yetibot](https://github.com/devth/yetibot)
 - [dotfiles](https://github.com/devth/dotfiles)
 
-¹ don't take offense; JavaScript in IE4 really does belong to the dark ages
+¹ don't take offense; "JScript" 3.0 in IE4 [(based on
+ECMA-262)](https://en.wikipedia.org/wiki/JScript#Versions) really does belong
+to the dark ages

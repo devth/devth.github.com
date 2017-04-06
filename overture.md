@@ -14,8 +14,8 @@ Let's find a better way.
 
 ## Recommended reading
 
-We are inundated with programming posts of highly varying quality. This is a
-curated list of only the best or most important.
+We are inundated with programming posts of varying quality. This is a curated
+list of only the best or most important I've come across.
 
 ### Philosophy
 
