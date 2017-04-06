@@ -14,6 +14,11 @@ Let's find a better way.
 
 ## Recommended reading
 
+We are inundated with programming posts of highly varying quality. This is a
+curated list of only the best or most important.
+
+### Philosophy
+
 - [Isaac Asimov Asks, “How Do People Get New
   Ideas?”](https://www.technologyreview.com/s/531911/isaac-asimov-asks-how-do-people-get-new-ideas/)
   — An insightful essay on the fragile process of creativity by the brilliant
@@ -24,6 +29,8 @@ Let's find a better way.
   held and argued for. This post uses an intuitive anaology of runtime
   complexity to describe learning a concept and the cost of applying it over
   time.
+
+### Functional Programming
 
 - [Learn You a Haskell for Great Good!](http://learnyouahaskell.com/chapters) by
   Miran Lipovača — Have you read a million monad tutorials and still don't get
@@ -44,3 +51,12 @@ Let's find a better way.
   — This series of blog posts loosely follows LYAH and introduces
   [Scalaz](https://github.com/scalaz/scalaz)' equivalents to many of Haskell's
   classes.
+
+### Distributed Systems
+
+- [Raft: Understandable Distributed
+  Consensus](http://thesecretlivesofdata.com/raft/) - amazing and inspiring data
+  visualization of the Raft consensus algorithm. Even if you're not interested
+  in Raft itself, go through this because it demonstrates so well the power of
+  visualization in understanding complex interactions. (How can we get this level
+  of quality in our own systems' documentation?)
