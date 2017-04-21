@@ -14,6 +14,24 @@ can decrease the delta between desired and current state.
 
 In other words, you're documenting a loose spec that can be built upon.
 
+## Desired state
+
+- Acknowledge implicit context by defining the spec of where a project should
+  be, and make that spec available for feedback from others
+- Communicates direction of tech
+- Informs others specs on their own projects and potential integration points
+
+You can't (or it's very hard to) overcommunicate. Too often teams
+undercommunicate with individuals going off on their current project for days or
+weeks in heads down mode. This is fine and necessary, but individuals need to
+expose their state along the way, and do it in the most precise, asynchronous
+method possible.
+
+Avoid questions like: "What did you do last week?". There are so many details in
+the answer to that question and there's no way an individual can recall them
+all at a given time. Instead, rely on precise medium of capturing state over
+time and consume that medium.
+
 ## Risks
 
 Of course there are risks and potential downsides with this approach. If you're
