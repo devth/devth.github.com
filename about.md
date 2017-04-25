@@ -4,16 +4,16 @@ title: About Trevor Hartman
 streetview: true
 ---
 
-Software engineer with nearly two decades experience crafting high quality web
-and mobile applications. Very interested in making your life easier. I care
-deeply about wielding technology to build great products and experiences. I've
-worked on doing just that at every layer of the stack:
+Software engineer with nearly two decades experience crafting quality web apps.
+Very interested in making your life easier. I care deeply about wielding
+technology to build great products and experiences and have worked on doing
+exactly that at every layer of the stack:
 
-- extensive experience iterating on meticulously-detailed frontends for client
-  sites, interactive experiences, and web applications
+- iterating on meticulously-detailed frontends for client sites, interactive
+  experiences, and web applications
 - at the API level efficiently piping and transforming data between backend and
-  frontend with considerations around concurrency and authentication
-- at the very backend working on a Scala-based in-memory distributed columnar
+  frontend with considerations around concurrency, authn and authz
+- at the very back working on a Scala-based in-memory distributed columnar
   data store for eBay which powered real-time analytics for seller tools
 - as a Site Reliability Engineer creating automation, standards, and
   modern container-based infrastructure in public and private clouds
@@ -24,24 +24,21 @@ repeatable. I build an open source chat bot called
 
 Obsessed with discovering better ways of expressing solutions to programming
 problems. I abhor unsoundness, boilerplate, repetitive code and senseless
-abstraction. This has led me down a path of ongoing language discovery, from:
+abstraction. On a path of ongoing language discovery, from:
 
-- my early dark ages in Perl, JavaScript¹, Lingo and VB
+- early dark ages in Perl, JavaScript¹, Lingo (wat) and VB
 - middle ages in C# and ActionScript 3, Ruby and Python, Java
 - up to modern day using Scala with Scalaz (investigating Cats), Clojure and
   ClojureScript, Datalog (via Datomic), some Swift
 - playing with Haskell, Eta, Elm and any other mind-bending languages that come
-  to my attention
+  along
 
-The past several years I've been on a quest to bring more rigor to my
-understanding and use of programming, and have become a bit of a Functional
-Programming zealot in the process, though my understanding of Category Theory is
-a work in progress.
+Part time Pure Functional Programming zealot & Category Theory student.
 
 Most of my post topics are areas I wanted to better understand, and writing
-about them was a way to achieve that. I don't claim to be an expert in
-everything I write about. Please give me feedback, good or bad! If you'd like to
-chat, I usually hang out on freenode.net as `devth`, or you can Tweet
+about them was a way to achieve that. I don't claim to be an expert. Please give
+me feedback, good or bad, but especially bad. If you'd like to chat, I usually
+hang out on freenode.net as `devth`, or you can Tweet
 [@devth](https://twitter.com/devth).
 
 I currently work remotely on a globally-distributed team for a seed-stage
