@@ -1,13 +1,13 @@
 A few words on what it means to program in a *pure, functional* style.
 
 When I first encountered the term, I (and probably most people) immediately
-though, "yeah ok, that's nice, but no side effects? <abbr>GLHF</abbr>." Then I
+though, "yeah that's nice, but no side effects? <abbr>GLHF</abbr>." Then I
 continued trying to write pure functions as much as possible but not giving it a
 second thought when I had to resort to side-effects. It wasn't until much later
 that I understood what they meant. I wish they had just told me up front instead
 of making it sound like some kind of mystical magic of FP wizards.
 
-And so, this is me telling you, up front, that you can have your cake and eat it
+So, this is me telling you, up front, that you can have your cake and eat it
 too: pure functional programs that—when executed—may perform side effects. This
 may sound like a paradox, and there is some amount of controversy around it in
 the community, but the distinction lies in modeling side-effects vs. performing
