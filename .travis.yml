@@ -1,20 +1,14 @@
 language: ruby
-
 cache: bundler
-
 branches:
   only:
   - source
-
 rvm:
-  - 2.2
-
+- 2.2
 install:
-  - bundle install
-
+- bundle install
 script:
-  - bundle exec rake publish
-
+- bundle exec rake publish
 env:
   global:
-    secure: RLWkA7bkeLyhMvfmI449zmeuTa4TQIzbY4UrGMY4q7s/R5I843UOlmINyEV4ICgAmweOQjjahv7p6ZswFtzCVjTyQF4Y+Wc5qam2dlzwPWfOZNBVwote+30512bU6nEtjCNb6M8kVu93mjlsCohPEXMs4sZxJiAiz7xTPP8mhfk=
+    secure: "JnEMMmNk+RULfay721CSd+xvtYhfXm7w8sjZ4/DD0nzGt+cLQPrdbaepwvFU3KtztYJ6ShIFM+rf7SFm9UaaQiwhY5iij++IEe6z/pWru8/J42II8ILmPdIrmnOQCf4rrg5csESIfPffyyB7etqS9T8PUaFg+PlYM9zlXXyHNAY="
