@@ -1,7 +1,9 @@
 ---
 layout: article
 title: About Trevor Hartman
-streetview: true
+image:
+  feature: streetview.jpg
+  caption: Caught on Google Streetview in Seattle, 2007
 ---
 
 Software engineer with nearly two decades experience crafting quality web apps.
