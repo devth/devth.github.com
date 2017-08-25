@@ -10,7 +10,8 @@ image:
   caption: Northwest San Francisco and the Golden Gate strait from the Hamon Observation Tower at de Young Museum. February 2017
 ---
 
-Why would you want to generate bytecode from Scala?
+Why resort to the complexities of dynamic code generation and compilation at
+runtime?
 
 **Speed**.
 
@@ -56,8 +57,8 @@ val db = Seq(
 
 Next, we need structures that hold:
 
-0. fields to be projected
-0. filter expression tree
+1. fields to be projected
+1. filter expression tree
 
 An efficient representation of projection fields is simply storing the ordinals.
 For example, this is how we'd represent a projection of the name and
@@ -108,9 +109,6 @@ be included. Some caveats about limitations of this simple example:
 
 These are all issues I won't address.
 
-!meme troll: they are left as an exercise for the reader
-(Don't you just love it when they do that?)
-
 Here's our limited set of operators:
 
 ```scala
@@ -157,7 +155,7 @@ class FilterInterpreter(expr: FilterExpr, schema: Map[String, Int]) {
 }
 ```
 
-And here's a simple query loop:
+And finally, a simple query loop:
 
 ```scala
 def query(projections: Seq[Int], filterExpr: FilterExpr): Seq[Seq[Any]] = {
@@ -170,7 +168,6 @@ def query(projections: Seq[Int], filterExpr: FilterExpr): Seq[Seq[Any]] = {
   }
 }
 ```
-
 
 *NB: we could use [ScalaBlitz](https://scala-blitz.github.io/) to optimize that
 `flatMap`{:.language-scala} if this was real and we were ultra-concerned about
@@ -203,9 +200,8 @@ result.map(println)
 //=> List(Alan Turing, Systems of Logic based on Ordinals)
 ```
 
-So far so good. Next up, let's [dive into some bytecodes in part 2]().
-
-Read the [full runnable source]() for this system.
+So far so good. Next up, let's dive into some bytecodes to gain a basic
+understanding of what's going on when we generate code on the JVM.
 
 ## Bytecode primer
 
@@ -289,8 +285,8 @@ public final class RunFoo$ {
 ```
 
 The JVM runs these opcodes in a stack machine: values are pushed on to the stack
-then used as operands to later operations. For example, here's how you could add
-two constants:
+then used as operands to later operations. For example, this is how you could
+add two constants:
 
 ```java
 bipush 28
@@ -298,13 +294,13 @@ bipush 14
 iadd
 ```
 
-0. Push 28 onto the stack with `bipush`
-0. Push 14 onto the stack with `bipush`
-0. Execute `iadd` which adds two ints: it pops two values off the stack to use
+1. Push 28 onto the stack with `bipush`
+1. Push 14 onto the stack with `bipush`
+1. Execute `iadd` which adds two ints: it pops two values off the stack to use
    as its operands: first 14, then 28. It adds those two operands and pushes the
    result, 28, onto the stack.
 
-At this point we could work with the new 42 value on the stack. Here's how we
+At this point we could work with the new 42 value on the stack. This is how we
 would check that the value is indeed 42:
 
 ```java
@@ -316,8 +312,8 @@ would check that the value is indeed 42:
 32: ...
 ```
 
-0. Push the value 42 onto the stack
-0. Use `if_icmpne` to compare two values from the stack. If they are not equal,
+1. Push the value 42 onto the stack
+1. Use `if_icmpne` to compare two values from the stack. If they are not equal,
    jump to position 28, which pushes constant `#4` onto the stack using `ldc`.
    If they are equal, the next code is executed, which instead pushes constant
    `#3` onto the stack, then jumps to position 32.
@@ -541,11 +537,6 @@ correct names of the local variables in a given stack, since in the JVM indices
 are used instead of names. When writing by hand, you could opt to not write
 these instructions, or add them later if you need them.
 
-Let's familiarize ourselves with another "pattern" in ASM: instantiating a class
-and passing arguments to its constructor:
-// TODO?
-
-
 ## Compiled queries with ASM
 
 Let's use this knowledge to compile the query we originally interpreted. To
@@ -613,10 +604,10 @@ Let's rewrite `StaticQuery`{:.language-scala} in Java and use it as a template
 for compiling queries. There are at least two reasons why I significantly
 dislike running ASMifier against Scala classes:
 
-0. It generates a gnarly blob of unreadable bytes for the ScalaSignature (which
+1. It generates a gnarly blob of unreadable bytes for the ScalaSignature (which
    is apparently used to store Scala-specific bits in class files and is
    required for reflection and for compiling against).
-0. Scala objects and methods get split into separate class files when they're
+1. Scala objects and methods get split into separate class files when they're
    compiled, making it hard to stitch together the results with multiple
    ASMifier runs.
 
@@ -825,7 +816,6 @@ object CompiledQueryGen extends Opcodes {
     cw.toByteArray
   }
 }
-
 ```
 
 Since we're using `ClassWriter.COMPUTE_FRAMES`{:.language-scala} I was able to
@@ -836,15 +826,14 @@ all arguments to `visitMaxs`{:.language-scala} as
 `COMPUTE_FRAMES`{:.language-scala} implies `COMPUTE_MAXS`, which still requires
 calls to `visitMaxs`{:language-scala} but ignores the arguments.
 
-
 ## Scala Quasiquotes
 
-TODO - compile queries with
-[Quasiquotes](http://docs.scala-lang.org/overviews/quasiquotes/intro.html).
+This part of the post is not yet written. The intent was to explore Scala
+Quasiquotes facilities for codegen.
 
-[Generative Programming Basics](https://scala-lms.github.io/tutorials/02_basics.html#__toc_id:54231)
-
-[Introduction to code generation with scalameta](http://www.michaelpollmeier.com/2016/12/01/scalameta-code-generation-tutorial)
+- [Quasiquotes](http://docs.scala-lang.org/overviews/quasiquotes/intro.html).
+- [Generative Programming Basics](https://scala-lms.github.io/tutorials/02_basics.html#__toc_id:54231)
+- [Introduction to code generation with scalameta](http://www.michaelpollmeier.com/2016/12/01/scalameta-code-generation-tutorial)
 
 ## Next steps
 
@@ -859,4 +848,4 @@ Calcite](https://calcite.apache.org/) is well-suited to do just that.
 - [Hacking Java Bytecode for Programmers (part 1 of a 4 part series)](http://www.acloudtree.com/hacking-java-bytecode-for-programmers-part1-the-birds-and-the-bees-of-hex-editing/)
 - [java-bytecode-asm tag on StackOverflow](http://stackoverflow.com/questions/tagged/java-bytecode-asm)
 - [JVM Internals (blog post)](http://blog.jamesdbloom.com/JVMInternals.html)
-
+- [3 approaches to Scala code generation](http://yefremov.net/blog/scala-code-generation/)
