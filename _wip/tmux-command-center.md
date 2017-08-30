@@ -3,7 +3,6 @@ layout: article
 title: Tmux Command Center
 image:
   feature: overture.jpg
-  teaser: overture_300_200.jpg
   caption: Mount Rainier from Mailbox Peak, WA
 ---
 

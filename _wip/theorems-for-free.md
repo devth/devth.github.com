@@ -3,7 +3,6 @@ layout: article
 title: Theorems for free in Haskell
 image:
   feature: overture.jpg
-  teaser: overture_300_200.jpg
   caption: Mount Rainier from Mailbox Peak, WA
 ---
 

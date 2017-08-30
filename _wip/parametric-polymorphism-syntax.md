@@ -4,7 +4,6 @@ title: Parametric polymorphism syntax in Scala and Haskell
 toc: true
 image:
   feature: overture.jpg
-  teaser: overture_300_200.jpg
   caption: Mount Rainier from Mailbox Peak, WA
 ---
 
