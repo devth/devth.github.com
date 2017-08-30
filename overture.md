@@ -2,8 +2,8 @@
 layout: article
 title: Overture
 image:
-  feature: rainer.jpg
-  teaser: rainer_teaser.jpg
+  feature: rainier.jpg
+  teaser: rainier_teaser.jpg
   caption: Mount Rainier from Mailbox Peak, WA
 ---
 
