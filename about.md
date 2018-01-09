@@ -54,8 +54,8 @@ music](https://www.last.fm/user/trevorhartman), and maker of things.
 <figure>
   <img src="/images/dakota-50.jpg" alt="Dakota 50" />
   <figcaption>
-    Racing at the <a href="http://www.dakotafiveo.com/">Dakota Five-O</a> in
-    Spearfish, SD<br>
+    <a href="https://www.strava.com/activities/700661397/">Racing at the Dakota
+    Five-O</a> in Spearfish, SD<br>
     <strong>September 2016</strong>
   </figcaption>
 </figure>
