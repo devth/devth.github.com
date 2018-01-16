@@ -35,7 +35,8 @@ abstraction. On a path of ongoing language discovery, from:
 - playing with Haskell, Eta, Elm and any other mind-bending languages that come
   along
 
-Part time Pure Functional Programming zealot & Category Theory student.
+Part time Pure Functional Programming zealot, Category Theory student, and
+blockchain neophyte.
 
 Most of my post topics are areas I wanted to better understand, and writing
 about them was a way to achieve that. I don't claim to be an expert. Please give
