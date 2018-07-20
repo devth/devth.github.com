@@ -3,7 +3,7 @@ layout: article
 title: "dec: Deep Environmental Config"
 categories: config
 comments: true
-published: false
+published: true
 toc: true
 image:
   feature: compiled-queries-feature.jpg
@@ -15,8 +15,7 @@ There are many too-strong opinions (TODO link to recent reddit posts about how
 to config) on the "right" way to do configuration but they primarily come down
 to three options:
 
-1. flat files in some predetermined format like JSON, YAML, properties files,
-   EDN, etc.
+1. flat files in some known format like JSON, YAML, properties files, EDN, etc.
 1. environment variables
 1. config from a data store (which ironically requires separate initial config
    in one of the above two methods in order to access the data store)
@@ -43,7 +42,7 @@ A few modern examples of systems that work this way today include:
 
 ## Symmetry
 
-A problem that immediately comes to light once you say that any individual value
+A problem that immediately comes to light once we say that any individual value
 can be configured by either or both of two mechanisms is the difference between
 flat files and env vars:
 
@@ -52,24 +51,54 @@ flat files and env vars:
   primitive and collection types like strings, numbers, booleans, arrays and
   maps
 
-Because of these inbuilt significant structural differences we need a
-translation layer between KV pair and tree. If we adopt this single constraint
-the translation layer becomes easy to express:
+Because of these intrinsic significant structural differences we need a
+translation layer between KV pair and tree. If we adopt a single constraint the
+translation layer becomes simpler to express: **All leafs in the tree are
+strings.**
 
-1. All values are strings.
-
-The implication is that your system must parse the string to obtain its expected
-format.
+The implication is that our system which consumes the config must parse the
+string to obtain its expected format.
 
 ## dec: Deep Environmental Config
 
-`dec` is a tiny library that embraces this constraint and provides an
-`explode` function to transform env var KV pairs into an expected shape with
-symmetry to an equivalent EDN structure.
+[dec](https://github.com/devth/dec) is a tiny library that embraces this
+constraint and provides an `explode` function to transform env var KV pairs into
+an expected shape equivalent to a potentially deep EDN structure.
+
+The following configurations are equivalent from the perspective of [new lib
+that consumes dec]:
+
+```bash
+MY_DB_PORT=4567
+MY_DB_HOST=database
+MY_URL=https://my-system/
+```
+
+```clojure
+{:my
+ {:db {:port "4567" :host "database}
+  :url "https://my-system"}}
+```
+
+Notice how trees are serialized into KV pairs with a simple `_` delimiter. (The
+delimiter is customizable in `dec` but `_` is the default.)
+
+Similarly, arrays can be represented:
+
+```bash
+MY_SERVER_0_HOST=serverA
+MY_SERVER_1_HOST=serverB
+```
+
+```clojure
+{:my
+ {:server [{:host "serverA"} {:host "serverB}]}}
+```
 
 TODO: should a library actually slurp the config and munge the two mechanisms?
 Maybe it also bakes in environ?
 Prefix handling is slightly tricky.
+Bake in clojure.spec validation logic and helpers
 
 Currently part of yetibot.core
 [here](https://github.com/yetibot/yetibot.core/blob/4b607726bae926de31a48bb8a05e7345a8668484/src/yetibot/core/config.clj#L19-L47):
@@ -83,14 +112,50 @@ the strings into actual expected type.
 Building a configuration schema into config consumers has some other nice
 properties, particularly when using clojure.spec:
 
-- Validate config at runtime with precise error messaging describing the exact
-  location of invalid config and expected values
+- Validate expected shape of config at runtime with precise error messaging
+  describing the exact location of invalid config and expected values
 - Generate config example structures from schema in any format (e.g. the full
   list of supported env vars or EDN tree)
-- Guarantee of correct config shape
 
-## Use case: Yetibot
+## In the wild
 
-There's one other system that adopts these constraints and demonstrates how
-`dec` can be used: Yetibot. Check it out at
-[https://yetibot.com](https://yetibot.com)!
+To demonstrate we can look at [Yetibot](https://yetibot.com), an open source
+chat bot written in Clojure that embraces the above concepts.
+
+Yetibot can be configured via env, edn, or a combination of both. For example, a
+minimal Yetibot config might be:
+
+```bash
+YB_ADAPTERS_MYSLACK_TYPE=Slack
+YB_ADAPTERS_MYSLACK_TOKEN=xoxb-my-token
+YB_DB_URL=postgresql://yetibot:yetibot@postgres:5432/yetibot
+```
+
+Yetibot expects all env vars to be either prefixed by `YB` or `YETIBOT`, thus
+the following is equivalent:
+
+```bash
+YETIBOT_ADAPTERS_MYSLACK_TYPE=Slack
+YETIBOT_ADAPTERS_MYSLACK_TOKEN=xoxb-my-token
+YETIBOT_DB_URL=postgresql://yetibot:yetibot@postgres:5432/yetibot
+```
+
+And since it uses `dec`, an edn file is also equivalent:
+
+```clojure
+{:yetibot
+ {:adapters {:myslack {:type "Slack" :token "xoxb-my-token"}}
+  :db {:url "postgresql://yetibot:yetibot@postgres:5432/yetibot"}}}
+```
+
+Note that `edn` isn't a requirement; anything that can be parsed into Clojure
+collections would be equivalent.
+
+## Conclusion
+
+There are known pros and cons to both approaches. A system should not perscribe
+which sets of constraints to adopt, but instead allow consumers to weigh their
+own tradeoffs and allow them to run things however they want.
+
+By adopting a simple constraint and providing a very small library we can
+support this.
