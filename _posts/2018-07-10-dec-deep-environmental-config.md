@@ -19,7 +19,7 @@ options:
 1. environment variables
 1. CLI arguments at start up
 1. config from a data store (which ironically requires separate initial config
-   in one of the above two methods in order to access the data store)
+   in one of the above methods in order to access the data store)
 
 While #4 is an interesting option in light of modern cluster-based infrastructure
 and tools like `consul` and `etcd`, we're going to focus on the first three
