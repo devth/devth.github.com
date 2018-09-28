@@ -91,7 +91,7 @@ MY_SERVER_1_HOST=serverB
 
 ```clojure
 {:my
- {:server [{:host "serverA"} {:host "serverB}]}}
+ {:server [{:host "serverA"} {:host "serverB"}]}}
 ```
 
 ## Schema
