@@ -6,47 +6,47 @@ comments: true
 published: true
 toc: true
 image:
-  feature: compiled-queries-feature.jpg
-  teaser: compiled-queries-teaser.jpg
-  caption: Northwest San Francisco and the Golden Gate strait from the Hamon Observation Tower at de Young Museum. February 2017
+  feature: dec_wide.png
+  teaser: dec_410_228.png
 ---
 
-There are many too-strong opinions (TODO link to recent reddit posts about how
-to config) on the "right" way to do configuration but they primarily come down
-to three options:
+There are many [too-strong
+opinions](https://hn.algolia.com/?query=environment%20variables&sort=byDate&prefix&page=0&dateRange=all&type=story)
+on the "right" way to do configuration but they primarily come down to these
+options:
 
 1. flat files in some known format like JSON, YAML, properties files, EDN, etc.
 1. environment variables
+1. CLI arguments at start up
 1. config from a data store (which ironically requires separate initial config
    in one of the above two methods in order to access the data store)
 
-While #3 is an interesting option in light of modern cluster-based infrastructure
-and tools like `consul` and `etcd`, we're going to focus on the first two
-methods for this post: flat files and env vars.
+While #4 is an interesting option in light of modern cluster-based infrastructure
+and tools like `consul` and `etcd`, we're going to focus on the first three
+mechanisms for this post: flat files,  env vars and CLI arguments.
 
-**Systems should not require configuration via only one of the two above
-mechanisms, but instead allow either or both.** This affords the operator of the
-system to configure it in the way that's most suitable according to their
-infrastructure, preferences, policies, and politics.
+**Systems should not require configuration via only one mechanism, but instead
+allow any or all available mechanisms in combination.** This affords the
+operator of the system to configure it in the way that's most suitable according
+to their infrastructure, preferences, policies, and politics.
 
-When using both mechanisms there needs to be a very clear priority in which one
+When using multiple mechanisms there needs to be a very clear priority in which one
 mechanism overrides the other. Typically env vars override flat file config, as
 they are more ephemeral and easy to set.
 
 A few modern examples of systems that work this way today include:
 
-- [ElasticSearch](todo link to config docs)
-- HashiCorp tools?
-- TICK stack?
-- K8S stuff or Docker?
+- [ElasticSearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/settings.html)
+- HashiCorp tools like [Consul](https://www.consul.io/docs/agent/options.html)
+- TICK stack e.g. [Chronograf](https://docs.influxdata.com/chronograf/v1.6/administration/config-options#chronograf-service-options)
 
 ## Symmetry
 
 A problem that immediately comes to light once we say that any individual value
-can be configured by either or both of two mechanisms is the difference between
-flat files and env vars:
+can be configured by any available mechanism is the representational difference
+between mechanisms:
 
-- Env vars are stringly typed key value pairs
+- Env vars and CLI args are stringly typed key value pairs
 - Config files support arbitrarily-deep tree structures with varying support for
   primitive and collection types like strings, numbers, booleans, arrays and
   maps
@@ -59,7 +59,7 @@ strings.**
 The implication is that our system which consumes the config must parse the
 string to obtain its expected format.
 
-## dec: Deep Environmental Config
+## Introducing dec: Deep Environmental Config
 
 [dec](https://github.com/devth/dec) is a tiny library that embraces this
 constraint and provides an `explode` function to transform env var KV pairs into
