@@ -145,9 +145,9 @@ collections would be equivalent.
 ## Future
 
 It might be useful to create a library that actually slurps the config and munge
-multiple mechanisms, using `dec`. Or perhaps this should be baked into `dec`
-itself, but probably more likely it'd be a separate library. Prefix handling and
-merging is slightly tricky. This is all currently part of [yetibot.core](https://github.com/yetibot/yetibot.core/blob/4b607726bae926de31a48bb8a05e7345a8668484/src/yetibot/core/config.clj#L19-L47):
+multiple mechanisms, using `dec`. Prefix handling and merging is slightly
+tricky. This is all currently part of
+[yetibot.core](https://github.com/yetibot/yetibot.core/blob/4b607726bae926de31a48bb8a05e7345a8668484/src/yetibot/core/config.clj#L19-L47).
 This library should also utilize `clojure.spec` to validate the expected shape
 of a config, provide validation, friendly error messages, and config generation.
 
