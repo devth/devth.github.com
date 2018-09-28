@@ -62,11 +62,10 @@ string to obtain its expected format.
 ## Introducing dec: Deep Environmental Config
 
 [dec](https://github.com/devth/dec) is a tiny library that embraces this
-constraint and provides an `explode` function to transform env var KV pairs into
-an expected shape equivalent to a potentially deep EDN structure.
+constraint and provides an `explode` function to transform KV pairs into an
+expected shape equivalent to a potentially deep EDN structure.
 
-The following configurations are equivalent from the perspective of [new lib
-that consumes dec]:
+The following configurations are equivalent from the perspective of dec:
 
 ```bash
 MY_DB_PORT=4567
@@ -94,14 +93,6 @@ MY_SERVER_1_HOST=serverB
 {:my
  {:server [{:host "serverA"} {:host "serverB}]}}
 ```
-
-TODO: should a library actually slurp the config and munge the two mechanisms?
-Maybe it also bakes in environ?
-Prefix handling is slightly tricky.
-Bake in clojure.spec validation logic and helpers
-
-Currently part of yetibot.core
-[here](https://github.com/yetibot/yetibot.core/blob/4b607726bae926de31a48bb8a05e7345a8668484/src/yetibot/core/config.clj#L19-L47):
 
 ## Schema
 
@@ -150,6 +141,15 @@ And since it uses `dec`, an edn file is also equivalent:
 
 Note that `edn` isn't a requirement; anything that can be parsed into Clojure
 collections would be equivalent.
+
+## Future
+
+It might be useful to create a library that actually slurps the config and munge
+multiple mechanisms, using `dec`. Or perhaps this should be baked into `dec`
+itself, but probably more likely it'd be a separate library. Prefix handling and
+merging is slightly tricky. This is all currently part of [yetibot.core](https://github.com/yetibot/yetibot.core/blob/4b607726bae926de31a48bb8a05e7345a8668484/src/yetibot/core/config.clj#L19-L47):
+This library should also utilize `clojure.spec` to validate the expected shape
+of a config, provide validation, friendly error messages, and config generation.
 
 ## Conclusion
 
