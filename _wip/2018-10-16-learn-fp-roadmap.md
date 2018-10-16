@@ -22,6 +22,7 @@ functions of a program with effects pushed to the outer edges.
 
 1. What is FP
   1. A style of programming
+  1. Composition: the ultimate goal
   1. Purity
   1. Referential transparency
   1. Comparison to OOP
