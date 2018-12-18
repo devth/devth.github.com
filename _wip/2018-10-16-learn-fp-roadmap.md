@@ -22,9 +22,11 @@ functions of a program with effects pushed to the outer edges.
 
 1. What is FP
   1. A style of programming
-  1. Composition: the ultimate goal
   1. Purity
   1. Referential transparency
+  1. Principled programming
+    1. i.e. everything that the `wat` talk isn't
+    1. Guarantees about the behavior of a program or operation
   1. Comparison to OOP
 1. Benefits of FP
   1. Equational reasoning
@@ -32,6 +34,8 @@ functions of a program with effects pushed to the outer edges.
   1. Concurrency
   1. Testability
   1. Mathematical rigor
+  1. Composition: the ultimate goal
+    1. Why impurity breaks composition
 1. How to actually achieve FP
   1. Language support for FP
     1. Haskell - enforces purity at the language level
