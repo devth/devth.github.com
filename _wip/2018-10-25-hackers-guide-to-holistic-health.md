@@ -42,3 +42,12 @@ really feels like work. It feels more like progress.
 Group changes into levels of importance. First eat move and sleep primally.
 
 ## Self quantification
+
+## Baseline of health
+
+- Live a healthy lifestyle (diet, sleep, stress, movement) to always be in a
+  "Ready state"
+- Allows you to put lots of volume on top of your baseline
+- E.g. if you eat 1 bad meal and have large glucose swings you probably won't
+  feel like working out that day
+  - This is a constant cycle for people who don't pay attention to their health

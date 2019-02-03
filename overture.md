@@ -1,6 +1,7 @@
 ---
 layout: article
 title: Overture
+toc: true
 image:
   feature: rainier.jpg
   teaser: rainier_teaser.jpg
@@ -12,7 +13,7 @@ of OO-wielding proletariats collectively chanting "good enough".
 
 Let's find a better way.
 
-## Recommended reading
+## Recommended works
 
 We are inundated with programming posts of varying quality. This is a curated
 list of only the best or most important I've come across.
@@ -60,3 +61,83 @@ list of only the best or most important I've come across.
   in Raft itself, go through this because it demonstrates so well the power of
   visualization in understanding complex interactions. (How can we get this level
   of quality in our own systems' documentation?)
+
+### Writing
+
+- [Linguistics, Style and Writing in the 21st Century - with Steven
+  Pinker](https://www.youtube.com/watch?v=OV5J6BfToSw) (YouTube)
+  — A wonderful and highly entertaining talk about writing. We should pursue
+  excellence in this area as knowledge workers since writing is a core part of
+  what we do.
+
+  Some gems:
+
+  > Writing is an act of pretense.
+
+  > Writing is an act of craftsmanship.
+
+  > Writing is an unnatural act
+
+  > Prose as a window onto the world
+  > - The writer has seen something in the world
+  > - He positions the reader so she can see it with her own eyes
+
+  > The reader and writer are equals
+
+  > The goal is to help the reader see objective reality
+
+  Beautiful idea that the reader and writer are equals. Do not write in a way
+  that is above critics or attempts to cover all bases, to be impenetrable.
+
+  Show examples, often! Focus on the subject! Not meta concerns such as the
+  studying of the thing, the process, etc.
+
+  > Minimize the kind of apologizing that academics in particular feel compelled
+  > to do.
+
+  > Classic prose gives the reader credit for knowing that many concepts are
+  > hard to define, many controversies hard to resolve.
+  > The reader is there to see what the writer will do about it.
+
+  > Minimize hedging
+
+  > Classic prose: Better to be clear & possibly wrong than muddy and "not even
+  > wrong."
+
+  > Count on the cooperative nature of ordinary conversation
+
+  > Use the active voice. The active voice is usually more direct and vigorous
+  > than the passive.
+
+  Interesting idea: a sentence is a linear string of words but it's describing a
+  non-linear graph of knowledge. It presents some bits of information to the
+  reader before others, affecting the way the information is absorbed. The
+  passive voice allows writers to vary the order in which ideas are presented
+  and absorbed.
+
+  > Good writer narrate a story, advanced by protagonists who make things
+  > happen.
+
+  > Bad writer work backwards from their own knowledge, writing down iades in
+  > the order in which they occur to them.
+
+  > They begin with the outcome of an event, and then throw in the cause as an
+  > afterthought.
+
+  > The passive makes that easy.
+
+  Ouch.
+
+  > The curse of knowledge
+
+  > When you know something, it's hard to imagine what it is like for someone
+  > else not to know it. aka mindblindness, egocentrism, hindsight bias
+
+  aka Monads 😂
+
+  Something to consider for technical writers!
+
+
+  Such density of good advice in this talk. But if you'd rather not watch an
+  hour-long video, start with [Steven's short Twitter thread on the same
+  topic](https://threadreaderapp.com/thread/1084490338629242880.html).
