@@ -4,7 +4,7 @@ branches:
   only:
   - source
 rvm:
-- 2.2
+- 2.5
 install:
 - bundle install
 script:
