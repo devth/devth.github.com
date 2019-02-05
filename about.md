@@ -44,13 +44,12 @@ me feedback, good or bad, but especially bad. If you'd like to chat, I usually
 hang out on freenode.net as `devth`, or you can Tweet
 [@devth](https://twitter.com/devth).
 
-I work remotely on a globally-distributed team for eBay as part of the New
-Product Development organization, tasked with discovering and
-[building](https://twitter.com/devinwenig/status/932586977819615232) products
-for the next generation of eBay users. I live in Montana with my wife and four
-kids. I'm an aspiring electronics tinkerer, musician, climber, [mountain biker
-and cyclist](https://www.strava.com/athletes/devth), learner, avid [listener of
-music](https://www.last.fm/user/trevorhartman), and maker of things.
+I work remotely on a globally-distributed team for eBay pushing for open source
+at every turn and gardening all the things. I live in Montana with my wife and
+four kids. I'm an aspiring electronics tinkerer, musician, climber, [mountain
+biker and cyclist](https://www.strava.com/athletes/devth), learner, avid
+[listener of music](https://www.last.fm/user/trevorhartman), and maker of
+things.
 
 <figure>
   <img src="/images/dakota-50.jpg" alt="Dakota 50" />
