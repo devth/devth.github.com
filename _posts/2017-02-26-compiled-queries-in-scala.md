@@ -19,11 +19,9 @@ To demonstrate, lets build an interpreter that runs projection and filtering on
 a simulated database, then build a compiled version and look at some performance
 numbers.
 
-To be clear, this is our goal: **compile a data structure representing a query
-into native code to speed up a query loop**.
-
-We'll look at two specific code-generation tools to achieve our goal: ASM and
-Scala Quasiquotes.
+This is our goal: **compile a data structure representing a query into native
+code to speed up a query loop**. We'll look at two specific code-generation
+tools to achieve our goal: ASM and Scala Quasiquotes.
 
 ASM has been used by Java developers for years for all sorts of codegen
 purposes. It's is very fast and has low-memory requirements, but it's also very
