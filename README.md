@@ -14,6 +14,8 @@ bundle install
 bundle exec jekyll serve -D
 ```
 
+## JavaScript
+
 ## Images aspect ratios
 
 Feature: 1024 x 256
