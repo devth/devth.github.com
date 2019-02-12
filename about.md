@@ -6,10 +6,12 @@ image:
   caption: Google Streetview, Seattle, 2007
 ---
 
-Software engineer with nearly two decades experience crafting quality web apps.
-Very interested in making your life easier. I care deeply about wielding
-technology to build great products and experiences and have worked on doing
-exactly that at every layer of the stack:
+Full stack software engineer with two decades experience growing web and mobile
+apps. Cares about Developer Experience as much as User Experience. Very
+interested in making your life easier!
+
+I wield technology to build great products and experiences and strive toward
+doing exactly that at every layer of the stack:
 
 - iterating on meticulously-detailed frontends for client sites, interactive
   experiences, and web applications
@@ -22,7 +24,7 @@ exactly that at every layer of the stack:
 
 Strong proponent of using automation to make processes more efficient and
 repeatable. I build an open source chat bot called
-[Yetibot](https://github.com/devth/yetibot) for this purpose and for fun.
+[Yetibot](https://yetibot.com) for this purpose and for fun.
 
 Obsessed with discovering better ways of expressing solutions to programming
 problems. I abhor unsoundness, boilerplate, repetitive code and senseless
@@ -41,7 +43,7 @@ blockchain neophyte.
 Most of my post topics are areas I wanted to better understand, and writing
 about them was a way to achieve that. I don't claim to be an expert. Please give
 me feedback, good or bad, but especially bad. If you'd like to chat, I usually
-hang out on freenode.net as `devth`, or you can Tweet
+hang out on [Yetibot Slack](https://slack.yetibot.com), or you can Tweet
 [@devth](https://twitter.com/devth).
 
 I work remotely on a globally-distributed team for eBay pushing for open source
@@ -62,7 +64,7 @@ things.
 
 - [CV](Trevor-Hartman-CV.pdf)
 - [Frontend Portfolio](http://cargocollective.com/devth)
-- [Yetibot](https://github.com/devth/yetibot)
+- [Yetibot](https://yetibot.com)
 - [dotfiles](https://github.com/devth/dotfiles)
 
 ¹ don't take offense; "JScript" 3.0 in IE4 [(based on
