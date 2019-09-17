@@ -48,7 +48,7 @@ hang out on [Yetibot Slack](https://slack.yetibot.com), or you can Tweet
 
 I work remotely on a globally-distributed team for eBay pushing for open source
 at every turn and gardening all the things. I live in Montana with my wife and
-four kids. I'm an aspiring electronics tinkerer, musician, climber, [mountain
+five kids. I'm an aspiring electronics tinkerer, musician, climber, [mountain
 biker and cyclist](https://www.strava.com/athletes/devth), learner, avid
 [listener of music](https://www.last.fm/user/trevorhartman), and maker of
 things.
