@@ -1,11 +1,11 @@
 ---
 layout: article
 title: |
-  Notes from the Strangeloop talk 'Unison: a new distributed programming language'
+  Notes from the Strange Loop talk 'Unison: a new distributed programming language'
 categories: [plt, unison, talks, notes]
 comments: true
 excerpt: |
-  Notes on the Strangeloop talk 'Unison: a new distributed programming language'
+  Notes on the Strange Loop talk 'Unison: a new distributed programming language'
   by Paul Chiusano. 🤯 Warning: mind expanding future tech 🤯
 image:
   feature: unison_feature.png
