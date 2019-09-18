@@ -390,17 +390,18 @@ p.intro {
   }
 }
 // tiles
+.tile img {
+  max-height: 140px;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+
 .tile {
   @include outer-container;
   margin-bottom: $gutter;
   @include media($micro) {
     @include fill-parent;
-  }
-  img {
-    max-height: 140px;
-    display: block;
-    margin: 0 auto;
-    text-align: center;
   }
   @include media($small) {
     @include span-columns(6);
