@@ -75,8 +75,21 @@ standard of excellence that should be achieved and maintained. By achieving some
 level of recognition, whether you wanted it or not, you now have a
 responsibility to your users.
 
+- make a best effort to ensure the quality and security of your code
 - publish a roadmap
 - let users know how they can contribute
+  - optional: welcome new users and offer to mentor engineers who are making
+    an honest effort to learn and grow
+- be open to feedback and criticism
+- aim for the good of the community
+- fix bugs in a reasonable amount of time
+- pass off stewardship and leadership if you personally can't commit to the
+  above
+
+These are not easy things to do. Ideally we engineers have the support of our
+employers to uphold this commitment to social good and technical excellence.
+After all, it's often the tech companies who are directly benefiting financially
+from the wealth of open source technology that they build upon.
 
 ## Epilogue
 
@@ -86,3 +99,5 @@ consume. But please contribute if you can, however great or small, from a place
 of joy, curiosity, and sincerity, striving to to advance technology and shape
 community while growing yourself. Be an advocate for building culture that cares
 about open source at your company.
+
+Raise the floor.
