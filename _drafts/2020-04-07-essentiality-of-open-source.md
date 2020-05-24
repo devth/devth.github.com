@@ -1,50 +1,53 @@
 ---
 layout: article
-title: Why Open Source
+title: Essentiality of Open Source
 categories: [oss, culture]
 comments: true
-excerpt: "Open source is essential"
+excerpt: "The essentiality of open source"
 ---
 
 Many software engineers are unfamiliar with open source and have never
-contributed. But we all consume it, heavily. As such, I suggest that all
-software engineers have familiarity with open source and consider contributing
-in some way. It could be authoring a new project or contributing to other
-projects. It could be writing tests and documentation. It could be helping users
-in the chat room.
+contributed, but we all consume it, heavily. As such, I suggest that all
+software engineers have familiarity with open source and consider open source
+contribution as part of the foundational culture and rhythm of software
+engineering. It could be authoring a new project or contributing to other
+projects. It could be writing tests and documentation, or helping users in the
+community chat room or on StackOverflow, or blogging about your experience with
+various tools and libraries.
 
-## Its essentiality
+## Essentiality
 
-Imagine if we didn't have programming languages, tools and web frameworks to
-build on top of. Or if we had to purchase a license to use some stack (a well
-known company already tried this and apparently decided [open source was a
-superior strategy](https://opensource.com/business/14/11/microsoft-dot-net-empower-open-source-communities)).
+Imagine if we didn't have languages, tools and web frameworks to build on top
+of. Or if we had to purchase a license to use some stack (a well known company
+already tried this and apparently decided [open source was a superior
+strategy](https://opensource.com/business/14/11/microsoft-dot-net-empower-open-source-communities)).
 
 Progress would be significantly slowed. Instead of going from idea to `rails
-new` and having a proof of concept in a few days you'd be reinventing the wheel
-for the 100,000th time or scouring pricing information to figure out which stack
-strikes the right balance of time savings and cost savings.
+new` and having a proof of concept in a few hours or days you'd be reinventing
+the wheel for the nth time or scouring pricing information to figure out which
+stack strikes the right balance of time savings and cost savings. In other
+words: not building.
 
 ## It legitimizes your work
 
 Code and systems that have gone through the crucible of public scrutiny and
 survived are that much stronger, more legitimate, with vastly more permanence.
 
-It forces you to create and maintain all the peripheral work around a solid
-piece of technology. It pushes your tech through edge cases and unexpected use
-cases. It forces you to write documentation, maintain test coverage, publish
-artifacts, and build community. It makes you consider how much generality is
-sufficient to elevate a system from one-off usage to becoming useful in other
-contexts making itself resilient to bit-rot.
+It forces the author to create and maintain all the peripheral work around a
+solid piece of technology. It pushes the tech through edge cases and unexpected
+use cases. It forces one to write documentation, maintain test coverage, publish
+artifacts, build community, and consider how much generality is sufficient to
+elevate a system from one-off usage to becoming useful in other contexts making
+itself resilient to bit-rot.
 
-It forces you to achieve a level of excellence that you probably wouldn't have
-otherwise without the extrinsic motivation.
+It forces the author to achieve a level of excellence that probably wouldn't
+have otherwise been realized without the extrinsic motivation.
 
-Compare this with internal code. Whether that code lives or gets extirpated
+Contrast this with internal code. Whether that code lives or gets extirpated
 depends on a ton of variable factors in the company. Reorganizations, rewrites,
 politics, strategy, and all kinds of other factors out of your control affect
 the longevity of your code. And if it does live on for some amount of time, it
-will most likely be just good enough to mostly barely do what it's supposed to,
+will most likely be just good enough to maybe barely do what it's supposed to,
 in a perpetual alpha state. Many Project Managers don't understand the value in
 comprehensive technical excellence, and therefore won't prioritize technical
 debt cleanup, necessary refactoring, coverage, documentation, or giving talks.
