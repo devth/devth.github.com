@@ -6,14 +6,14 @@ comments: true
 excerpt: "The essentiality of open source"
 ---
 
-Many software engineers are unfamiliar with open source and have never
-contributed, but we all consume it, heavily. As such, I suggest that all
-software engineers have familiarity with open source and consider open source
-contribution as part of the foundational culture and rhythm of software
-engineering. It could be authoring a new project or contributing to other
-projects. It could be writing tests and documentation, or helping users in the
-community chat room or on StackOverflow, or blogging about your experience with
-various tools and libraries.
+Many software engineers are unfamiliar with open source software (OSS) and have
+never contributed, but we all consume it, heavily. As such, I suggest that all
+software engineers have familiarity with OSS and consider contribution as part
+of the foundational culture and rhythm of software engineering. It could be
+authoring a new project or contributing to other projects. It could be writing
+tests and documentation, or helping users in the community chat room or on
+StackOverflow, or blogging about your experience with various tools and
+libraries.
 
 ## Essentiality
 
@@ -25,8 +25,8 @@ strategy](https://opensource.com/business/14/11/microsoft-dot-net-empower-open-s
 Progress would be significantly slowed. Instead of going from idea to `rails
 new` and having a proof of concept in a few hours or days you'd be reinventing
 the wheel for the nth time or scouring pricing information to figure out which
-stack strikes the right balance of time savings and cost savings. In other
-words: not building.
+stack strikes the right balance of time vs cost savings. In other words: not
+building.
 
 ## It legitimizes your work
 
@@ -68,10 +68,10 @@ you can't help but grow and become stronger and more mature in the process.
 Great. You've decided open source is worth pursuing. You want to make the world
 a better place. So what is your responsibility to the community when you open
 source a project and that project achieves some degree of fame or number of
-users? Do you "owe" your users nothing?
+users? Do you "owe" your users nothing? Or something?
 
 If your thing is worth the attention of the community there is a certain
-standard of excellence that should be achieved and maintained. By achieving some
+standard of excellence that should be met and maintained. By achieving some
 level of recognition, whether you wanted it or not, you now have a
 responsibility to your users.
 
@@ -83,6 +83,8 @@ responsibility to your users.
 - be open to feedback and criticism
 - aim for the good of the community
 - fix bugs in a reasonable amount of time
+- delegate stewardship when appropriate to reduce becoming a single point of
+  knowledge
 - pass off stewardship and leadership if you personally can't commit to the
   above
 

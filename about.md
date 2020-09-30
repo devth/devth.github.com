@@ -32,13 +32,13 @@ abstraction. On a path of ongoing language discovery, from:
 
 - early dark ages in Perl, JavaScript¹, Lingo (wat) and VB
 - middle ages in C# and ActionScript 3, Ruby and Python, Java
-- up to modern day using Scala with Scalaz (investigating Cats), Clojure and
-  ClojureScript, Datalog (via Datomic), some Swift
-- playing with Haskell, Eta, Elm and any other mind-bending languages that come
-  along
+- up to recent years using Scala with Scalaz, Datalog (via Datomic), some Swift
+- building open source with Clojure (and ClojureScript)
+- grinding as necessary with Golang
+- playing with Haskell, Eta, Elm
+- aspiring to use (read: blow minds with 🤯) [Unison](https://www.unisonweb.org/)
 
-Part time Pure Functional Programming zealot, Category Theory student, and
-blockchain neophyte.
+Part time Pure Functional Programming zealot and Category Theory student.
 
 Most of my post topics are areas I wanted to better understand, and writing
 about them was a way to achieve that. I don't claim to be an expert. Please give
@@ -46,10 +46,10 @@ me feedback, good or bad, but especially bad. If you'd like to chat, I usually
 hang out on [Yetibot Slack](https://slack.yetibot.com), or you can Tweet
 [@devth](https://twitter.com/devth).
 
-I work remotely on a globally-distributed team for eBay pushing for open source
-at every turn and gardening all the things. I live in Montana with my wife and
-five kids. I'm an aspiring electronics tinkerer, musician, climber, [mountain
-biker and cyclist](https://www.strava.com/athletes/devth), learner, avid
+I work remotely on a globally-distributed team for [Carta](https://carta.com/)
+helping build the future of financial infrastructure. I live in Montana with my
+wife and five kids. I'm an aspiring electronics tinkerer, musician, climber,
+[mountain biker and cyclist](https://www.strava.com/athletes/devth), learner, avid
 [listener of music](https://www.last.fm/user/trevorhartman), and maker of
 things.
 
