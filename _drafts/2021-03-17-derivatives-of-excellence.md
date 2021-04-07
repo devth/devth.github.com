@@ -69,3 +69,12 @@ consequences, but other industries are heavily regulated, and failures in
 production, whether data loss or exposure, or incorrect algorithms can have
 serious consequences.
 
+One property of derivatives is that the `nth` derivative is dependent on the
+`n-1th` derivative (this is how recursion works).
+
+What does this mean for correctness? It means we need to model our layered
+verification in a way that one layer depends upon the previous layer. Any given
+layer must produce an artifact that is consumed by the next in order to produce
+its own checks.
+
+What does some notion of higher order correctness look like in practice?
