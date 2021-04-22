@@ -1,7 +1,5 @@
 # Derivatives of excellence
 
-Or: Higher Order Correctness
-
 When changes are made in production, what checks are made to ensure correctness?
 
 How easy is it to inject a bug into production? If you intentionally wrote a
@@ -37,7 +35,7 @@ change change change change x
 Let's extend that to correctness.
 
 Anything beyond the first derivative is sometimes called a "higher order
-derivative", so let's call it "Higher Order Correctness", then try to figure out
+derivative". From that, we get "Higher Order Correctness", then try to figure out
 what that even means.
 
 A first line of defense might be unit testing.
