@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>A Simple type class • devth</title>
+    <meta name="description" content="Type classes provide a way of achieving ad hoc polymorphism">
+    <meta name="keywords" content="">
+    
+    	<!-- Twitter Cards -->
+	<meta name="twitter:title" content="A Simple type class">
+	<meta name="twitter:description" content="Type classes provide a way of achieving ad hoc polymorphism">
+	<meta name="twitter:site" content="@devth">
+	<meta name="twitter:creator" content="@devth">
+	
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://devth.com/images/typeclass_wide.jpg">
+	
+	<!-- Open Graph -->
+	<meta property="og:locale" content="en_US">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="A Simple type class">
+	<meta property="og:description" content="Type classes provide a way of achieving ad hoc polymorphism">
+	<meta property="og:url" content="https://devth.com/2015/a-simple-type-class">
+	<meta property="og:site_name" content="devth">
+    
+
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/images/favicon/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/favicon/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/favicon/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/favicon/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="/images/favicon/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/images/favicon/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/images/favicon/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/images/favicon/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-128.png" sizes="128x128" />
+
+    <link rel="canonical" href="https://devth.com/2015/a-simple-type-class">
+
+    <link href="https://devth.com/atom.xml" type="application/atom+xml" rel="alternate" title="devth Atom Feed">
+    <link href="https://devth.com/sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="cleartype" content="on">
+
+    <style>
+    .sliding-menu-content {
+      top: 0;
+      right: 0;
+      text-align: center;
+      visibility: hidden;
+      height: 100%;
+      width: 100%;
+      -webkit-transform: translateX(100%);
+      -moz-transform: translateX(100%);
+      -ms-transform: translateX(100%);
+      -o-transform: translateX(100%);
+      transform: translateX(100%);
+    }
+    </style>
+
+    <link rel="stylesheet" href="/css/main.css">
+    <!-- HTML5 Shiv and Media Query Support for IE -->
+    <!--[if lt IE 9]>
+      <script src="https://devth.com/js/vendor/html5shiv.min.js"></script>
+      <script src="https://devth.com/js/vendor/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+
+  <body>
+    <header id="masthead">
+  <div class="inner-wrap">
+    <a href="https://devth.com" class="site-title">
+      dev<span>th</span>
+    </a>
+    <nav role="navigation" class="menu top-menu">
+        <ul class="menu-item">
+  <li class="home"><a href="/">devth</a></li>
+  
+    
+    <li><a href="https://devth.com/" >Home</a></li>
+  
+    
+    <li><a href="https://devth.com/about" >About</a></li>
+  
+    
+    <li><a href="https://devth.com/overture" >Overture</a></li>
+  
+    
+    <li><a href="https://devth.com/glossary" >Glossary</a></li>
+  
+</ul>
+
+    </nav>
+  </div><!-- /.inner-wrap -->
+</header><!-- /.masthead -->
+
+    <nav role="navigation" class="js-menu sliding-menu-content">
+	<ul class="menu-item">
+		<li>
+      
+			<a href="https://devth.com/"><img src="https://devth.com/images/home.png" alt="teaser" class="teaser"></a>
+			<a href="https://devth.com/" class="title">Home</a>
+			<p class="excerpt">Home</p>
+		</li><li>
+      
+			<a href="https://devth.com/about"><img src="https://devth.com/images/about_300_200.jpg" alt="teaser" class="teaser"></a>
+			<a href="https://devth.com/about" class="title">About</a>
+			<p class="excerpt">About Trevor Hartman</p>
+		</li><li>
+      
+			<a href="https://devth.com/overture"><img src="https://devth.com/images/rainier_teaser.jpg" alt="teaser" class="teaser"></a>
+			<a href="https://devth.com/overture" class="title">Overture</a>
+			<p class="excerpt">Programming, tools and process are stuck in the past</p>
+		</li><li>
+      
+			<a href="https://devth.com/glossary"><img src="https://devth.com/images/granite_300_200.jpg" alt="teaser" class="teaser"></a>
+			<a href="https://devth.com/glossary" class="title">Glossary</a>
+			<p class="excerpt">Brief descriptions of unfamiliar terms</p>
+		</li>
+	</ul>
+</nav>
+<button type="button" class="js-menu-trigger sliding-menu-button menulines-button x2" role="button" aria-label="Toggle Navigation">
+	<span class="menulines"></span>
+</button>
+
+<div class="js-menu-screen menu-screen"></div>
+
+    <div id="page-wrapper">
+      <!--[if lt IE 9]><div class="upgrade notice-danger"><strong>Your browser is quite old!</strong> Why not <a href="http://whatbrowser.org/">upgrade to a newer one</a> to better enjoy this site?</div><![endif]-->
+
+      <div id="main" role="main">
+  <article class="wrap" itemscope itemtype="http://schema.org/Article">
+    
+    <div class="page-feature">
+      <div class="page-image">
+        <img src="/images/typeclass_wide.jpg" class="page-feature-image" alt="A Simple type class" itemprop="image">
+        
+        
+          <div class="caption">Schilling Cider House, Seattle, WA</div>
+        
+      </div><!-- /.page-image -->
+    </div><!-- /.page-feature -->
+    
+
+    
+
+    
+    <div class="page-title">
+      <h1>A Simple type class</h1>
+    </div>
+    <div class="inner-wrap">
+      <nav class="toc"></nav><!-- /.toc -->
+      <div id="content" class="page-content" itemprop="articleBody">
+        <p>Type classes provide a way of achieving <a href="https://en.wikipedia.org/wiki/Ad_hoc_polymorphism">ad hoc
+polymorphism</a>. We’ll look at
+what they are, why they’re useful, how they’re typically encoded in Scala.
+We’ll make our own <code class="language-scala highlighter-rouge"><span class="nc">Simple</span></code> type class that has a single
+operation called <code class="language-scala highlighter-rouge"><span class="n">simplify</span></code> returning a
+<code class="language-scala highlighter-rouge"><span class="nc">String</span></code>, and provide instances of it for Scala’s
+<code class="language-scala highlighter-rouge"><span class="nc">List</span></code> and <code class="language-scala highlighter-rouge"><span class="nc">Int</span></code> classes, along with our own
+class <code class="language-scala highlighter-rouge"><span class="n">C</span></code>. Finally, we’ll add convenient syntax in the Scalaz
+style to make it extremely easy to use the <code class="language-scala highlighter-rouge"><span class="n">simplify</span></code>
+operation. This might be the most hands-on, easy to understand explanation of
+type classes you’ve ever encountered!</p>
+
+<h2 id="rationale">Rationale</h2>
+
+<p>A common way to express polymorphism in Scala is inheritance. This is brittle
+because the polymorphic relationship between supertype and subtype must be
+defined where the subtype itself is defined. For example, if you have an
+<code class="language-scala highlighter-rouge"><span class="nc">Animal</span></code> trait, your <code class="language-scala highlighter-rouge"><span class="nc">Dog</span></code> class must
+declare its relationship as a subtype of <code class="language-scala highlighter-rouge"><span class="nc">Animal</span></code> as part of
+its definition. This is problematic when you do not own potential subtypes (i.e.
+they’re provided by a library). It also tightly couples the subtype to all of
+its implementations of its potential supertypes. A given subtype may already
+have all the methods needed to implement the behavior of a given supertype but
+doesn’t know or care about the supertype at definition time. Though less common,
+another problem is a subtype may be able to implement a supertype’s operations
+in multiple, distinct ways (e.g. multiplication and addition implementations of
+a Monoid over <code class="language-scala highlighter-rouge"><span class="nc">Int</span></code>). With inheritance this is impossible.</p>
+
+<h2 id="scalaz">Scalaz</h2>
+
+<p>Let’s start with one of the simplest type classes in Scalaz:
+<code class="language-scala highlighter-rouge"><span class="nc">Equal</span></code>. <code class="language-scala highlighter-rouge"><span class="nc">Equal</span></code> describes “a type safe
+alternative to universal equality” (if you’re wondering why this is useful or
+necessary, ask me in the comments). Here’s an example of providing an instance
+of <code class="language-scala highlighter-rouge"><span class="nc">Equal</span></code> over our own class <code class="language-scala highlighter-rouge"><span class="n">C</span></code> that uses
+value equality to compare two instances.</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">C</span><span class="o">(</span><span class="k">val</span> <span class="n">name</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span>
+
+<span class="k">implicit</span> <span class="k">val</span> <span class="n">equalC</span><span class="k">:</span> <span class="kt">Equal</span><span class="o">[</span><span class="kt">C</span><span class="o">]</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Equal</span><span class="o">[</span><span class="kt">C</span><span class="o">]</span> <span class="o">{</span>
+  <span class="k">override</span> <span class="k">def</span> <span class="n">equal</span><span class="o">(</span><span class="n">c1</span><span class="k">:</span> <span class="kt">C</span><span class="o">,</span> <span class="n">c2</span><span class="k">:</span> <span class="kt">C</span><span class="o">)</span> <span class="k">=</span> <span class="n">c1</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">c2</span><span class="o">.</span><span class="n">name</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Now let’s say we want a <code class="highlighter-rouge">notEqual</code> method that works on any
+<code class="language-scala highlighter-rouge"><span class="n">A</span></code> provided there is evidence of
+<code class="language-scala highlighter-rouge"><span class="nc">Equal</span><span class="o">[</span><span class="kt">A</span><span class="o">]</span></code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="n">notEqual</span><span class="o">[</span><span class="kt">A:</span> <span class="kt">Equal</span><span class="o">](</span><span class="n">a1</span><span class="k">:</span> <span class="kt">A</span><span class="o">,</span> <span class="n">a2</span><span class="k">:</span> <span class="kt">A</span><span class="o">)</span><span class="k">:</span> <span class="kt">Boolean</span> <span class="o">=</span>
+  <span class="o">!</span><span class="n">implicitly</span><span class="o">[</span><span class="kt">Equal</span><span class="o">[</span><span class="kt">A</span><span class="o">]].</span><span class="n">equal</span><span class="o">(</span><span class="n">a1</span><span class="o">,</span> <span class="n">a2</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="n">c1</span> <span class="k">=</span> <span class="k">new</span> <span class="n">C</span><span class="o">(</span><span class="s">"foo"</span><span class="o">)</span>
+<span class="k">val</span> <span class="n">c2</span> <span class="k">=</span> <span class="k">new</span> <span class="n">C</span><span class="o">(</span><span class="s">"bar"</span><span class="o">)</span>
+
+<span class="n">notEqual</span><span class="o">(</span><span class="n">c1</span><span class="o">,</span> <span class="n">c2</span><span class="o">)</span>
+<span class="c1">//=&gt; true
+</span></code></pre></div></div>
+
+<p>Sidenote for those unfamiliar with <em>context bounds</em>: the context bound <code class="language-scala highlighter-rouge"><span class="o">[</span><span class="kt">A:</span>
+<span class="kt">Equal</span><span class="o">]</span></code> is what ensures we have an implicit
+<code class="language-scala highlighter-rouge"><span class="nc">Equal</span><span class="o">[</span><span class="kt">C</span><span class="o">]</span></code> instance available when running <code class="language-scala highlighter-rouge"><span class="n">notEqual</span><span class="o">(</span><span class="n">c1</span><span class="o">,</span>
+<span class="n">c2</span><span class="o">)</span></code>. An equivalent and perhaps more clear implementation
+without context bounds would look like this:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="n">notEqual</span><span class="o">[</span><span class="kt">A</span><span class="o">](</span><span class="n">a1</span><span class="k">:</span> <span class="kt">A</span><span class="o">,</span> <span class="n">a2</span><span class="k">:</span> <span class="kt">A</span><span class="o">)(</span><span class="k">implicit</span> <span class="n">e</span><span class="k">:</span> <span class="kt">Equal</span><span class="o">[</span><span class="kt">A</span><span class="o">])</span> <span class="k">=</span> <span class="o">!</span><span class="n">e</span><span class="o">.</span><span class="n">equal</span><span class="o">(</span><span class="n">a1</span><span class="o">,</span> <span class="n">a2</span><span class="o">)</span>
+<span class="n">notEqual</span><span class="o">(</span><span class="n">c1</span><span class="o">,</span> <span class="n">c2</span><span class="o">)</span>
+<span class="c1">//=&gt; true
+</span></code></pre></div></div>
+
+<p>However, there’s an even more concise way of writing this using context bounds
+and Scalaz’ <code class="language-scala highlighter-rouge"><span class="o">/==</span></code> operator for instances of
+<code class="language-scala highlighter-rouge"><span class="nc">Equal</span></code>, or even its unicode <code class="language-scala highlighter-rouge"><span class="o">≠</span></code> alias:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="n">notEqual</span><span class="o">[</span><span class="kt">A:</span> <span class="kt">Equal</span><span class="o">](</span><span class="n">a1</span><span class="k">:</span> <span class="kt">A</span><span class="o">,</span> <span class="n">a2</span><span class="k">:</span> <span class="kt">A</span><span class="o">)</span><span class="k">:</span> <span class="kt">Boolean</span> <span class="o">=</span> <span class="n">a1</span> <span class="o">/==</span> <span class="n">a2</span>
+<span class="c1">// or
+</span><span class="k">def</span> <span class="n">notEqual</span><span class="o">[</span><span class="kt">A:</span> <span class="kt">Equal</span><span class="o">](</span><span class="n">a1</span><span class="k">:</span> <span class="kt">A</span><span class="o">,</span> <span class="n">a2</span><span class="k">:</span> <span class="kt">A</span><span class="o">)</span><span class="k">:</span> <span class="kt">Boolean</span> <span class="o">=</span> <span class="n">a1</span> <span class="o">≠</span> <span class="n">a2</span>
+</code></pre></div></div>
+
+<p>Since Scalaz already provides these operators, <code class="language-scala highlighter-rouge"><span class="n">notEqual</span></code> is purely
+didactic.</p>
+
+<p>Another common typelcass in Scalaz is <code class="language-scala highlighter-rouge"><span class="nc">Show</span></code>. This corresponds
+to Haskell’s <code class="language-haskell highlighter-rouge"><span class="kt">Show</span></code> type class, and is used to indicate a
+type that can be represented in some way as a string, e.g. for logging or
+printing in a REPL. Here’s an instance for our <code class="language-scala highlighter-rouge"><span class="n">C</span></code> class
+example from before.</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">implicit</span> <span class="k">val</span> <span class="n">showC</span><span class="k">:</span> <span class="kt">Show</span><span class="o">[</span><span class="kt">C</span><span class="o">]</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Show</span><span class="o">[</span><span class="kt">C</span><span class="o">]</span> <span class="o">{</span>
+  <span class="k">override</span> <span class="k">def</span> <span class="n">show</span><span class="o">(</span><span class="n">c</span><span class="k">:</span> <span class="kt">C</span><span class="o">)</span> <span class="k">=</span> <span class="n">s</span><span class="s">"C[name=${c.name}]"</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Scalaz provides syntax helpers that allow us to simply call
+<code class="language-scala highlighter-rouge"><span class="o">.</span><span class="n">show</span></code> on any type that provides evidence of
+<code class="language-scala highlighter-rouge"><span class="nc">Show</span></code>. We’ll look at how that works in detail toward the end.</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">new</span> <span class="n">C</span><span class="o">(</span><span class="s">"qux"</span><span class="o">).</span><span class="n">show</span>
+<span class="c1">//=&gt; res22: scalaz.Cord = C[name=qux]
+</span></code></pre></div></div>
+
+<h2 id="simple">Simple</h2>
+
+<p>Now that we’ve gotten a taste for using a few of Scalaz’ type classes, let’s
+build our own, along with some syntax helpers in the Scalaz style.</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">trait</span> <span class="nc">Simple</span><span class="o">[</span><span class="kt">F</span><span class="o">]</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="n">simplify</span><span class="o">(</span><span class="n">f</span><span class="k">:</span> <span class="kt">F</span><span class="o">)</span><span class="k">:</span> <span class="kt">String</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>This is our type class definition. It defines a single operation
+<code class="language-scala highlighter-rouge"><span class="n">simplify</span></code> for a given <code class="highlighter-rouge">F</code> and returns a
+<code class="language-scala highlighter-rouge"><span class="nc">String</span></code>. Before we provide instances, let’s define a method
+that expects a <code class="language-scala highlighter-rouge"><span class="nc">Seq</span></code> of <code class="language-scala highlighter-rouge"><span class="nc">Simple</span></code> instances
+and outputs them separated by newlines.</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="n">manySimple</span><span class="o">[</span><span class="kt">A</span><span class="o">](</span><span class="n">simples</span><span class="k">:</span> <span class="kt">Seq</span><span class="o">[</span><span class="kt">A</span><span class="o">])(</span><span class="k">implicit</span> <span class="n">s</span><span class="k">:</span> <span class="kt">Simple</span><span class="o">[</span><span class="kt">A</span><span class="o">])</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=</span>
+  <span class="s">"Many simples:\n\t"</span> <span class="o">+</span> <span class="n">simples</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="n">simplify</span><span class="o">).</span><span class="n">mkString</span><span class="o">(</span><span class="s">"\n\t"</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>We can use this to easily try out instances. Let’s start with an instance of
+<code class="language-scala highlighter-rouge"><span class="n">C</span></code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">implicit</span> <span class="k">def</span> <span class="n">simpleC</span><span class="k">:</span> <span class="kt">Simple</span><span class="o">[</span><span class="kt">C</span><span class="o">]</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Simple</span><span class="o">[</span><span class="kt">C</span><span class="o">]</span> <span class="o">{</span>
+  <span class="k">override</span> <span class="k">def</span> <span class="n">simplify</span><span class="o">(</span><span class="n">c</span><span class="k">:</span> <span class="kt">C</span><span class="o">)</span> <span class="k">=</span> <span class="n">s</span><span class="s">"Simplified: ${c.show}"</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>We can manually call this by implicitly obtaining a
+<code class="language-scala highlighter-rouge"><span class="nc">Simple</span><span class="o">[</span><span class="kt">C</span><span class="o">]</span></code> then calling <code class="language-scala highlighter-rouge"><span class="n">simplify</span></code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">implicitly</span><span class="o">[</span><span class="kt">Simple</span><span class="o">[</span><span class="kt">C</span><span class="o">]].</span><span class="n">simplify</span><span class="o">(</span><span class="k">new</span> <span class="n">C</span><span class="o">(</span><span class="s">"hello"</span><span class="o">))</span>
+</code></pre></div></div>
+
+<p>Or we can try out the <code class="language-scala highlighter-rouge"><span class="n">manySimple</span></code> method:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">manySimple</span><span class="o">(</span><span class="nc">Stream</span><span class="o">(</span><span class="k">new</span> <span class="n">C</span><span class="o">(</span><span class="s">"foo"</span><span class="o">),</span> <span class="k">new</span> <span class="n">C</span><span class="o">(</span><span class="s">"bar"</span><span class="o">),</span> <span class="k">new</span> <span class="n">C</span><span class="o">(</span><span class="s">"qux"</span><span class="o">)))</span>
+<span class="c1">//=&gt; Many simples:
+//=&gt;        Simplified: C[name=foo]
+//=&gt;        Simplified: C[name=bar]
+//=&gt;        Simplified: C[name=qux]
+</span></code></pre></div></div>
+
+<p>Let’s try another one: <code class="language-scala highlighter-rouge"><span class="nc">Int</span></code>.</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">implicit</span> <span class="k">val</span> <span class="n">simpleInt</span><span class="k">:</span> <span class="kt">Simple</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Simple</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="o">{</span>
+  <span class="k">override</span> <span class="k">def</span> <span class="n">simplify</span><span class="o">(</span><span class="n">i</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span> <span class="k">=</span> <span class="n">s</span><span class="s">"Simplified Int with value of $i"</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>This is getting easy, right?</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">implicitly</span><span class="o">[</span><span class="kt">Simple</span><span class="o">[</span><span class="kt">Int</span><span class="o">]].</span><span class="n">simplify</span><span class="o">(</span><span class="mi">123</span><span class="o">)</span>
+<span class="c1">//=&gt; Simplified Int with value of 123
+</span></code></pre></div></div>
+
+<p>We can even provide an instance for <code class="language-scala highlighter-rouge"><span class="nc">List</span><span class="o">[</span><span class="kt">A</span><span class="o">]</span></code> but only if
+<code class="language-scala highlighter-rouge"><span class="n">A</span></code> itself has a <code class="language-scala highlighter-rouge"><span class="nc">Simple</span></code> instance:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Evidence for Simple[List[A]] given evidence of Simple[A]
+</span><span class="k">implicit</span> <span class="k">def</span> <span class="n">simpleList</span><span class="o">[</span><span class="kt">A:</span> <span class="kt">Simple</span><span class="o">]</span><span class="k">:</span> <span class="kt">Simple</span><span class="o">[</span><span class="kt">List</span><span class="o">[</span><span class="kt">A</span><span class="o">]]</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Simple</span><span class="o">[</span><span class="kt">List</span><span class="o">[</span><span class="kt">A</span><span class="o">]]</span> <span class="o">{</span>
+ <span class="k">override</span> <span class="k">def</span> <span class="n">simplify</span><span class="o">(</span><span class="n">l</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">A</span><span class="o">])</span> <span class="k">=</span> <span class="o">{</span>
+   <span class="k">val</span> <span class="n">simplifyA</span> <span class="k">=</span> <span class="n">implicitly</span><span class="o">[</span><span class="kt">Simple</span><span class="o">[</span><span class="kt">A</span><span class="o">]].</span><span class="n">simplify</span> <span class="k">_</span>
+   <span class="n">s</span><span class="s">"Simplified list:\n${l.map(simplifyA).mkString("</span><span class="o">\</span><span class="n">n</span><span class="s">")}"</span>
+ <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Try it out:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">implicitly</span><span class="o">[</span><span class="kt">Simple</span><span class="o">[</span><span class="kt">List</span><span class="o">[</span><span class="kt">Int</span><span class="o">]]].</span><span class="n">simplify</span><span class="o">((</span><span class="mi">1</span> <span class="n">to</span> <span class="mi">5</span><span class="o">).</span><span class="n">toList</span><span class="o">)</span>
+<span class="c1">//=&gt; Simplified list:
+//=&gt; Simplified Int with value of 1
+//=&gt; Simplified Int with value of 2
+//=&gt; Simplified Int with value of 3
+//=&gt; Simplified Int with value of 4
+//=&gt; Simplified Int with value of 5
+</span></code></pre></div></div>
+
+<p>Hopefully you have a feel for how this works (ignoring how unuseful our
+<code class="language-scala highlighter-rouge"><span class="nc">Simple</span></code> is IRL). Next, let’s follow Scalaz lead and
+provide some convenient syntax for working with our new type class; typing
+<code class="language-scala highlighter-rouge"><span class="n">implicitly</span><span class="o">[</span><span class="kt">Simple</span><span class="o">[</span><span class="k">_</span><span class="o">]]</span></code> over and over again is starting to get
+old.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<p>Wouldn’t it be nice if we could just call <code class="highlighter-rouge">.simplify</code> on objects which provide
+evidence of a <code class="language-scala highlighter-rouge"><span class="nc">Simple</span></code>? Well, we can via some neat implicit
+tricks. Check it out:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">final</span> <span class="k">class</span> <span class="nc">SimpleOps</span><span class="o">[</span><span class="kt">F</span><span class="o">](</span><span class="k">val</span> <span class="n">self</span><span class="k">:</span> <span class="kt">F</span><span class="o">)(</span><span class="k">implicit</span> <span class="k">val</span> <span class="n">F</span><span class="k">:</span> <span class="kt">Simple</span><span class="o">[</span><span class="kt">F</span><span class="o">])</span> <span class="o">{</span>
+  <span class="k">final</span> <span class="k">def</span> <span class="o">/^</span> <span class="k">=</span> <span class="n">F</span><span class="o">.</span><span class="n">simplify</span><span class="o">(</span><span class="n">self</span><span class="o">)</span>
+  <span class="k">final</span> <span class="k">def</span> <span class="o">⬈</span> <span class="k">=</span> <span class="n">F</span><span class="o">.</span><span class="n">simplify</span><span class="o">(</span><span class="n">self</span><span class="o">)</span>
+<span class="o">}</span>
+
+<span class="k">trait</span> <span class="nc">ToSimpleOps</span> <span class="o">{</span>
+  <span class="k">implicit</span> <span class="k">def</span> <span class="nc">ToSimpleOps</span><span class="o">[</span><span class="kt">F</span><span class="o">](</span><span class="n">v</span><span class="k">:</span> <span class="kt">F</span><span class="o">)(</span><span class="k">implicit</span> <span class="n">F0</span><span class="k">:</span> <span class="kt">Simple</span><span class="o">[</span><span class="kt">F</span><span class="o">])</span> <span class="k">=</span>
+    <span class="k">new</span> <span class="nc">SimpleOps</span><span class="o">[</span><span class="kt">F</span><span class="o">](</span><span class="n">v</span><span class="o">)</span>
+<span class="o">}</span>
+
+<span class="k">object</span> <span class="nc">simple</span> <span class="k">extends</span> <span class="nc">ToSimpleOps</span>
+
+<span class="k">trait</span> <span class="nc">SimpleSyntax</span><span class="o">[</span><span class="kt">F</span><span class="o">]</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="n">F</span><span class="k">:</span> <span class="kt">Simple</span><span class="o">[</span><span class="kt">F</span><span class="o">]</span>
+  <span class="k">implicit</span> <span class="k">def</span> <span class="nc">ToSimpleOps</span><span class="o">(</span><span class="n">v</span><span class="k">:</span> <span class="kt">F</span><span class="o">)</span><span class="k">:</span> <span class="kt">SimpleOps</span><span class="o">[</span><span class="kt">F</span><span class="o">]</span> <span class="k">=</span>
+    <span class="k">new</span> <span class="nc">SimpleOps</span><span class="o">[</span><span class="kt">F</span><span class="o">](</span><span class="n">v</span><span class="o">)(</span><span class="nc">SimpleSyntax</span><span class="o">.</span><span class="k">this</span><span class="o">.</span><span class="n">F</span><span class="o">)</span>
+<span class="o">}</span>
+
+<span class="c1">// New definition of our Simple typeclass that provides an instance of
+// SimpleSyntax
+</span><span class="k">trait</span> <span class="nc">Simple</span><span class="o">[</span><span class="kt">F</span><span class="o">]</span> <span class="o">{</span> <span class="n">self</span> <span class="k">=&gt;</span>
+  <span class="k">def</span> <span class="n">simplify</span><span class="o">(</span><span class="n">f</span><span class="k">:</span> <span class="kt">F</span><span class="o">)</span><span class="k">:</span> <span class="kt">String</span>
+  <span class="k">val</span> <span class="n">simpleSyntax</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SimpleSyntax</span><span class="o">[</span><span class="kt">F</span><span class="o">]</span> <span class="o">{</span> <span class="k">def</span> <span class="n">F</span> <span class="k">=</span> <span class="nc">Simple</span><span class="o">.</span><span class="k">this</span> <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Here we’ve provided two syntax operators as aliases to
+<code class="language-scala highlighter-rouge"><span class="n">simplify</span></code> (because no type class is legit without unicode
+operator aliases).</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">simple._</span>
+
+<span class="mi">1</span> <span class="o">⬈</span>
+<span class="c1">//=&gt; Simplified Int with value of 1
+</span>
+<span class="k">new</span> <span class="n">C</span><span class="o">(</span><span class="s">"I am C"</span><span class="o">)</span> <span class="o">⬈</span>
+<span class="c1">//=&gt; Simplified: C[name=I am C]
+</span>
+<span class="nc">List</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">)</span> <span class="o">⬈</span>
+<span class="c1">//=&gt; Simplified Int with value of 1
+//=&gt; Simplified Int with value of 2
+//=&gt; Simplified Int with value of 3
+</span>
+<span class="c1">// boring
+</span><span class="k">new</span> <span class="n">C</span><span class="o">(</span><span class="s">"bar"</span><span class="o">)</span> <span class="o">/^</span>
+<span class="c1">//=&gt; Simplified: C[name=bar]
+</span></code></pre></div></div>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Type classes are a powerful method of adding support for a set of operations on
+an existing type in an ad hoc manner. Because Scala doesn’t encode type classes
+at the language level, there is a bit of boilerplate and implicit trickery to
+create your own type classes (compare this with Haskell, where classes are
+elegantly supported at the language level) and operator syntax.</p>
+
+<p><a href="https://gist.github.com/devth/735ddd34e8f29fc6b872">View the full code listing for this post</a>.</p>
+
+<h3 id="further-reading">Further reading</h3>
+
+<ul>
+  <li><a href="http://tpolecat.github.io/2013/10/12/type class.html">Introduction to Typeclasses in Scala (2013)</a></li>
+  <li><a href="http://learnyouahaskell.com/types-and-typeclasses">Types and Typeclasses — Learn you a Haskell</a></li>
+  <li><a href="https://github.com/mpilquist/simulacrum">Simalacrum</a> — a modern, concise type
+class encoding for Scala using annotations</li>
+  <li><a href="https://wiki.haskell.org/Typeclassopedia">Typeclassopedia</a> — overview of
+Haskell’s type classes, many of which are also represented in Scalaz, along
+with a very useful diagram showing relationships between type classes.</li>
+</ul>
+
+        <hr />
+        <footer class="page-footer">
+          
+
+<div class="author-image">
+  <img src="https://devth.com/images/bio-photo.png" alt="Trevor Hartman">
+</div><!-- ./author-image -->
+<div class="author-content">
+  <h3 class="author-name" >
+    Written by
+    
+      <span itemprop="author">Trevor Hartman</span>
+    
+    <span class="page-meta">
+  on <time datetime="2015-08-03T00:00:00Z" itemprop="datePublished">August 03, 2015</time>
+</span><!-- /.page-meta -->
+
+  </h3>
+  <p class="author-bio">Automate or die</p>
+</div><!-- ./author-content -->
+
+          
+          </footer><!-- /.footer -->
+          <aside>
+            <hr />
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+	var disqus_shortname = 'devth';
+
+	/* * * DON'T EDIT BELOW THIS LINE * * */
+	(function() {
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          </aside>
+      </div><!-- /.content -->
+    </div><!-- /.inner-wrap -->
+    
+  </article><!-- ./wrap -->
+</div><!-- /#main -->
+
+
+      <footer role="contentinfo" id="site-footer">
+  <nav role="navigation" class="menu bottom-menu">
+    <ul class="menu-item">
+      
+        
+        <li><a href="https://devth.com/">Home</a></li>
+      
+        
+        <li><a href="http://twitter.com/devth">Twitter</a></li>
+      
+        
+        <li><a href="http://github.com/devth">GitHub</a></li>
+      
+        
+        <li><a href="https://keybase.io/devth">Keybase</a></li>
+      
+    </ul>
+  </nav><!-- /.bottom-menu -->
+  <p class="copyright">
+    This site is continuously delivered from
+    <a href="https://github.com/devth/devth.github.com">source</a>.
+    <br />
+    All images and content
+    &#169; 2021
+    <a href="https://devth.com">Trevor Hartman</a>.
+    <a href="https://en.wikipedia.org/wiki/Soli_Deo_gloria">
+      Soli Deo gloria
+    </a>
+  </p>
+</footer>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9963595-1', 'auto');
+  ga('require', 'displayfeatures');
+  ga('send', 'pageview');
+</script>
+
+    </div>
+
+    <script src="/js/vendor/jquery-1.9.1.min.js"></script>
+    <script src="/js/main.js"></script>
+    
+    
+
+  </body>
+
+</html>

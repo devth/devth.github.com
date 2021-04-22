@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Compiled queries in Scala • devth</title>
+    <meta name="description" content="Why resort to the complexities of dynamic code generation and compilation at
+runtime?
+
+">
+    <meta name="keywords" content="">
+    
+    	<!-- Twitter Cards -->
+	<meta name="twitter:title" content="Compiled queries in Scala">
+	<meta name="twitter:description" content="Why resort to the complexities of dynamic code generation and compilation at
+runtime?
+
+">
+	<meta name="twitter:site" content="@devth">
+	<meta name="twitter:creator" content="@devth">
+	
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://devth.com/images/compiled-queries-feature.jpg">
+	
+	<!-- Open Graph -->
+	<meta property="og:locale" content="en_US">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="Compiled queries in Scala">
+	<meta property="og:description" content="Why resort to the complexities of dynamic code generation and compilation at
+runtime?
+
+">
+	<meta property="og:url" content="https://devth.com/2017/compiled-queries-in-scala">
+	<meta property="og:site_name" content="devth">
+    
+
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/images/favicon/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/favicon/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/favicon/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/favicon/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="/images/favicon/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/images/favicon/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/images/favicon/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/images/favicon/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-128.png" sizes="128x128" />
+
+    <link rel="canonical" href="https://devth.com/2017/compiled-queries-in-scala">
+
+    <link href="https://devth.com/atom.xml" type="application/atom+xml" rel="alternate" title="devth Atom Feed">
+    <link href="https://devth.com/sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="cleartype" content="on">
+
+    <style>
+    .sliding-menu-content {
+      top: 0;
+      right: 0;
+      text-align: center;
+      visibility: hidden;
+      height: 100%;
+      width: 100%;
+      -webkit-transform: translateX(100%);
+      -moz-transform: translateX(100%);
+      -ms-transform: translateX(100%);
+      -o-transform: translateX(100%);
+      transform: translateX(100%);
+    }
+    </style>
+
+    <link rel="stylesheet" href="/css/main.css">
+    <!-- HTML5 Shiv and Media Query Support for IE -->
+    <!--[if lt IE 9]>
+      <script src="https://devth.com/js/vendor/html5shiv.min.js"></script>
+      <script src="https://devth.com/js/vendor/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+
+  <body>
+    <header id="masthead">
+  <div class="inner-wrap">
+    <a href="https://devth.com" class="site-title">
+      dev<span>th</span>
+    </a>
+    <nav role="navigation" class="menu top-menu">
+        <ul class="menu-item">
+  <li class="home"><a href="/">devth</a></li>
+  
+    
+    <li><a href="https://devth.com/" >Home</a></li>
+  
+    
+    <li><a href="https://devth.com/about" >About</a></li>
+  
+    
+    <li><a href="https://devth.com/overture" >Overture</a></li>
+  
+    
+    <li><a href="https://devth.com/glossary" >Glossary</a></li>
+  
+</ul>
+
+    </nav>
+  </div><!-- /.inner-wrap -->
+</header><!-- /.masthead -->
+
+    <nav role="navigation" class="js-menu sliding-menu-content">
+	<ul class="menu-item">
+		<li>
+      
+			<a href="https://devth.com/"><img src="https://devth.com/images/home.png" alt="teaser" class="teaser"></a>
+			<a href="https://devth.com/" class="title">Home</a>
+			<p class="excerpt">Home</p>
+		</li><li>
+      
+			<a href="https://devth.com/about"><img src="https://devth.com/images/about_300_200.jpg" alt="teaser" class="teaser"></a>
+			<a href="https://devth.com/about" class="title">About</a>
+			<p class="excerpt">About Trevor Hartman</p>
+		</li><li>
+      
+			<a href="https://devth.com/overture"><img src="https://devth.com/images/rainier_teaser.jpg" alt="teaser" class="teaser"></a>
+			<a href="https://devth.com/overture" class="title">Overture</a>
+			<p class="excerpt">Programming, tools and process are stuck in the past</p>
+		</li><li>
+      
+			<a href="https://devth.com/glossary"><img src="https://devth.com/images/granite_300_200.jpg" alt="teaser" class="teaser"></a>
+			<a href="https://devth.com/glossary" class="title">Glossary</a>
+			<p class="excerpt">Brief descriptions of unfamiliar terms</p>
+		</li>
+	</ul>
+</nav>
+<button type="button" class="js-menu-trigger sliding-menu-button menulines-button x2" role="button" aria-label="Toggle Navigation">
+	<span class="menulines"></span>
+</button>
+
+<div class="js-menu-screen menu-screen"></div>
+
+    <div id="page-wrapper">
+      <!--[if lt IE 9]><div class="upgrade notice-danger"><strong>Your browser is quite old!</strong> Why not <a href="http://whatbrowser.org/">upgrade to a newer one</a> to better enjoy this site?</div><![endif]-->
+
+      <div id="main" role="main">
+  <article class="wrap" itemscope itemtype="http://schema.org/Article">
+    
+    <div class="page-feature">
+      <div class="page-image">
+        <img src="/images/compiled-queries-feature.jpg" class="page-feature-image" alt="Compiled queries in Scala" itemprop="image">
+        
+        
+          <div class="caption">Northwest San Francisco and the Golden Gate strait from the Hamon Observation Tower at de Young Museum. February 2017</div>
+        
+      </div><!-- /.page-image -->
+    </div><!-- /.page-feature -->
+    
+
+    
+
+    
+    <div class="page-title">
+      <h1>Compiled queries in Scala</h1>
+    </div>
+    <div class="inner-wrap">
+      <nav class="toc"></nav><!-- /.toc -->
+      <div id="content" class="page-content" itemprop="articleBody">
+        <p>Why resort to the complexities of dynamic code generation and compilation at
+runtime?</p>
+
+<p><strong>Speed</strong>.</p>
+
+<p>To demonstrate, lets build an interpreter that runs projection and filtering on
+a simulated database, then build a compiled version and look at some performance
+numbers.</p>
+
+<p>This is our goal: <strong>compile a data structure representing a query into native
+code to speed up a query loop</strong>. We’ll look at two specific code-generation
+tools to achieve our goal: ASM and Scala Quasiquotes.</p>
+
+<p>ASM has been used by Java developers for years for all sorts of codegen
+purposes. It’s is very fast and has low-memory requirements, but it’s also very
+low-level, making it time-consuming and tedious to use and very difficult to
+debug.</p>
+
+<p>Quasiquotes are a new Scala tool for code generation. They are similar to
+macros, except they can be used at runtime whereas macros are compile-time only.
+They’re much higher-level than ASM, so we’ll compare benchmarks against the two
+to see what cost these high-levelel semantics incur, if any.</p>
+
+<h2 id="a-query-system">A query system</h2>
+
+<p>First let’s define our “database” consisting of a single dataset, represented as
+a simple in-memory data structure using tuples as rows.</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Store a mapping of column name to ordinal for fast projection
+</span><span class="k">val</span> <span class="n">schema</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="s">"name"</span><span class="o">,</span> <span class="s">"birthYear"</span><span class="o">,</span> <span class="s">"dissertation"</span><span class="o">).</span><span class="n">zipWithIndex</span><span class="o">.</span><span class="n">toMap</span>
+<span class="c1">// schema: scala.collection.immutable.Map[String,Int] =
+//   Map(name -&gt; 0, birthYear -&gt; 1, dissertation -&gt; 2)
+</span>
+<span class="k">val</span> <span class="n">db</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span>
+  <span class="o">(</span><span class="s">"John McCarthy"</span><span class="o">,</span> <span class="mi">1927</span><span class="o">,</span> <span class="s">"Projection Operators and Partial Differential Equations."</span><span class="o">),</span>
+  <span class="o">(</span><span class="s">"Haskell Curry"</span><span class="o">,</span> <span class="mi">1900</span><span class="o">,</span> <span class="s">"Grundlagen der kombinatorischen Logik"</span><span class="o">),</span>
+  <span class="o">(</span><span class="s">"Philip Wadler"</span><span class="o">,</span> <span class="mi">1956</span><span class="o">,</span> <span class="s">"Listlessness is Better than Laziness"</span><span class="o">),</span>
+  <span class="o">(</span><span class="s">"Alonzo Church"</span><span class="o">,</span> <span class="mi">1903</span><span class="o">,</span> <span class="s">"Alternatives to Zermelo's Assumption"</span><span class="o">),</span>
+  <span class="o">(</span><span class="s">"Alan Turing"</span><span class="o">,</span> <span class="mi">1912</span><span class="o">,</span> <span class="s">"Systems of Logic based on Ordinals"</span><span class="o">)</span>
+<span class="o">)</span>
+</code></pre></div></div>
+
+<p>Next, we need structures that hold:</p>
+
+<ol>
+  <li>fields to be projected</li>
+  <li>filter expression tree</li>
+</ol>
+
+<p>An efficient representation of projection fields is simply storing the ordinals.
+For example, this is how we’d represent a projection of the name and
+dissertation columns:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="n">projections</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">2</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>The filter expression is a little more complicated, since it’s treeish in
+nature. Even though we’re not supporting SQL, let’s use it to help understand:</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">WHERE</span> <span class="n">name</span> <span class="o">!=</span> <span class="k">null</span> <span class="k">AND</span> <span class="n">birthYear</span> <span class="o">&lt;</span> <span class="mi">1910</span>
+</code></pre></div></div>
+
+<p>A tree is a natural way to represent this syntax in abstract form:</p>
+
+<p><img src="/images/querytree.svg" /></p>
+
+<p>In Scala, we can represent this with a Scalaz <code class="language-scala highlighter-rouge"><span class="nc">Tree</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span></code>.</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">type</span> <span class="kt">FilterExpr</span> <span class="o">=</span> <span class="nc">Tree</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span>
+
+<span class="k">val</span> <span class="n">filterExpr</span><span class="k">:</span> <span class="kt">FilterExpr</span> <span class="o">=</span> <span class="nc">And</span><span class="o">.</span><span class="n">node</span><span class="o">(</span>
+  <span class="nc">IsNotNull</span><span class="o">.</span><span class="n">node</span><span class="o">(</span>
+    <span class="nc">Item</span><span class="o">.</span><span class="n">node</span><span class="o">(</span><span class="s">"name"</span><span class="o">.</span><span class="n">leaf</span><span class="o">)),</span>
+  <span class="nc">LessThan</span><span class="o">.</span><span class="n">node</span><span class="o">(</span>
+    <span class="nc">Item</span><span class="o">.</span><span class="n">node</span><span class="o">(</span><span class="s">"birthYear"</span><span class="o">.</span><span class="n">leaf</span><span class="o">),</span>
+    <span class="nc">Literal</span><span class="o">.</span><span class="n">node</span><span class="o">(</span><span class="s">"1910"</span><span class="o">.</span><span class="n">leaf</span><span class="o">)))</span>
+</code></pre></div></div>
+
+<p>The root node of each tree or subtree is always an operator. The sub-forests are
+the operands, which may be made up of operator trees.</p>
+
+<p>Using this we can build a filter interpreter that evaluates whether a row should
+be included. Some caveats about limitations of this simple example:</p>
+
+<ul>
+  <li>We’ll run filtering before projection. In reality, which to run first is a
+decision that should be made by a query optimizer.</li>
+  <li>I’m only going to implement a few of the most common operators.</li>
+  <li>The filter interpreter is doing its own projection, which may overlap with the
+projected fields requested by the user and create duplicate work.</li>
+  <li>I’m only supporting <code class="language-scala highlighter-rouge"><span class="nc">Int</span></code> for comparison, and I’m doing some
+nasty type casting. IRL, we’d keep better track of the types with a full blown
+schema.</li>
+</ul>
+
+<p>These are all issues I won’t address.</p>
+
+<p>Here’s our limited set of operators:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">object</span> <span class="nc">Operators</span> <span class="o">{</span>
+  <span class="k">val</span> <span class="nc">And</span> <span class="k">=</span> <span class="s">"AND"</span>
+  <span class="k">val</span> <span class="nc">Or</span> <span class="k">=</span> <span class="s">"OR"</span>
+  <span class="k">val</span> <span class="nc">IsNotNull</span> <span class="k">=</span> <span class="s">"IS_NOT_NULL"</span>
+  <span class="k">val</span> <span class="nc">LessThan</span> <span class="k">=</span> <span class="s">"LESS_THAN"</span>
+  <span class="k">val</span> <span class="nc">Item</span> <span class="k">=</span> <span class="s">"ITEM"</span>
+  <span class="k">val</span> <span class="nc">Literal</span> <span class="k">=</span> <span class="s">"LITERAL"</span>
+<span class="o">}</span>
+<span class="k">import</span> <span class="nn">Operators._</span>
+</code></pre></div></div>
+
+<p>And the interpreter itself:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">FilterInterpreter</span><span class="o">(</span><span class="n">expr</span><span class="k">:</span> <span class="kt">FilterExpr</span><span class="o">,</span> <span class="n">schema</span><span class="k">:</span> <span class="kt">Map</span><span class="o">[</span><span class="kt">String</span>, <span class="kt">Int</span><span class="o">])</span> <span class="o">{</span>
+  <span class="k">import</span> <span class="nn">Operators._</span>
+  <span class="cm">/** return true if row is filtered out by expr */</span>
+  <span class="k">def</span> <span class="n">isFiltered</span><span class="o">(</span><span class="n">row</span><span class="k">:</span> <span class="kt">Product</span><span class="o">)</span><span class="k">:</span> <span class="kt">Boolean</span> <span class="o">=</span> <span class="n">evalFilterOn</span><span class="o">(</span><span class="n">row</span><span class="o">)</span>
+
+  <span class="k">private</span> <span class="k">def</span> <span class="n">evalFilterOn</span><span class="o">(</span><span class="n">row</span><span class="k">:</span> <span class="kt">Product</span><span class="o">)</span><span class="k">:</span> <span class="kt">Boolean</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="k">def</span> <span class="n">eval</span><span class="o">(</span><span class="n">expr</span><span class="k">:</span> <span class="kt">FilterExpr</span><span class="o">)</span><span class="k">:</span> <span class="kt">Boolean</span> <span class="o">=</span> <span class="o">{</span>
+      <span class="k">val</span> <span class="o">(</span><span class="n">operator</span><span class="o">,</span> <span class="n">operands</span><span class="k">:</span> <span class="kt">Stream</span><span class="o">[</span><span class="kt">FilterExpr</span><span class="o">])</span> <span class="k">=</span> <span class="o">(</span><span class="n">expr</span><span class="o">.</span><span class="n">rootLabel</span><span class="o">,</span> <span class="n">expr</span><span class="o">.</span><span class="n">subForest</span><span class="o">)</span>
+      <span class="n">operator</span> <span class="k">match</span> <span class="o">{</span>
+        <span class="k">case</span> <span class="nc">And</span> <span class="k">=&gt;</span> <span class="n">operands</span><span class="o">.</span><span class="n">forall</span><span class="o">(</span><span class="n">eval</span><span class="o">)</span>
+        <span class="k">case</span> <span class="nc">Or</span> <span class="k">=&gt;</span> <span class="n">operands</span><span class="o">.</span><span class="n">exists</span><span class="o">(</span><span class="n">eval</span><span class="o">)</span>
+        <span class="k">case</span> <span class="nc">IsNotNull</span> <span class="k">=&gt;</span> <span class="n">valueFor</span><span class="o">(</span><span class="n">operands</span><span class="o">(</span><span class="mi">0</span><span class="o">))</span> <span class="o">!=</span> <span class="kc">null</span>
+        <span class="k">case</span> <span class="nc">LessThan</span> <span class="k">=&gt;</span> <span class="o">{</span>
+          <span class="k">val</span> <span class="o">(</span><span class="n">x</span> <span class="o">::</span> <span class="n">y</span> <span class="o">::</span> <span class="k">_</span><span class="o">)</span> <span class="k">=</span> <span class="n">operands</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">o</span> <span class="k">=&gt;</span> <span class="n">valueFor</span><span class="o">(</span><span class="n">o</span><span class="o">).</span><span class="n">toString</span><span class="o">.</span><span class="n">toInt</span><span class="o">).</span><span class="n">toList</span>
+          <span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span>
+        <span class="o">}</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="k">def</span> <span class="n">valueFor</span><span class="o">(</span><span class="n">node</span><span class="k">:</span> <span class="kt">FilterExpr</span><span class="o">)</span> <span class="k">=</span> <span class="n">node</span><span class="o">.</span><span class="n">rootLabel</span> <span class="k">match</span> <span class="o">{</span>
+      <span class="c1">// Item expects a single operand
+</span>      <span class="k">case</span> <span class="nc">Item</span> <span class="k">=&gt;</span> <span class="n">row</span><span class="o">.</span><span class="n">productElement</span><span class="o">(</span><span class="n">schema</span><span class="o">(</span><span class="n">node</span><span class="o">.</span><span class="n">subForest</span><span class="o">.</span><span class="n">head</span><span class="o">.</span><span class="n">rootLabel</span><span class="o">))</span>
+      <span class="c1">// Literal expects a single operand
+</span>      <span class="k">case</span> <span class="nc">Literal</span> <span class="k">=&gt;</span> <span class="n">node</span><span class="o">.</span><span class="n">subForest</span><span class="o">.</span><span class="n">head</span><span class="o">.</span><span class="n">rootLabel</span>
+    <span class="o">}</span>
+    <span class="n">eval</span><span class="o">(</span><span class="n">expr</span><span class="o">)</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>And finally, a simple query loop:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="n">query</span><span class="o">(</span><span class="n">projections</span><span class="k">:</span> <span class="kt">Seq</span><span class="o">[</span><span class="kt">Int</span><span class="o">],</span> <span class="n">filterExpr</span><span class="k">:</span> <span class="kt">FilterExpr</span><span class="o">)</span><span class="k">:</span> <span class="kt">Seq</span><span class="o">[</span><span class="kt">Seq</span><span class="o">[</span><span class="kt">Any</span><span class="o">]]</span> <span class="k">=</span> <span class="o">{</span>
+  <span class="k">val</span> <span class="n">filterer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">FilterInterpreter</span><span class="o">(</span><span class="n">filterExpr</span><span class="o">,</span> <span class="n">schema</span><span class="o">)</span>
+  <span class="n">db</span><span class="o">.</span><span class="n">flatMap</span> <span class="o">{</span> <span class="n">row</span> <span class="k">=&gt;</span>
+    <span class="c1">// Filter
+</span>    <span class="k">if</span> <span class="o">(</span><span class="n">filterer</span><span class="o">.</span><span class="n">isFiltered</span><span class="o">(</span><span class="n">row</span><span class="o">))</span> <span class="nc">None</span>
+    <span class="c1">// Project
+</span>    <span class="k">else</span> <span class="nc">Some</span><span class="o">(</span><span class="n">projections</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">row</span><span class="o">.</span><span class="n">productElement</span><span class="o">))</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><em>NB: we could use <a href="https://scala-blitz.github.io/">ScalaBlitz</a> to optimize that
+<code class="language-scala highlighter-rouge"><span class="n">flatMap</span></code> if this was real and we were ultra-concerned about
+performance.</em></p>
+
+<p>Notice how we return <code class="highlighter-rouge">Seq[Seq[Any]]</code>. At compile-time we don’t know how to
+typefully represent a row so we have to resort to the lowest-common type,
+<code class="language-scala highlighter-rouge"><span class="nc">Any</span></code>. This is another issue that we’ll fixup later in the
+compiled version.</p>
+
+<p>With all this in place, let’s run it:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// SELECT name, dissertation
+</span><span class="k">val</span> <span class="n">projections</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">2</span><span class="o">)</span>
+
+<span class="c1">// WHERE name != null AND birthYear &lt; 1910
+</span><span class="k">val</span> <span class="n">filterExpr</span><span class="k">:</span> <span class="kt">FilterExpr</span> <span class="o">=</span> <span class="nc">And</span><span class="o">.</span><span class="n">node</span><span class="o">(</span>
+  <span class="nc">IsNotNull</span><span class="o">.</span><span class="n">node</span><span class="o">(</span>
+    <span class="nc">Item</span><span class="o">.</span><span class="n">node</span><span class="o">(</span><span class="s">"name"</span><span class="o">.</span><span class="n">leaf</span><span class="o">)),</span>
+  <span class="nc">LessThan</span><span class="o">.</span><span class="n">node</span><span class="o">(</span>
+    <span class="nc">Item</span><span class="o">.</span><span class="n">node</span><span class="o">(</span><span class="s">"birthYear"</span><span class="o">.</span><span class="n">leaf</span><span class="o">),</span>
+    <span class="nc">Literal</span><span class="o">.</span><span class="n">node</span><span class="o">(</span><span class="s">"1910"</span><span class="o">.</span><span class="n">leaf</span><span class="o">)))</span>
+
+<span class="k">val</span> <span class="n">result</span> <span class="k">=</span> <span class="n">query</span><span class="o">(</span><span class="n">projections</span><span class="o">,</span> <span class="n">filterExpr</span><span class="o">)</span>
+<span class="n">result</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">println</span><span class="o">)</span>
+
+<span class="c1">//=&gt; List(John McCarthy, Projection Operators and Partial Differential Equations.)
+//=&gt; List(Philip Wadler, Listlessness is Better than Laziness)
+//=&gt; List(Alan Turing, Systems of Logic based on Ordinals)
+</span></code></pre></div></div>
+
+<p>So far so good. Next up, let’s dive into some bytecodes to gain a basic
+understanding of what’s going on when we generate code on the JVM.</p>
+
+<h2 id="bytecode-primer">Bytecode primer</h2>
+
+<p>Let’s start by looking at the bytecode for a minimum viable Scala class:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Foo</span>
+</code></pre></div></div>
+
+<p>Compile it with <code class="highlighter-rouge">scalac</code> then view the bytecode with <code class="highlighter-rouge">java -c</code>:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scalac Foo.scala
+javap <span class="nt">-c</span> Foo.class
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Foo</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="nf">Foo</span><span class="o">();</span>
+    <span class="nl">Code:</span>
+       <span class="mi">0</span><span class="o">:</span> <span class="n">aload_0</span>
+       <span class="mi">1</span><span class="o">:</span> <span class="n">invokespecial</span> <span class="err">#</span><span class="mi">12</span>                 <span class="c1">// Method java/lang/Object."&lt;init&gt;":()V</span>
+       <span class="mi">4</span><span class="o">:</span> <span class="k">return</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>From the <a href="http://en.wikipedia.org/wiki/Java_bytecode_instruction_listings">Java bytecode instructions listings
+reference</a> we
+can find out the meaning of these bytecode instructions:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">aload_0</code> — load a reference onto the stack from local variable 0 (local var 0
+is always <code class="highlighter-rouge">this</code>)</li>
+  <li><code class="highlighter-rouge">invokespecial</code> — invoke instance method on object objectref (this would be
+the object that we just loaded onto the stack) and puts the result on the
+stack (might be void)</li>
+  <li><code class="highlighter-rouge">return</code> — return void from method</li>
+</ul>
+
+<p>This is the generated constructor for <code class="language-scala highlighter-rouge"><span class="nc">Foo</span></code>. Since nothing
+else is going on, it simply returns void after calling the constructor. Now
+what if we actually do something, like instantiate a <code class="language-scala highlighter-rouge"><span class="nc">Foo</span></code>?</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Foo</span>
+
+<span class="k">object</span> <span class="nc">RunFoo</span> <span class="o">{</span>
+  <span class="k">val</span> <span class="n">f</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Foo</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Compiling this yields a single <code class="highlighter-rouge">Foo.class</code> identical to the one above along with
+two class files: <code class="highlighter-rouge">RunFoo.class</code> and <code class="highlighter-rouge">RunFoo$.class</code>.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// RunFoo.class</span>
+<span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">RunFoo</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="n">Foo</span> <span class="nf">f</span><span class="o">();</span>
+    <span class="nl">Code:</span>
+       <span class="mi">0</span><span class="o">:</span> <span class="n">getstatic</span>     <span class="err">#</span><span class="mi">16</span>                 <span class="c1">// Field RunFoo$.MODULE$:LRunFoo$;</span>
+       <span class="mi">3</span><span class="o">:</span> <span class="n">invokevirtual</span> <span class="err">#</span><span class="mi">18</span>                 <span class="c1">// Method RunFoo$.f:()LFoo;</span>
+       <span class="mi">6</span><span class="o">:</span> <span class="n">areturn</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// RunFoo$.class</span>
+<span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">RunFoo</span><span class="err">$</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">RunFoo</span><span class="err">$</span> <span class="n">MODULE</span><span class="err">$</span><span class="o">;</span>
+
+  <span class="kd">public</span> <span class="kd">static</span> <span class="o">{};</span>
+    <span class="nl">Code:</span>
+       <span class="mi">0</span><span class="o">:</span> <span class="k">new</span>           <span class="err">#</span><span class="mi">2</span>                  <span class="c1">// class RunFoo$</span>
+       <span class="mi">3</span><span class="o">:</span> <span class="n">invokespecial</span> <span class="err">#</span><span class="mi">12</span>                 <span class="c1">// Method "&lt;init&gt;":()V</span>
+       <span class="mi">6</span><span class="o">:</span> <span class="k">return</span>
+
+  <span class="kd">public</span> <span class="n">Foo</span> <span class="nf">f</span><span class="o">();</span>
+    <span class="nl">Code:</span>
+       <span class="mi">0</span><span class="o">:</span> <span class="n">aload_0</span>
+       <span class="mi">1</span><span class="o">:</span> <span class="n">getfield</span>      <span class="err">#</span><span class="mi">17</span>                 <span class="c1">// Field f:LFoo;</span>
+       <span class="mi">4</span><span class="o">:</span> <span class="n">areturn</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>The JVM runs these opcodes in a stack machine: values are pushed on to the stack
+then used as operands to later operations. For example, this is how you could
+add two constants:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bipush</span> <span class="mi">28</span>
+<span class="n">bipush</span> <span class="mi">14</span>
+<span class="n">iadd</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Push 28 onto the stack with <code class="highlighter-rouge">bipush</code></li>
+  <li>Push 14 onto the stack with <code class="highlighter-rouge">bipush</code></li>
+  <li>Execute <code class="highlighter-rouge">iadd</code> which adds two ints: it pops two values off the stack to use
+as its operands: first 14, then 28. It adds those two operands and pushes the
+result, 28, onto the stack.</li>
+</ol>
+
+<p>At this point we could work with the new 42 value on the stack. This is how we
+would check that the value is indeed 42:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">20</span><span class="o">:</span> <span class="n">bipush</span> <span class="mi">42</span>
+<span class="mi">22</span><span class="o">:</span> <span class="n">if_icmpne</span> <span class="mi">28</span>
+<span class="mi">24</span><span class="o">:</span> <span class="n">ldc</span>               <span class="err">#</span><span class="mi">3</span>
+<span class="mi">26</span><span class="o">:</span> <span class="k">goto</span> <span class="mi">32</span>
+<span class="mi">28</span><span class="o">:</span> <span class="n">ldc</span>               <span class="err">#</span><span class="mi">4</span>
+<span class="mi">32</span><span class="o">:</span> <span class="o">...</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Push the value 42 onto the stack</li>
+  <li>Use <code class="highlighter-rouge">if_icmpne</code> to compare two values from the stack. If they are not equal,
+jump to position 28, which pushes constant <code class="highlighter-rouge">#4</code> onto the stack using <code class="highlighter-rouge">ldc</code>.
+If they are equal, the next code is executed, which instead pushes constant
+<code class="highlighter-rouge">#3</code> onto the stack, then jumps to position 32.</li>
+</ol>
+
+<p>Tedious, but simple.</p>
+
+<p>This primer is only intended to wet your feet. If you want to learn more about
+bytecode, see the <a href="#further-reading">Further reading</a> section at the end of this
+post.</p>
+
+<h2 id="asm">ASM</h2>
+
+<p>ASM is a bytecode manipulation framework. It’s one of several options for
+manipulating bytecode, but I chose it because it’s one of the most mature,
+requires the least amount of memory, and it’s very fast. The downside is it’s
+also quite low level. If you aren’t super-concerned with performance, you
+should check out other options, like
+<a href="http://www.csg.ci.i.u-tokyo.ac.jp/~chiba/javassist/">Javassist</a>, which is much
+easier to work with.</p>
+
+<p>Now, to use ASM, the more familiar you are with bytecode the better off you’ll
+be, but for newbs like us, there is ASMifier, which takes a compiled class and
+generates the ASM code for it. I’m going to avoid Scala for this excercise,
+since Java maps more closely to bytecode, and we can use the resulting bytecode
+from Scala either way. I want to use Tuples to represent fully typed rows, so
+let’s see what the ASM code looks like for this Java class:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">scala.Tuple2</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TupleFromJava</span> <span class="o">{</span>
+
+  <span class="n">Tuple2</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">tup</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Tuple2</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;(</span><span class="s">"foo"</span><span class="o">,</span> <span class="mi">2</span><span class="o">);</span>
+
+  <span class="kd">public</span> <span class="nf">TupleFromJava</span><span class="o">()</span> <span class="o">{</span>
+  <span class="o">}</span>
+
+  <span class="kd">public</span> <span class="n">Tuple2</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="nf">getTup</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">tup</span><span class="o">;</span>
+  <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Compile it, making sure the scala-lib jar is on your classpath:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>javac <span class="nt">-cp</span> <span class="nv">$SCALA_LIB</span> TupleFromJava.java
+</code></pre></div></div>
+
+<p>Then use the ASMifier on the classfile:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>java <span class="nt">-cp</span> asm-5.0.3/lib/all/asm-all-5.0.3.jar <span class="se">\</span>
+  org.objectweb.asm.util.ASMifier TupleFromJava.class
+</code></pre></div></div>
+
+<p>Here is the generated ASM code, heavily annotated with comments. It’s a little
+tedious to work through, but if you really want to understand bytecode and ASM,
+I encourage you to read the comments and work through every line until it’s
+internalized and you feel comfortable with it.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.objectweb.asm.*</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TupleFromJavaDump</span> <span class="kd">implements</span> <span class="n">Opcodes</span> <span class="o">{</span>
+
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">byte</span><span class="o">[]</span> <span class="nf">dump</span> <span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+
+    <span class="n">ClassWriter</span> <span class="n">cw</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClassWriter</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+    <span class="n">FieldVisitor</span> <span class="n">fv</span><span class="o">;</span>
+    <span class="n">MethodVisitor</span> <span class="n">mv</span><span class="o">;</span>
+    <span class="n">AnnotationVisitor</span> <span class="n">av0</span><span class="o">;</span>
+
+    <span class="c1">// Generate a public class inheriting from java.lang.Object</span>
+    <span class="n">cw</span><span class="o">.</span><span class="na">visit</span><span class="o">(</span><span class="mi">52</span><span class="o">,</span> <span class="n">ACC_PUBLIC</span> <span class="o">+</span> <span class="n">ACC_SUPER</span><span class="o">,</span> <span class="s">"TupleFromJava"</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span>
+      <span class="s">"java/lang/Object"</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+
+    <span class="c1">// Initialize the `tup` field with a null value. When fields are declared in</span>
+    <span class="c1">// Java classes, they aren't fully initialized until the constructor runs.</span>
+    <span class="c1">// Note the format of the string representation of `Tuple2`'s constructor.</span>
+    <span class="o">{</span>
+      <span class="n">fv</span> <span class="o">=</span> <span class="n">cw</span><span class="o">.</span><span class="na">visitField</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="s">"tup"</span><span class="o">,</span> <span class="s">"Lscala/Tuple2;"</span><span class="o">,</span>
+        <span class="s">"Lscala/Tuple2&lt;Ljava/lang/String;Ljava/lang/Integer;&gt;;"</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+      <span class="n">fv</span><span class="o">.</span><span class="na">visitEnd</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="c1">// Generate the public constructor named &lt;init&gt; by convention</span>
+    <span class="o">{</span>
+      <span class="n">mv</span> <span class="o">=</span> <span class="n">cw</span><span class="o">.</span><span class="na">visitMethod</span><span class="o">(</span><span class="n">ACC_PUBLIC</span><span class="o">,</span> <span class="s">"&lt;init&gt;"</span><span class="o">,</span> <span class="s">"()V"</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+      <span class="n">mv</span><span class="o">.</span><span class="na">visitCode</span><span class="o">();</span>
+
+      <span class="c1">// Put `this` on the stack</span>
+      <span class="n">mv</span><span class="o">.</span><span class="na">visitVarInsn</span><span class="o">(</span><span class="n">ALOAD</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+
+      <span class="c1">// Invoke constructor on `this`. Note that it takes no params and returns</span>
+      <span class="c1">// void, and it consumes the `this` that we put on the stack above.</span>
+      <span class="n">mv</span><span class="o">.</span><span class="na">visitMethodInsn</span><span class="o">(</span><span class="n">INVOKESPECIAL</span><span class="o">,</span> <span class="s">"java/lang/Object"</span><span class="o">,</span> <span class="s">"&lt;init&gt;"</span><span class="o">,</span> <span class="s">"()V"</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
+
+      <span class="c1">// Put `this` on the stack again</span>
+      <span class="n">mv</span><span class="o">.</span><span class="na">visitVarInsn</span><span class="o">(</span><span class="n">ALOAD</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+
+      <span class="c1">//</span>
+      <span class="c1">// Start `tup` initialization {</span>
+      <span class="c1">//</span>
+
+      <span class="c1">// Put a new scala.Tuple2 on the stack then duplicate the object reference</span>
+      <span class="c1">// on top of the stack. Note that since it is an object reference and not</span>
+      <span class="c1">// the object itself, any mutation we do to the object will be reflected in</span>
+      <span class="c1">// any references to that object on the stack.</span>
+      <span class="n">mv</span><span class="o">.</span><span class="na">visitTypeInsn</span><span class="o">(</span><span class="n">NEW</span><span class="o">,</span> <span class="s">"scala/Tuple2"</span><span class="o">);</span>
+      <span class="n">mv</span><span class="o">.</span><span class="na">visitInsn</span><span class="o">(</span><span class="n">DUP</span><span class="o">);</span>
+
+      <span class="c1">// Push constant "foo" from the constant pool onto the stack</span>
+      <span class="n">mv</span><span class="o">.</span><span class="na">visitLdcInsn</span><span class="o">(</span><span class="s">"foo"</span><span class="o">);</span>
+
+      <span class="c1">// Load the int constant 2 onto the stack</span>
+      <span class="n">mv</span><span class="o">.</span><span class="na">visitInsn</span><span class="o">(</span><span class="n">ICONST_2</span><span class="o">);</span>
+
+      <span class="c1">// Autobox the int in a java.lang.Integer. This pops the int off the stack</span>
+      <span class="c1">// and replaces it with the Integer.</span>
+      <span class="n">mv</span><span class="o">.</span><span class="na">visitMethodInsn</span><span class="o">(</span><span class="n">INVOKESTATIC</span><span class="o">,</span> <span class="s">"java/lang/Integer"</span><span class="o">,</span> <span class="s">"valueOf"</span><span class="o">,</span>
+        <span class="s">"(I)Ljava/lang/Integer;"</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
+
+      <span class="c1">// At this point our stack looks like:</span>
+      <span class="c1">// Integer.valueOf(2)</span>
+      <span class="c1">// "foo"</span>
+      <span class="c1">// Tuple2 (reference)</span>
+      <span class="c1">// Tuple2 (reference)</span>
+
+      <span class="c1">// Initialize the Tuple2. Looking at the signature, we can see it takes</span>
+      <span class="c1">// two java.lang.Objects (instead of a String and Integer, due to type</span>
+      <span class="c1">// erasure), which it will consume from the stack in addition</span>
+      <span class="c1">// to one of the Tuple2 references.</span>
+      <span class="n">mv</span><span class="o">.</span><span class="na">visitMethodInsn</span><span class="o">(</span><span class="n">INVOKESPECIAL</span><span class="o">,</span> <span class="s">"scala/Tuple2"</span><span class="o">,</span> <span class="s">"&lt;init&gt;"</span><span class="o">,</span>
+        <span class="s">"(Ljava/lang/Object;Ljava/lang/Object;)V"</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
+
+      <span class="c1">// Finally, we store our Tuple2 value in the `tup` field. This consumes</span>
+      <span class="c1">// the second copy of the Tuple2 reference we had on the stack.</span>
+      <span class="n">mv</span><span class="o">.</span><span class="na">visitFieldInsn</span><span class="o">(</span><span class="n">PUTFIELD</span><span class="o">,</span> <span class="s">"TupleFromJava"</span><span class="o">,</span> <span class="s">"tup"</span><span class="o">,</span> <span class="s">"Lscala/Tuple2;"</span><span class="o">);</span>
+
+      <span class="c1">//</span>
+      <span class="c1">// End `tup` initialization }</span>
+      <span class="c1">//</span>
+
+      <span class="c1">// Constructors always return void because constructors should only</span>
+      <span class="c1">// initialize the object and do nothing else.</span>
+      <span class="n">mv</span><span class="o">.</span><span class="na">visitInsn</span><span class="o">(</span><span class="n">RETURN</span><span class="o">);</span>
+
+      <span class="c1">// Sets the max stack size and max number of local vars. This can be</span>
+      <span class="c1">// calculated automatically for you if you use COMPUTE_FRAMES or COMPUTE_MAXS</span>
+      <span class="c1">// in the ClassWriter constructor.</span>
+      <span class="n">mv</span><span class="o">.</span><span class="na">visitMaxs</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+      <span class="n">mv</span><span class="o">.</span><span class="na">visitEnd</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="c1">// Create a public method `getTup` which takes no args and returns a</span>
+    <span class="c1">// scala.Tuple2</span>
+    <span class="o">{</span>
+      <span class="n">mv</span> <span class="o">=</span> <span class="n">cw</span><span class="o">.</span><span class="na">visitMethod</span><span class="o">(</span><span class="n">ACC_PUBLIC</span><span class="o">,</span> <span class="s">"getTup"</span><span class="o">,</span> <span class="s">"()Lscala/Tuple2;"</span><span class="o">,</span>
+        <span class="s">"()Lscala/Tuple2&lt;Ljava/lang/String;Ljava/lang/Integer;&gt;;"</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+      <span class="n">mv</span><span class="o">.</span><span class="na">visitCode</span><span class="o">();</span>
+      <span class="c1">// Load `this` onto the stack</span>
+      <span class="n">mv</span><span class="o">.</span><span class="na">visitVarInsn</span><span class="o">(</span><span class="n">ALOAD</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+      <span class="c1">// Load a reference to the `tup` field on `this` onto the stack, consuming</span>
+      <span class="c1">// `this` in the process</span>
+      <span class="n">mv</span><span class="o">.</span><span class="na">visitFieldInsn</span><span class="o">(</span><span class="n">GETFIELD</span><span class="o">,</span> <span class="s">"TupleFromJava"</span><span class="o">,</span> <span class="s">"tup"</span><span class="o">,</span> <span class="s">"Lscala/Tuple2;"</span><span class="o">);</span>
+      <span class="c1">// Return the reference to the `tup` field</span>
+      <span class="n">mv</span><span class="o">.</span><span class="na">visitInsn</span><span class="o">(</span><span class="n">ARETURN</span><span class="o">);</span>
+      <span class="c1">// We only needed a max stack size of 1 and maximum of 1 local vars</span>
+      <span class="n">mv</span><span class="o">.</span><span class="na">visitMaxs</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+      <span class="n">mv</span><span class="o">.</span><span class="na">visitEnd</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="c1">// Finish writing the class</span>
+    <span class="n">cw</span><span class="o">.</span><span class="na">visitEnd</span><span class="o">();</span>
+
+    <span class="k">return</span> <span class="n">cw</span><span class="o">.</span><span class="na">toByteArray</span><span class="o">();</span>
+
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Not too bad. ASMifier helpfully wraps each logical chunk in blocks. The first
+block creates the <code class="language-scala highlighter-rouge"><span class="n">tup</span></code> field. The second block is our public
+constructor. It calls super, which invokes the constructor on the
+<code class="language-scala highlighter-rouge"><span class="n">java</span><span class="o">.</span><span class="n">lang</span><span class="o">.</span><span class="nc">Object</span></code> superclass, then initializes the
+<code class="language-scala highlighter-rouge"><span class="n">tup</span></code> field, and finally returns void. The third block
+is the <code class="language-scala highlighter-rouge"><span class="n">getTup</span></code> getter.</p>
+
+<p><em>NB: If you’re having trouble following this, I recommend generating some ASM
+code with ASMifier, then annotating it yourself. It really helps to internalize
+the JVM bytecodes and how to work on a stack machine.</em></p>
+
+<p>Inside a method, the parameters can be referenced by corresponding local
+variable indices. For example:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="n">add</span><span class="o">(</span><span class="n">x</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">y</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>In this case, <code class="language-scala highlighter-rouge"><span class="n">x</span></code> is available at <code class="language-scala highlighter-rouge"><span class="mi">1</span></code> and
+<code class="language-scala highlighter-rouge"><span class="n">y</span></code> is available at <code class="language-scala highlighter-rouge"><span class="mi">2</span></code>. To load and use
+these, we would use <code class="language-scala highlighter-rouge"><span class="n">visitVarInsn</span></code> which visits a local
+variable instruction.  Using ASM, this is how we’d add <code class="language-scala highlighter-rouge"><span class="n">x</span></code> and
+<code class="language-scala highlighter-rouge"><span class="n">y</span></code> and store the result in local variable
+<code class="language-scala highlighter-rouge"><span class="mi">3</span></code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mv</span><span class="o">.</span><span class="na">visitVarInsn</span><span class="o">(</span><span class="n">ILOAD</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>  <span class="c1">// Load x onto the stack</span>
+<span class="n">mv</span><span class="o">.</span><span class="na">visitVarInsn</span><span class="o">(</span><span class="n">ILOAD</span><span class="o">,</span> <span class="mi">2</span><span class="o">);</span>  <span class="c1">// Load y onto the stack</span>
+<span class="n">mv</span><span class="o">.</span><span class="na">visitInsn</span><span class="o">(</span><span class="n">IADD</span><span class="o">);</span>         <span class="c1">// Pop two values off the stack, add them,</span>
+                            <span class="c1">// then put the result back on the stack</span>
+<span class="n">mv</span><span class="o">.</span><span class="na">visitVarInsn</span><span class="o">(</span><span class="n">ISTORE</span><span class="o">,</span> <span class="mi">3</span><span class="o">);</span> <span class="c1">// Pop a value off the stack and store</span>
+                            <span class="c1">// it in local variable 3</span>
+</code></pre></div></div>
+
+<p>When you generate ASM using ASMifier it can generate all the labels and local
+var mappings, which is necessary information for debuggers to show you the
+correct names of the local variables in a given stack, since in the JVM indices
+are used instead of names. When writing by hand, you could opt to not write
+these instructions, or add them later if you need them.</p>
+
+<h2 id="compiled-queries-with-asm">Compiled queries with ASM</h2>
+
+<p>Let’s use this knowledge to compile the query we originally interpreted. To
+start, let’s write a fast but static version of the query so we can quickly
+figure out which parts need to be made dynamic. When using ASM it’s a good idea
+to distil the essense of which part needs to be made dynamic so the generator
+code ends up being as small as possible. Since ASM is hard to read, write, and
+debug, this is very important.</p>
+
+<p>Let’s perform the same projection and filtering we used before, but this time
+without the interpretation.</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">object</span> <span class="nc">StaticQuery</span> <span class="o">{</span>
+
+  <span class="k">def</span> <span class="n">query</span><span class="o">(</span><span class="n">db</span><span class="k">:</span> <span class="kt">Seq</span><span class="o">[(</span><span class="kt">String</span>, <span class="kt">Int</span>, <span class="kt">String</span><span class="o">)])</span> <span class="k">=</span> <span class="o">{</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">flatMap</span> <span class="o">{</span> <span class="k">case</span> <span class="o">(</span><span class="n">name</span><span class="o">,</span> <span class="n">birthYear</span><span class="o">,</span> <span class="n">dissertation</span><span class="o">)</span> <span class="k">=&gt;</span>
+      <span class="k">if</span> <span class="o">(</span><span class="n">birthYear</span> <span class="o">&lt;</span> <span class="mi">1910</span> <span class="o">&amp;&amp;</span> <span class="n">name</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="nc">Some</span><span class="o">((</span><span class="n">name</span><span class="o">,</span> <span class="n">dissertation</span><span class="o">))</span>
+      <span class="k">else</span> <span class="nc">None</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>This should be <em>much</em> faster than our interpreted query because it’s running a
+simple conditional instead of walking and evaluating a
+<code class="language-scala highlighter-rouge"><span class="nc">FilterExpr</span></code> on every row.</p>
+
+<p>Let’s construct a quick benchmark using
+<a href="http://scalameter.github.io/">ScalaMeter</a> to verify our assumptions.</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">object</span> <span class="nc">QueryBenchmark</span> <span class="k">extends</span> <span class="nc">PerformanceTest</span><span class="o">.</span><span class="nc">Quickbenchmark</span> <span class="o">{</span>
+
+  <span class="k">val</span> <span class="n">birthYears</span> <span class="k">=</span> <span class="nc">Gen</span><span class="o">.</span><span class="n">range</span><span class="o">(</span><span class="s">"birthYears"</span><span class="o">)(</span><span class="mi">9990</span><span class="o">,</span> <span class="mi">10000</span><span class="o">,</span> <span class="mi">1</span><span class="o">)</span>
+
+  <span class="k">val</span> <span class="n">records</span> <span class="k">=</span> <span class="k">for</span> <span class="o">{</span>
+    <span class="n">birthYear</span> <span class="k">&lt;-</span> <span class="n">birthYears</span>
+  <span class="o">}</span> <span class="k">yield</span> <span class="o">(</span><span class="mi">0</span> <span class="n">until</span> <span class="n">birthYear</span><span class="o">).</span><span class="n">map</span><span class="o">((</span><span class="s">"name"</span><span class="o">,</span> <span class="k">_</span><span class="o">,</span> <span class="s">"diss"</span><span class="o">))</span>
+
+  <span class="n">performance</span> <span class="n">of</span> <span class="s">"Querying"</span> <span class="n">in</span> <span class="o">{</span>
+    <span class="n">measure</span> <span class="n">method</span> <span class="s">"StaticQuery"</span> <span class="n">in</span> <span class="o">{</span>
+      <span class="n">using</span> <span class="o">(</span><span class="n">records</span><span class="o">)</span> <span class="n">in</span> <span class="o">{</span> <span class="nc">StaticQuery</span><span class="o">.</span><span class="n">query</span><span class="o">(</span><span class="k">_</span><span class="o">)</span> <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="n">measure</span> <span class="n">method</span> <span class="s">"InterpretedQuery"</span> <span class="n">in</span> <span class="o">{</span>
+      <span class="n">using</span> <span class="o">(</span><span class="n">records</span><span class="o">)</span> <span class="n">in</span> <span class="o">{</span>
+        <span class="nc">InterpretedQuery</span><span class="o">.</span><span class="n">query</span><span class="o">(</span><span class="k">_</span><span class="o">,</span> <span class="nc">Main</span><span class="o">.</span><span class="n">projections</span><span class="o">,</span> <span class="nc">Main</span><span class="o">.</span><span class="n">filterExpr</span><span class="o">)</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Results from the last result of each measurement:</p>
+
+<ul>
+  <li><code class="language-scala highlighter-rouge"><span class="nc">StaticQuery</span></code>: 1.329709ms</li>
+  <li><code class="language-scala highlighter-rouge"><span class="nc">InterpretedQuery</span></code>: 6.949921ms</li>
+</ul>
+
+<p>The static query is between 5 and 6 times faster than interpreting.</p>
+
+<p>Let’s rewrite <code class="language-scala highlighter-rouge"><span class="nc">StaticQuery</span></code> in Java and use it as a template
+for compiling queries. There are at least two reasons why I significantly
+dislike running ASMifier against Scala classes:</p>
+
+<ol>
+  <li>It generates a gnarly blob of unreadable bytes for the ScalaSignature (which
+is apparently used to store Scala-specific bits in class files and is
+required for reflection and for compiling against).</li>
+  <li>Scala objects and methods get split into separate class files when they’re
+compiled, making it hard to stitch together the results with multiple
+ASMifier runs.</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">scala.Tuple3</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">scala.collection.Seq</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">scala.collection.mutable.ArrayBuffer</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">scala.collection.Iterator</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StaticJavaQuery</span> <span class="o">{</span>
+
+  <span class="kd">public</span> <span class="kd">static</span> <span class="n">Seq</span><span class="o">&lt;</span><span class="n">Tuple3</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;&gt;</span> <span class="nf">query</span><span class="o">(</span>
+      <span class="n">Seq</span><span class="o">&lt;</span><span class="n">Tuple3</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;&gt;</span> <span class="n">db</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">Tuple3</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;&gt;</span> <span class="n">iter</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="na">iterator</span><span class="o">();</span>
+    <span class="n">ArrayBuffer</span><span class="o">&lt;</span><span class="n">Tuple2</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;&gt;</span> <span class="n">acc</span> <span class="o">=</span>
+      <span class="k">new</span> <span class="n">ArrayBuffer</span><span class="o">&lt;</span><span class="n">Tuple2</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;&gt;();</span>
+    <span class="k">while</span> <span class="o">(</span><span class="n">iter</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+      <span class="n">Tuple3</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">row</span> <span class="o">=</span> <span class="n">iter</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+      <span class="n">Integer</span> <span class="n">birthYear</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="na">_2</span><span class="o">();</span>
+      <span class="k">if</span> <span class="o">(</span><span class="n">birthYear</span><span class="o">.</span><span class="na">intValue</span><span class="o">()</span> <span class="o">&lt;</span> <span class="mi">1910</span> <span class="o">&amp;&amp;</span> <span class="n">row</span><span class="o">.</span><span class="na">_1</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">acc</span><span class="o">.</span><span class="n">$plus$eq</span><span class="o">(</span><span class="k">new</span> <span class="n">Tuple2</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;(</span>
+          <span class="n">row</span><span class="o">.</span><span class="na">_1</span><span class="o">(),</span>
+          <span class="n">row</span><span class="o">.</span><span class="na">_3</span><span class="o">()</span>
+        <span class="o">));</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">acc</span><span class="o">;</span>
+  <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>It’s not pretty, but it works, and it happens to be even faster than the static
+Scala query. We’ll start by feeding it to ASMifier, convert the output to Scala,
+then work on making the result dynamic. Converted output, heavily annotated:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">org.objectweb.asm._</span><span class="o">,</span> <span class="nc">Opcodes</span><span class="o">.</span><span class="k">_</span>
+<span class="k">import</span> <span class="nn">Database.FilterExpr</span>
+
+<span class="k">object</span> <span class="nc">CompiledQueryGen</span> <span class="k">extends</span> <span class="nc">Opcodes</span> <span class="o">{</span>
+
+  <span class="k">def</span> <span class="n">generate</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">Byte</span><span class="o">]</span> <span class="k">=</span> <span class="o">{</span>
+
+    <span class="k">val</span> <span class="n">cw</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">ClassWriter</span><span class="o">(</span><span class="nc">ClassWriter</span><span class="o">.</span><span class="nc">COMPUTE_FRAMES</span><span class="o">)</span>
+    <span class="k">var</span> <span class="n">mv</span><span class="k">:</span> <span class="kt">MethodVisitor</span> <span class="o">=</span> <span class="kc">null</span>
+
+    <span class="n">cw</span><span class="o">.</span><span class="n">visit</span><span class="o">(</span><span class="mi">52</span><span class="o">,</span> <span class="nc">ACC_PUBLIC</span> <span class="o">+</span> <span class="nc">ACC_SUPER</span><span class="o">,</span> <span class="s">"CompiledQuery"</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span>
+      <span class="s">"java/lang/Object"</span><span class="o">,</span> <span class="kc">null</span><span class="o">)</span>
+
+    <span class="c1">// Constructor
+</span>    <span class="o">{</span>
+      <span class="n">mv</span> <span class="k">=</span> <span class="n">cw</span><span class="o">.</span><span class="n">visitMethod</span><span class="o">(</span><span class="nc">ACC_PUBLIC</span><span class="o">,</span> <span class="s">"&lt;init&gt;"</span><span class="o">,</span> <span class="s">"()V"</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">)</span>
+      <span class="n">mv</span><span class="o">.</span><span class="n">visitCode</span><span class="o">()</span>
+      <span class="n">mv</span><span class="o">.</span><span class="n">visitVarInsn</span><span class="o">(</span><span class="nc">ALOAD</span><span class="o">,</span> <span class="mi">0</span><span class="o">)</span>
+      <span class="n">mv</span><span class="o">.</span><span class="n">visitMethodInsn</span><span class="o">(</span><span class="nc">INVOKESPECIAL</span><span class="o">,</span> <span class="s">"java/lang/Object"</span><span class="o">,</span> <span class="s">"&lt;init&gt;"</span><span class="o">,</span> <span class="s">"()V"</span><span class="o">,</span> <span class="kc">false</span><span class="o">)</span>
+      <span class="n">mv</span><span class="o">.</span><span class="n">visitInsn</span><span class="o">(</span><span class="nc">RETURN</span><span class="o">)</span>
+      <span class="n">mv</span><span class="o">.</span><span class="n">visitMaxs</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">)</span>
+      <span class="n">mv</span><span class="o">.</span><span class="n">visitEnd</span><span class="o">()</span>
+    <span class="o">}</span>
+
+    <span class="c1">// Static query method
+</span>    <span class="o">{</span>
+      <span class="n">mv</span> <span class="k">=</span> <span class="n">cw</span><span class="o">.</span><span class="n">visitMethod</span><span class="o">(</span><span class="nc">ACC_PUBLIC</span> <span class="o">+</span> <span class="nc">ACC_STATIC</span><span class="o">,</span> <span class="s">"query"</span><span class="o">,</span> <span class="s">"(Lscala/collection/Seq)Lscala/collection/Seq"</span><span class="o">,</span> <span class="s">"(Lscala/collection/Seq&lt;Lscala/Tuple3&lt;Ljava/lang/StringLjava/lang/IntegerLjava/lang/String&gt;&gt;)Lscala/collection/Seq&lt;Lscala/Tuple3&lt;Ljava/lang/StringLjava/lang/IntegerLjava/lang/String&gt;&gt;"</span><span class="o">,</span> <span class="kc">null</span><span class="o">)</span>
+      <span class="n">mv</span><span class="o">.</span><span class="n">visitCode</span><span class="o">()</span>
+
+      <span class="c1">// Load the `db` argument onto the stack
+</span>      <span class="n">mv</span><span class="o">.</span><span class="n">visitVarInsn</span><span class="o">(</span><span class="nc">ALOAD</span><span class="o">,</span> <span class="mi">0</span><span class="o">)</span>
+      <span class="c1">// Invoke the `iterator` method on db, putting the iterator on the stack
+</span>      <span class="n">mv</span><span class="o">.</span><span class="n">visitMethodInsn</span><span class="o">(</span><span class="nc">INVOKEINTERFACE</span><span class="o">,</span> <span class="s">"scala/collection/Seq"</span><span class="o">,</span> <span class="s">"iterator"</span><span class="o">,</span> <span class="s">"()Lscala/collection/Iterator"</span><span class="o">,</span> <span class="kc">true</span><span class="o">)</span>
+      <span class="c1">// Store the iterator object at index 1
+</span>      <span class="n">mv</span><span class="o">.</span><span class="n">visitVarInsn</span><span class="o">(</span><span class="nc">ASTORE</span><span class="o">,</span> <span class="mi">1</span><span class="o">)</span>
+
+      <span class="c1">// Stack size = 0
+</span>
+      <span class="c1">// Instantiate a new ArrayBuffer `acc` {
+</span>      <span class="n">mv</span><span class="o">.</span><span class="n">visitTypeInsn</span><span class="o">(</span><span class="nc">NEW</span><span class="o">,</span> <span class="s">"scala/collection/mutable/ArrayBuffer"</span><span class="o">)</span>
+      <span class="c1">// Duplicate the reference to it on the stack
+</span>      <span class="n">mv</span><span class="o">.</span><span class="n">visitInsn</span><span class="o">(</span><span class="nc">DUP</span><span class="o">)</span>
+      <span class="c1">// Initialize the `acc` ArrayBuffer
+</span>      <span class="n">mv</span><span class="o">.</span><span class="n">visitMethodInsn</span><span class="o">(</span><span class="nc">INVOKESPECIAL</span><span class="o">,</span> <span class="s">"scala/collection/mutable/ArrayBuffer"</span><span class="o">,</span> <span class="s">"&lt;init&gt;"</span><span class="o">,</span> <span class="s">"()V"</span><span class="o">,</span> <span class="kc">false</span><span class="o">)</span>
+      <span class="c1">// Store the ArrayBuffer at index 2
+</span>      <span class="n">mv</span><span class="o">.</span><span class="n">visitVarInsn</span><span class="o">(</span><span class="nc">ASTORE</span><span class="o">,</span> <span class="mi">2</span><span class="o">)</span>
+
+      <span class="c1">// Stack size = 0
+</span>
+      <span class="c1">// A label is a point we can jump to with GOTO-style instructions. l0
+</span>      <span class="c1">// marks the start of the while loop. The point at which the label is
+</span>      <span class="c1">// visited represents its position and l0 is visited immediately.
+</span>      <span class="c1">// while (...) {
+</span>      <span class="k">val</span> <span class="n">l0</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Label</span>
+      <span class="n">mv</span><span class="o">.</span><span class="n">visitLabel</span><span class="o">(</span><span class="n">l0</span><span class="o">)</span>
+
+      <span class="c1">// Check the while condition
+</span>      <span class="c1">// Load the iterator onto the stack from index 1
+</span>      <span class="n">mv</span><span class="o">.</span><span class="n">visitVarInsn</span><span class="o">(</span><span class="nc">ALOAD</span><span class="o">,</span> <span class="mi">1</span><span class="o">)</span>
+      <span class="c1">// Call `hasNext` on the iterator, storing the boolean result on the
+</span>      <span class="c1">// stack. The JVM stores boolean as int: 0 is false, 1 is true.
+</span>      <span class="n">mv</span><span class="o">.</span><span class="n">visitMethodInsn</span><span class="o">(</span><span class="nc">INVOKEINTERFACE</span><span class="o">,</span> <span class="s">"scala/collection/Iterator"</span><span class="o">,</span>
+        <span class="s">"hasNext"</span><span class="o">,</span> <span class="s">"()Z"</span><span class="o">,</span> <span class="kc">true</span><span class="o">)</span>
+
+      <span class="c1">// Stack size = 1, hasNext boolean
+</span>
+      <span class="c1">// Create another jump location for the end of the loop. l1 isn't visited
+</span>      <span class="c1">// until later at the end of the loop body but we need to create the label
+</span>      <span class="c1">// here in order to reference it in `IFEQ`.
+</span>      <span class="k">val</span> <span class="n">l1</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Label</span>
+      <span class="c1">// A jump instruction with IFEQ ("if equals") checks the current value on
+</span>      <span class="c1">// the stack. If it's 0 (false) it jumps to the label, thus ending our
+</span>      <span class="c1">// while loop.
+</span>      <span class="n">mv</span><span class="o">.</span><span class="n">visitJumpInsn</span><span class="o">(</span><span class="nc">IFEQ</span><span class="o">,</span> <span class="n">l1</span><span class="o">)</span>
+
+      <span class="c1">// Stack size = 0
+</span>
+      <span class="c1">// Load iterator onto the stack again
+</span>      <span class="n">mv</span><span class="o">.</span><span class="n">visitVarInsn</span><span class="o">(</span><span class="nc">ALOAD</span><span class="o">,</span> <span class="mi">1</span><span class="o">)</span>
+      <span class="c1">// Obtain the `row` value from the iterator
+</span>      <span class="n">mv</span><span class="o">.</span><span class="n">visitMethodInsn</span><span class="o">(</span><span class="nc">INVOKEINTERFACE</span><span class="o">,</span> <span class="s">"scala/collection/Iterator"</span><span class="o">,</span> <span class="s">"next"</span><span class="o">,</span> <span class="s">"()Ljava/lang/Object"</span><span class="o">,</span> <span class="kc">true</span><span class="o">)</span>
+      <span class="c1">// Ensure the value is of expected type, Tuple3. This instruction pops a
+</span>      <span class="c1">// value off the stack, checks it, then puts it back on the stack.
+</span>      <span class="n">mv</span><span class="o">.</span><span class="n">visitTypeInsn</span><span class="o">(</span><span class="nc">CHECKCAST</span><span class="o">,</span> <span class="s">"scala/Tuple3"</span><span class="o">)</span>
+      <span class="c1">// Store the row Tuple3 at local variable index 3
+</span>      <span class="n">mv</span><span class="o">.</span><span class="n">visitVarInsn</span><span class="o">(</span><span class="nc">ASTORE</span><span class="o">,</span> <span class="mi">3</span><span class="o">)</span>
+      <span class="c1">// Load it again
+</span>      <span class="n">mv</span><span class="o">.</span><span class="n">visitVarInsn</span><span class="o">(</span><span class="nc">ALOAD</span><span class="o">,</span> <span class="mi">3</span><span class="o">)</span>
+
+      <span class="c1">// Stack size = 1, row Tuple3
+</span>
+      <span class="c1">// Invoke the `_2` method on the row to get the birthYear
+</span>      <span class="n">mv</span><span class="o">.</span><span class="n">visitMethodInsn</span><span class="o">(</span><span class="nc">INVOKEVIRTUAL</span><span class="o">,</span> <span class="s">"scala/Tuple3"</span><span class="o">,</span> <span class="s">"_2"</span><span class="o">,</span> <span class="s">"()Ljava/lang/Object"</span><span class="o">,</span> <span class="kc">false</span><span class="o">)</span>
+      <span class="c1">// Ensure the expected type, Integer
+</span>      <span class="n">mv</span><span class="o">.</span><span class="n">visitTypeInsn</span><span class="o">(</span><span class="nc">CHECKCAST</span><span class="o">,</span> <span class="s">"java/lang/Integer"</span><span class="o">)</span>
+      <span class="c1">// Store birthYear at local var 4
+</span>      <span class="n">mv</span><span class="o">.</span><span class="n">visitVarInsn</span><span class="o">(</span><span class="nc">ASTORE</span><span class="o">,</span> <span class="mi">4</span><span class="o">)</span>
+      <span class="c1">// Load birthYear from local var 4
+</span>      <span class="n">mv</span><span class="o">.</span><span class="n">visitVarInsn</span><span class="o">(</span><span class="nc">ALOAD</span><span class="o">,</span> <span class="mi">4</span><span class="o">)</span>
+      <span class="c1">// Invoke the `intValue` method on birthYear
+</span>      <span class="n">mv</span><span class="o">.</span><span class="n">visitMethodInsn</span><span class="o">(</span><span class="nc">INVOKEVIRTUAL</span><span class="o">,</span> <span class="s">"java/lang/Integer"</span><span class="o">,</span> <span class="s">"intValue"</span><span class="o">,</span> <span class="s">"()I"</span><span class="o">,</span> <span class="kc">false</span><span class="o">)</span>
+      <span class="c1">// Push a short constant on to the stack
+</span>      <span class="n">mv</span><span class="o">.</span><span class="n">visitIntInsn</span><span class="o">(</span><span class="nc">SIPUSH</span><span class="o">,</span> <span class="mi">1910</span><span class="o">)</span>
+
+      <span class="c1">// Stack size = 2, birthYear int, 1910 short
+</span>
+      <span class="c1">// Any time we need to branch in some way, we need labels and jump
+</span>      <span class="c1">// instructions. l2 marks the end of the filtering if statement, allowing
+</span>      <span class="c1">//
+</span>      <span class="c1">// us to jump over the body.
+</span>      <span class="k">val</span> <span class="n">l2</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Label</span><span class="o">()</span>
+
+      <span class="c1">// Jump instructions are always the inverse predicate because if it
+</span>      <span class="c1">// evaluates to true then it jumps, skipping the body of the if block.
+</span>      <span class="c1">// IF_ICMPGE is short for "if int compare greater than or equal", so:
+</span>      <span class="c1">// If value1 &gt;= value2 then jump to l2, where
+</span>      <span class="c1">// value1 = birthYear
+</span>      <span class="c1">// value2 = 1910
+</span>      <span class="n">mv</span><span class="o">.</span><span class="n">visitJumpInsn</span><span class="o">(</span><span class="nc">IF_ICMPGE</span><span class="o">,</span> <span class="n">l2</span><span class="o">)</span>
+      <span class="c1">// That's the first half of the if predicate. Now we check the other half.
+</span>
+      <span class="c1">// Load the row Tuple3
+</span>      <span class="n">mv</span><span class="o">.</span><span class="n">visitVarInsn</span><span class="o">(</span><span class="nc">ALOAD</span><span class="o">,</span> <span class="mi">3</span><span class="o">)</span>
+      <span class="c1">// Invoke the `_1` method on the row to get the name String
+</span>      <span class="n">mv</span><span class="o">.</span><span class="n">visitMethodInsn</span><span class="o">(</span><span class="nc">INVOKEVIRTUAL</span><span class="o">,</span> <span class="s">"scala/Tuple3"</span><span class="o">,</span> <span class="s">"_1"</span><span class="o">,</span> <span class="s">"()Ljava/lang/Object"</span><span class="o">,</span> <span class="kc">false</span><span class="o">)</span>
+      <span class="c1">// This condition is much simpler and the JVM even has an instruction to
+</span>      <span class="c1">// check for null. If the name String is null, jump to l2.
+</span>      <span class="n">mv</span><span class="o">.</span><span class="n">visitJumpInsn</span><span class="o">(</span><span class="nc">IFNULL</span><span class="o">,</span> <span class="n">l2</span><span class="o">)</span>
+
+      <span class="c1">// Body of the if block {
+</span>
+        <span class="c1">// Load the `acc` ArrayBuffer
+</span>        <span class="n">mv</span><span class="o">.</span><span class="n">visitVarInsn</span><span class="o">(</span><span class="nc">ALOAD</span><span class="o">,</span> <span class="mi">2</span><span class="o">)</span>
+        <span class="c1">// Load the `row` Tuple3
+</span>        <span class="n">mv</span><span class="o">.</span><span class="n">visitVarInsn</span><span class="o">(</span><span class="nc">ALOAD</span><span class="o">,</span> <span class="mi">3</span><span class="o">)</span>
+        <span class="c1">// Invoke the `$plus$eq` method on `acc` which mutates it, appending the
+</span>        <span class="c1">// `row` Tuple3, and stores the result (which is simply itself) on the
+</span>        <span class="c1">// stack.
+</span>        <span class="n">mv</span><span class="o">.</span><span class="n">visitMethodInsn</span><span class="o">(</span><span class="nc">INVOKEVIRTUAL</span><span class="o">,</span> <span class="s">"scala/collection/mutable/ArrayBuffer"</span><span class="o">,</span> <span class="s">"$plus$eq"</span><span class="o">,</span> <span class="s">"(Ljava/lang/Object)Lscala/collection/mutable/ArrayBuffer"</span><span class="o">,</span> <span class="kc">false</span><span class="o">)</span>
+        <span class="c1">// Discard the last item on the stack since we no longer need it.
+</span>        <span class="n">mv</span><span class="o">.</span><span class="n">visitInsn</span><span class="o">(</span><span class="nc">POP</span><span class="o">)</span>
+
+      <span class="c1">// }
+</span>
+      <span class="c1">// Mark the end of the if block
+</span>      <span class="n">mv</span><span class="o">.</span><span class="n">visitLabel</span><span class="o">(</span><span class="n">l2</span><span class="o">)</span>
+
+      <span class="c1">// Jump back to the start of the while loop
+</span>      <span class="n">mv</span><span class="o">.</span><span class="n">visitJumpInsn</span><span class="o">(</span><span class="nc">GOTO</span><span class="o">,</span> <span class="n">l0</span><span class="o">)</span>
+      <span class="c1">// Mark the end of the while loop
+</span>      <span class="n">mv</span><span class="o">.</span><span class="n">visitLabel</span><span class="o">(</span><span class="n">l1</span><span class="o">)</span>
+      <span class="c1">// } // end while
+</span>
+      <span class="c1">// Load the acc Tuple3
+</span>      <span class="n">mv</span><span class="o">.</span><span class="n">visitVarInsn</span><span class="o">(</span><span class="nc">ALOAD</span><span class="o">,</span> <span class="mi">2</span><span class="o">)</span>
+      <span class="c1">// Return the object on the stack
+</span>      <span class="n">mv</span><span class="o">.</span><span class="n">visitInsn</span><span class="o">(</span><span class="nc">ARETURN</span><span class="o">)</span>
+      <span class="c1">// Compute the max stack size and number of local vars (computed
+</span>      <span class="c1">// automatically for us via COMPUTE_FRAMES)
+</span>      <span class="n">mv</span><span class="o">.</span><span class="n">visitMaxs</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">)</span>
+      <span class="c1">// End the method
+</span>      <span class="n">mv</span><span class="o">.</span><span class="n">visitEnd</span><span class="o">()</span>
+    <span class="o">}</span>
+
+    <span class="c1">// End the class
+</span>    <span class="n">cw</span><span class="o">.</span><span class="n">visitEnd</span><span class="o">()</span>
+
+    <span class="c1">// Return the bytes representing a generated classfile
+</span>    <span class="n">cw</span><span class="o">.</span><span class="n">toByteArray</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Since we’re using <code class="language-scala highlighter-rouge"><span class="nc">ClassWriter</span><span class="o">.</span><span class="nc">COMPUTE_FRAMES</span></code> I was able to
+remove all the <code class="language-scala highlighter-rouge"><span class="n">visitFrame</span></code> calls that ASMifier generated. I
+also deleted the generated <code class="language-scala highlighter-rouge"><span class="nc">FieldVisitor</span></code> and
+<code class="language-scala highlighter-rouge"><span class="nc">AnnotationVisitor</span></code> as they were both unused. I used <code class="highlighter-rouge">0</code> for
+all arguments to <code class="language-scala highlighter-rouge"><span class="n">visitMaxs</span></code> as
+<code class="language-scala highlighter-rouge"><span class="nc">COMPUTE_FRAMES</span></code> implies <code class="highlighter-rouge">COMPUTE_MAXS</code>, which still requires
+calls to <code class="highlighter-rouge">visitMaxs</code> but ignores the arguments.</p>
+
+<h2 id="scala-quasiquotes">Scala Quasiquotes</h2>
+
+<p>This part of the post is not yet written. The intent was to explore Scala
+Quasiquotes facilities for codegen.</p>
+
+<ul>
+  <li><a href="http://docs.scala-lang.org/overviews/quasiquotes/intro.html">Quasiquotes</a>.</li>
+  <li><a href="https://scala-lms.github.io/tutorials/02_basics.html#__toc_id:54231">Generative Programming Basics</a></li>
+  <li><a href="http://www.michaelpollmeier.com/2016/12/01/scalameta-code-generation-tutorial">Introduction to code generation with scalameta</a></li>
+</ul>
+
+<h2 id="next-steps">Next steps</h2>
+
+<p>An interesting direction to take this, now that we have a foundation for
+dynamically compiling queries, would be to add a SQL interface. <a href="https://calcite.apache.org/">Apache
+Calcite</a> is well-suited to do just that.</p>
+
+<h2 id="further-reading">Further reading</h2>
+
+<ul>
+  <li><a href="http://en.wikipedia.org/wiki/Java_bytecode_instruction_listings">Java bytecode instruction listings (Wikipedia - useful reference)</a></li>
+  <li><a href="http://www.infoq.com/articles/Secrets-of-the-Bytecode-Ninjas">Secrets of the Bytecode Ninjas (InfoQ)</a></li>
+  <li><a href="http://www.acloudtree.com/hacking-java-bytecode-for-programmers-part1-the-birds-and-the-bees-of-hex-editing/">Hacking Java Bytecode for Programmers (part 1 of a 4 part series)</a></li>
+  <li><a href="http://stackoverflow.com/questions/tagged/java-bytecode-asm">java-bytecode-asm tag on StackOverflow</a></li>
+  <li><a href="http://blog.jamesdbloom.com/JVMInternals.html">JVM Internals (blog post)</a></li>
+  <li><a href="http://yefremov.net/blog/scala-code-generation/">3 approaches to Scala code generation</a></li>
+</ul>
+
+        <hr />
+        <footer class="page-footer">
+          
+
+<div class="author-image">
+  <img src="https://devth.com/images/bio-photo.png" alt="Trevor Hartman">
+</div><!-- ./author-image -->
+<div class="author-content">
+  <h3 class="author-name" >
+    Written by
+    
+      <span itemprop="author">Trevor Hartman</span>
+    
+    <span class="page-meta">
+  on <time datetime="2017-02-26T00:00:00Z" itemprop="datePublished">February 26, 2017</time>
+</span><!-- /.page-meta -->
+
+  </h3>
+  <p class="author-bio">Automate or die</p>
+</div><!-- ./author-content -->
+
+          
+          </footer><!-- /.footer -->
+          <aside>
+            <hr />
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+	var disqus_shortname = 'devth';
+
+	/* * * DON'T EDIT BELOW THIS LINE * * */
+	(function() {
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          </aside>
+      </div><!-- /.content -->
+    </div><!-- /.inner-wrap -->
+    
+  </article><!-- ./wrap -->
+</div><!-- /#main -->
+
+
+      <footer role="contentinfo" id="site-footer">
+  <nav role="navigation" class="menu bottom-menu">
+    <ul class="menu-item">
+      
+        
+        <li><a href="https://devth.com/">Home</a></li>
+      
+        
+        <li><a href="http://twitter.com/devth">Twitter</a></li>
+      
+        
+        <li><a href="http://github.com/devth">GitHub</a></li>
+      
+        
+        <li><a href="https://keybase.io/devth">Keybase</a></li>
+      
+    </ul>
+  </nav><!-- /.bottom-menu -->
+  <p class="copyright">
+    This site is continuously delivered from
+    <a href="https://github.com/devth/devth.github.com">source</a>.
+    <br />
+    All images and content
+    &#169; 2021
+    <a href="https://devth.com">Trevor Hartman</a>.
+    <a href="https://en.wikipedia.org/wiki/Soli_Deo_gloria">
+      Soli Deo gloria
+    </a>
+  </p>
+</footer>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9963595-1', 'auto');
+  ga('require', 'displayfeatures');
+  ga('send', 'pageview');
+</script>
+
+    </div>
+
+    <script src="/js/vendor/jquery-1.9.1.min.js"></script>
+    <script src="/js/main.js"></script>
+    
+    
+    <script type="text/javascript">
+      $('.toc').toc({
+        'selectors': 'h2', //elements to use as headings
+        'container': '.page-content', //element to find all selectors in
+        'smoothScrolling': true, //enable or disable smooth scrolling on click
+        'prefix': 'toc', //prefix for anchor tags and class names
+        'onHighlight': function(el) {}, //called when a new section is highlighted 
+        'highlightOnScroll': true, //add class to heading that is currently in focus
+        'highlightOffset': 100, //offset to trigger the next headline
+        'anchorName': function(i, heading, prefix) { //custom function for anchor name
+          return prefix+i;
+        },
+        'headerText': function(i, heading, $heading) { //custom function building the header-item text
+          return $heading.text();
+        },
+        'itemClass': function(i, heading, $heading, prefix) { //custom function for item class
+          return $heading[0].tagName.toLowerCase();
+        }
+      });
+    </script>
+    
+
+  </body>
+
+</html>
