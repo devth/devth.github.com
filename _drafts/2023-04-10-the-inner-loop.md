@@ -28,9 +28,11 @@ the stack.
 
 ## Ok, So What?
 
-**So optimize your innermost loops**. Stop holding meaningless meetings, cargo
-cult scrum ceremonies, sprint planning, quarterly planning, all hands,
-endless training, performance reviews, interviews for new candidate.
+**So optimize your innermost loops**. Stop holding meaningless meetings for
+every could-have-been-a-slack-thread, sprint planning, quarterly planning, all
+hands, endless training, performance reviews, interviews for new candidates, and
+cargo culting scrum ceremonies.
 
-And ~if~ when you do decide to hold these, be aware of the exponential,
-cascading cost up the entire chain.
+And ~if~ when you do decide to hold these, try to chunk them at the beginning or
+end of the day and be aware of the exponential, cascading cost up the entire
+chain.
