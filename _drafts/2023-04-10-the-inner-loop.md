@@ -17,8 +17,8 @@ faster, more efficient, more impactful - able to complete more work in the same
 amount of time.
 
 The effect each on successive parent loop is magnified, extending all the way up
-the stack. When you increase the productivity of every IC on every team (i.e.
-optimize the inner loop):
+the stack. When you increase the productivity of every IC on every team across
+a company (i.e. optimize the inner loops):
 
 - Every manager delivers more work in shorter periods of time
 - Every director's time spent prioritizing, planning and bucketing chunks of
