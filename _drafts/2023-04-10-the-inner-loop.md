@@ -2,7 +2,7 @@
 
 ## Organization Hierarchy
 
-Think of levels in an organization hierarchy as loops in a running program.
+Consider levels in an organization hierarchy as loops in a running program.
 
 The outermost loop is the CEO.
 

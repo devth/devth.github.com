@@ -7,6 +7,10 @@
 ## Running
 
 ```bash
+# if you don't have ruby installed yet, install it from brew instead of using
+# system ruby:
+brew install ruby
+
 gem install bundler
 
 bundle install
