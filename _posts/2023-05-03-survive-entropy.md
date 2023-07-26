@@ -1,4 +1,13 @@
-# Will it survive entropy?
+---
+layout: article
+title: Will it survive entropy?
+categories: [infrastructure]
+comments: true
+excerpt: |
+  For every components that makes up a modern web app engineers must decide
+  where on the spectrum of fully-managed to custom-built the solution should
+  lie. It can be useful to think through the lens of _entropy_ and _extropy_.
+---
 
 Modern web apps are built in a complex style, requiring many tools
 and systems to support both their development (e.g. CI/CD, secrets, config,

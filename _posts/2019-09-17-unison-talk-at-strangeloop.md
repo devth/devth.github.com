@@ -10,7 +10,6 @@ excerpt: |
 image:
   feature: unison_feature.png
   teaser: unison_teaser.png
-
 ---
 
 These are my notes from the mind-expanding talk ["Unison: a new distributed
@@ -76,7 +75,7 @@ including:
   changes a new hash is created and appended to the codebase. The cache never
   needs to be invalidated.
 - **Code is indexed in interesting ways**, such as by types like `Nat -> [a] ->
-  [a]` which yields `List.drop` and `List.take`.
+[a]` which yields `List.drop` and `List.take`.
 - **Solves the diamond dependency problem** (e.g. `D` depends on `B` and `C`,
   but `B` and `C` both depend on `A` - which version of `A` does `D` get?). Libs
   in traditional langs operate on shared/global namespaces but since Unison
